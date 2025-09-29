@@ -1,0 +1,15 @@
+.secao_propagandas{
+    padding:20px;
+    background-color: #eeeeee;
+}
+.container_secao_propagandas{
+    display:flex;
+    align-items: center;
+    gap:30px;
+    justify-content: center;
+}
+
+.imagem_promocao_propaganda{
+    width:628px;
+    height:232px;
+}

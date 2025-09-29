@@ -1,0 +1,209 @@
+.secao_banner{
+    background-image: url('/images/fundo-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+}
+
+.card_banner{
+    background-color: #270570;
+    padding:20px;
+    border-radius: 15px;
+}
+
+.div_input_origem_destino{
+    display:flex;
+    
+}
+
+.texto_viagens{
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
+}
+
+.input_origem_destino{
+    padding-left:40px;
+    border-radius: 12px;
+    border:1px solid #444444;
+    height:60px;
+    
+}
+.label_origem_destino{
+    position:absolute;
+    top:5px;
+    left:40px;
+    font-size:10px;
+    color:#72777f;
+}
+.div_label_input{
+    position:relative;
+}
+
+.container_inputs{
+    display:flex;
+    gap:20px;
+}
+
+.imagem_botao{
+    height:24px;
+    width:24px;
+}
+
+.botao_passagens{
+    background-color:#270570;
+    border:1px solid white;
+    border-radius: 24px;
+    padding:16px;
+    color:white;
+    display:flex;
+    align-items: center;
+    height:43px;
+}
+.container_passagens_aereas_botoes{
+    display:flex;
+    align-items: center;
+    gap:15px;
+    padding-top:10px;
+    padding-bottom:20px;
+}
+
+.separador_botoes{
+    font-size: 36px;
+    color:white;
+}
+
+.container_voo_hospedagem{
+    position:relative;
+}
+
+.paragrafo_desconto{
+    color:white;
+    background-color: #03a691;
+    position:absolute;
+    font-size: 10px;
+    left:20%;
+    top:-40%;
+    border-radius: 15px;
+    padding:5px
+}
+
+.imagem_seta_esquerda_direita{
+    width:20px;
+    height:20px;
+    position:absolute;
+    right:-15px;
+    top:13px;
+    z-index: 1;
+    background-color: white;
+    border:1px solid #72777f;
+    border-radius: 4px;
+    padding:5px
+}
+
+.imagem_input{
+    width:18px;
+    height:18px;
+    position:absolute;
+    top:25px;
+    left:15px;
+}
+
+.imagem_input_destino{
+    width:18px;
+    height:18px;
+    position:absolute;
+    top:25px;
+    left:20px;
+}
+
+.input_origem{
+    padding-top:3px;
+    padding-left:40px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border:1px solid #444444;
+    height:60px;
+}
+
+.input_destino{
+    padding-top:3px;
+    padding-left:40px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border:1px solid #444444;
+    height:60px;
+}
+
+.imagem_lupa{
+    width:20px;
+    height:20px;
+}
+
+.container_botao_imagem{
+    display:flex;
+    align-items: center;
+    background-color:#e61a06;
+    border:none;
+    padding:0 20px;
+    border-radius: 48px;
+    color:white;
+    font-size: 16px;
+}
+
+.container_filtrar_por_data_mais_barata{
+    display:flex;
+    padding:20px;
+    color:white;
+    background-color: #270570;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+
+}
+
+.switchContainer {
+  
+  width: 34px;
+  height: 18px;
+  border-radius: 15px;
+  background-color: #a780ff;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.switchContainerOff {
+  
+  width: 34px;
+  height: 18px;
+  border-radius: 15px;
+  background-color: #ccc;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.switch {
+  width: 15px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: left 0.3s;
+}
+
+.on {
+  left: 19px; /* move para a direita */
+  background-color: #270570;
+}
+
+.off {
+  left: 0px; /* posição inicial */
+}

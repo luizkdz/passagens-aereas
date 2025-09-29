@@ -1,0 +1,138 @@
+.container_passagens_aereas{
+    display:flex;
+    align-items: center;
+    
+    transition: transform 0.5s ease-in-out;
+    position:relative;
+    gap:20px;
+    padding-top:20px;
+}
+
+.secao_passagens_aereas{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#eeeeee;
+    position:relative;
+    padding:20px;
+}
+
+.imagem_passagem{
+    width:306px;
+    height:200px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  
+}
+
+.prev {
+  left: 294px;
+}
+
+.next {
+  right: 294px;
+}
+
+.container_carousel{
+    width:1298px;
+    overflow: hidden;
+}
+
+.card_passagem_aerea{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    
+}
+
+.texto_card_passagem_aerea{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    background-color: white;
+    padding:20px;
+}
+
+.texto_passagem{
+    color:#565A60;
+    font-size: 12px;
+    
+}
+
+.texto_destino{
+    font-size: 20px;
+    color:#323439;
+}
+
+.texto_origem{
+    font-size: 14px;
+}
+
+.texto_companhia{
+    font-size: 14px;
+}
+
+.texto_ida_volta{
+    font-size: 12px;
+    background-color: #dde1e8;
+    width:60px;
+    padding:8px;
+    border-radius: 6px;
+    color:#323439;
+    
+}
+
+.texto_preco_ida_volta{
+    border-top: 1px solid #565A60;
+    font-size: 12px;
+    padding-top:20px;
+}
+
+.texto_preco{
+    font-size:24px;
+}
+
+.texto_data_referencia{
+    font-size: 12px;
+    color:#565A60;
+
+}
+
+.texto_passaporte{
+    color:#ff7a80;
+    font-size: 12px;
+
+}
+
+.imagem_passaporte{
+    width:24px;
+    height:18px;
+}
+
+.container_passaporte_pontos{
+    border-top:1px solid #565A60;
+    display:flex;
+    align-items: center;
+    padding-top:20px;
+}
+
+.texto_pontos{
+    font-size:12px;
+}
+
+.titulo_passagem_aerea{
+    color:#323439;
+}

@@ -1,0 +1,31 @@
+.container_ofertas{
+    display:flex;
+    flex-direction: column;
+    
+    
+}
+
+.imagem_ofertas{
+    width:628px;
+    height:188px;
+    border-radius: 15px;
+}
+
+
+.titulo_ofertas{
+    color:#323439;
+    font-size:24px;
+    padding-bottom:20px;
+}
+
+.container_imagens_ofertas{
+    display:flex;
+    gap:30px;
+}
+
+.secao_ofertas{
+    display:flex;
+    justify-content: center;
+    padding:20px;
+    background-color: #eeeeee;
+}

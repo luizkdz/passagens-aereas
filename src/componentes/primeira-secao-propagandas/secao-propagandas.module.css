@@ -1,0 +1,14 @@
+.imagem_propaganda{
+    width:308px;
+    height:270px;
+    border-radius: 15px;
+}
+
+.secao_propagandas{
+    background-color: #eeeeee;
+    padding:20px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
