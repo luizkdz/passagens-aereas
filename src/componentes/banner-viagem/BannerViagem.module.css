@@ -63,6 +63,11 @@
     display:flex;
     align-items: center;
     height:43px;
+    cursor:pointer;
+}
+.botao_passagens:hover{
+    background-color: white;
+    color:#270570;
 }
 .container_passagens_aereas_botoes{
     display:flex;
@@ -153,7 +158,13 @@
     border-radius: 48px;
     color:white;
     font-size: 16px;
+    cursor:pointer;
 }
+
+.container_botao_imagem:hover{
+    background-color: #9c1206;
+}
+
 
 .container_filtrar_por_data_mais_barata{
     display:flex;

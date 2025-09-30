@@ -23,7 +23,7 @@ export default function NavBar() {
 
     const menuNavegacao = [
   { image: "/images/cama.png", titulo: "Hospedagens" },
-  { image: "/images/aviao.png", titulo: "Passagens" },
+  { image: "/images/aviao-preto.png", titulo: "Passagens" },
   { image: "/images/mala-de-viagem.png", titulo: "Pacotes" },
   { image: "/images/fogo.png", titulo: "Ofertas" },
   { image: "/images/mala-de-viagem.png", titulo: "Pacotes prontos" },

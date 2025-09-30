@@ -1,0 +1,21 @@
+.container_footer{
+    display:flex;
+    width:1024px;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.secao_footer{
+    display:flex;
+    justify-content: center;
+    font-size:12px;
+}
+
+.primeiro_texto{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}

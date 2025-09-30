@@ -1,0 +1,48 @@
+.texto_primeira_secao{
+    color:black;
+    font-size:13px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.container_footer{
+    display:flex;
+    justify-content: space-between;
+    width:1024px;
+    
+    padding-bottom:20px;
+}
+
+.secao_footer{
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom:1px solid #eeeeee;
+}
+
+.ul_lista{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.links{
+    color:#888888;
+    text-decoration: none;
+    font-size:13px;
+}
+
+.item_lista{
+    list-style: none;
+}
+
+.imagem_aviao{
+    width:80px;
+    height:60px;
+}
+
+.container_imagem_footer{
+    padding-top:50px;
+}

@@ -64,7 +64,7 @@ export default function PassagensAereas(){
   
 
   function prevSlide() {
-    setIndex((old) => (old - 1 + passagensAereas.length) % (passagensAereas.length - 3));
+    setIndex((old) => (old - 1 + passagensAereas.length) % (passagensAereas.length - 3 ));
   }
 
   function nextSlide() {

@@ -40,21 +40,25 @@
 }
 
 .prev {
-  left: 294px;
+  left: 0px;
 }
 
 .next {
-  right: 294px;
+  right: 0px;
 }
 
 .container_carousel{
-    width:1298px;
+    padding-left:15px;
+    position:relative;
+    width:1301px;
     overflow: hidden;
+
 }
 
 .card_passagem_aerea{
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
+    background-color:white;
     
 }
 

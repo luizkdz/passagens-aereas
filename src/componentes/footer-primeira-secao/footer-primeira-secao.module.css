@@ -1,0 +1,40 @@
+.secao_footer{
+    display:flex;
+    justify-content: center;
+}
+
+
+.texto_atendimento{
+    color:#888888;
+    font-weight: 100;
+}
+
+
+.texto_central_vendas{
+    color:black;
+    font-weight: bold;
+    font-size:13px; 
+}
+
+.container_footer{
+    width:1024px;
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom:20px;
+}
+
+.imagem_icone{
+    width:20px;
+    height:20px;
+}
+
+.container_icones{
+    display:flex;
+    gap:15px;
+}
+
+.container_textos{
+    display:flex;
+    gap:20px;
+}

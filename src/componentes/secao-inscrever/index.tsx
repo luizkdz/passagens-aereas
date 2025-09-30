@@ -12,7 +12,7 @@ export default function Inscrever(){
                     <input className={styles.input_inscrever} placeholder="Insira seu e-mail"/>
                     <button className={styles.botao_inscrever}>Quero recebê-las!</button>
                     </div>
-                    <p>Você receberá e-mails promocionais da Skypass. Para mais informações, consulte<br/> as <span className={styles.texto_politicas}>políticas de privacidade</span></p>
+                    <p className={styles.texto_informacoes}>Você receberá e-mails promocionais da Skypass. Para mais informações, consulte<br/> as <span className={styles.texto_politicas}>políticas de privacidade</span></p>
                     
                     
                 </div>
