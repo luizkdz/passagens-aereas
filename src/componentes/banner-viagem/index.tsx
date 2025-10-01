@@ -1,9 +1,284 @@
 import styles from './BannerViagem.module.css';
-import { useState } from 'react';
-
+import { useState,forwardRef,useRef, useEffect} from 'react';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 export default function BannerViagem() {
 
+    const CustomInputMultiDestino = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
+  <div className={styles.container_input}>
+    <img src="/images/calendar.png" className={styles.imagem_input} />
+    <input
+      value={value}
+      onClick={onClick}
+      placeholder={placeholder}
+      ref={ref}
+      readOnly
+      className={styles.date_picker_multi_destino}
+    />
+  </div>
+));
+const CustomInputMultiDestinoLongo = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
+  <div className={styles.container_input}>
+    <img src="/images/calendar.png" className={styles.imagem_input} />
+    <input
+      value={value}
+      onClick={onClick}
+      placeholder={placeholder}
+      ref={ref}
+      readOnly
+      className={styles.date_picker_multi_destino_longo}
+    />
+  </div>
+));
+const CustomInputDataIda = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
+  <div className={styles.container_input}>
+    <img src="/images/calendar.png" className={styles.imagem_input} />
+    <input
+      value={value}
+      onClick={onClick}
+      placeholder={placeholder}
+      ref={ref}
+      readOnly
+      className={styles.date_picker_origem}
+    />
+  </div>
+));
+const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
+  <div className={styles.container_input}>
+    <img src="/images/calendar.png" className={styles.imagem_input} />
+    <input
+      value={value}
+      onClick={onClick}
+      placeholder={placeholder}
+      ref={ref}
+      readOnly
+      className={styles.date_picker}
+    />
+  </div>
+));
+const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
+  <div className={styles.container_input}>
+    <img src="/images/calendar.png" className={styles.imagem_input} />
+    <input
+      value={value}
+      onClick={onClick}
+      placeholder={placeholder}
+      ref={ref}
+      readOnly
+      className={styles.date_picker}
+      disabled
+    />
+  </div>
+));
+
+
+
     const [isOn, setIsOn] = useState(false);
+    const [isClicked,setIsClicked] = useState('idaEVolta');
+    const [mostrarTrechos, setMostrarTrechos] = useState(2);
+    const [numeroQuartos, setNumeroQuartos] = useState(1);
+    const [numeroPessoas, setNumeroPessoas] = useState(1);
+    const [classeEscolhida, setClasseEscolhida] = useState('Econômica');
+    const [menuPassageirosClasse,setMenuPassageirosClasse] = useState(false);
+    const [numeroMaioresIdade, setNumeroMaioresIdade] = useState(1);
+    const [numeroMenoresIdade, setNumeroMenoresIdade] = useState(0);
+    const [dataIda, setDataIda] = useState<Date | null>(null);
+    const [dataIda_2, setDataIda_2] = useState<Date | null>(null);
+    const [dataIda_3, setDataIda_3] = useState<Date | null>(null);
+    const [dataIda_4, setDataIda_4] = useState<Date | null>(null);
+    const [dataIda_5, setDataIda_5] = useState<Date | null>(null);
+    const [dataVolta, setDataVolta] = useState<Date | null>(null);
+    const [menuOrigem, setMenuOrigem] = useState(false);
+    const menuOrigemRef = useRef<HTMLDivElement>(null);
+    const menuPassageirosRef = useRef<HTMLDivElement>(null);
+    const [nomeCidadeOrigem, setNomeCidadeOrigem] = useState('');
+    const [nomeCidadeOrigem_2, setNomeCidadeOrigem_2] = useState('');
+    const [nomeCidadeOrigem_3, setNomeCidadeOrigem_3] = useState('');
+    const [nomeCidadeOrigem_4, setNomeCidadeOrigem_4] = useState('');
+    const [nomeCidadeOrigem_5, setNomeCidadeOrigem_5] = useState('');
+    const [menuDestino, setMenuDestino] = useState(false);
+    const menuDestinoRef = useRef<HTMLDivElement>(null);
+    const [nomeDestino, setNomeDestino] = useState('');
+    
+    const cidades = [
+  {
+    municipio: "Rio de Janeiro",
+    estado: "RJ",
+    pais: "Brasil"
+  },
+  {
+    municipio: "São Paulo",
+    estado: "SP",
+    pais: "Brasil"
+  },
+  {
+    municipio: "Lisboa",
+    estado: "Lisboa",
+    pais: "Portugal"
+  },
+  {
+    municipio: "Miami",
+    estado: "Flórida",
+    pais: "Estados Unidos"
+  },
+  {
+    municipio: "Buenos Aires",
+    estado: "Buenos Aires",
+    pais: "Argentina"
+  }
+];
+
+const aeroportos = [
+  {
+    cidade: "São Paulo",
+    aeroporto: "Aeroporto Internacional de Guarulhos (GRU)"
+  },
+  {
+    cidade: "Rio de Janeiro",
+    aeroporto: "Aeroporto Internacional do Galeão (GIG)"
+  },
+  {
+    cidade: "Brasília",
+    aeroporto: "Aeroporto Internacional de Brasília (BSB)"
+  },
+  {
+    cidade: "Lisboa",
+    aeroporto: "Aeroporto Humberto Delgado (LIS)"
+  },
+  {
+    cidade: "Miami",
+    aeroporto: "Miami International Airport (MIA)"
+  },
+  {
+    cidade: "Buenos Aires",
+    aeroporto: "Aeropuerto Internacional Ministro Pistarini - Ezeiza (EZE)"
+  },
+  {
+    cidade: "Paris",
+    aeroporto: "Aéroport de Paris-Charles de Gaulle (CDG)"
+  },
+  {
+    cidade: "Tóquio",
+    aeroporto: "Tokyo Haneda Airport (HND)"
+  }
+];
+
+const destinosMaisProcurados = [
+  {
+    municipio: "Rio de Janeiro",
+    estado:"Rio de Janeiro",
+    pais:"Brasil",
+    imagem: "/images/rio-de-janeiro.jpg",
+  },
+  {
+    municipio: "Salvador",
+    estado:"Bahia",
+    pais:"Brasil",
+    imagem: "/images/salvador.jpg",
+  },
+  {
+    municipio: "Fortaleza",
+    estado:"Ceará",
+    pais:"Brasil",
+    imagem: "/images/fortaleza.jpg",
+  },
+];
+
+    const diminuirMenoresIdade = () => {
+        if(numeroMenoresIdade > 0)
+        setNumeroMenoresIdade((inicial) => (inicial - 1));
+    }
+
+    const aumentarMenoresIdade = () => {
+        if(numeroMenoresIdade + numeroMaioresIdade < 8)
+        setNumeroMenoresIdade((inicial) => (inicial + 1));
+    }
+
+
+    const aumentarMaioresIdade = () => {
+        if(numeroMaioresIdade + numeroMenoresIdade < 8)
+        setNumeroMaioresIdade((inicial) => (inicial + 1))
+    }
+
+    const diminuirMaioresIdade = () => {
+        if(numeroMaioresIdade > 1)
+        setNumeroMaioresIdade((inicial) => (inicial - 1))
+    }
+
+    const toggleAdicionarTrecho = () => {
+  if (mostrarTrechos < 5) {
+    setMostrarTrechos((inicial) => inicial + 1);
+  }
+};
+    const toggleRemoverTrecho = () => {
+        setMostrarTrechos((inicial ) => inicial - 1);
+    }
+
+    const toggleIsClickedIdaEVolta = () => {
+        setIsClicked('idaEVolta');
+    }
+    const toggleIsClickedSoIda = () => {
+        setIsClicked('soIda')
+    }
+    const toggleIsClickedMultiDestino = () => {
+        setIsClicked('multiDestino')
+    }
+    const toggleIsClickedVooHospedagem = () => {
+        setIsClicked('vooHospedagem')
+    }
+    
+    const toggleMenuPassageirosClasse = () => {
+        setMenuPassageirosClasse(!menuPassageirosClasse);
+    }
+    
+     useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuPassageirosRef.current && !menuPassageirosRef.current.contains(event.target as Node)) {
+        setMenuPassageirosClasse(false); // fecha se clicar fora
+      }
+    }
+
+    if (menuPassageirosClasse) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuPassageirosClasse]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuOrigemRef.current && !menuOrigemRef.current.contains(event.target as Node)) {
+        setMenuOrigem(false); // fecha se clicar fora
+      }
+    }
+
+    if (menuOrigem) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOrigem]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuDestinoRef.current && !menuDestinoRef.current.contains(event.target as Node)) {
+        setMenuDestino(false); // fecha se clicar fora
+      }
+    }
+
+    if (menuDestino) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuDestino]);
+
 
   const toggleSwitch = () => setIsOn(!isOn);
         return (
@@ -11,30 +286,81 @@ export default function BannerViagem() {
                 <div className={styles.card_banner}>
                     <div className={styles.container_passagens_aereas_botoes}>
                     <p className={styles.texto_viagens}>Passagens aéreas</p>
-                    <button className={styles.botao_passagens}>Ida e volta</button>
-                    <button className={styles.botao_passagens}>Só ida</button>
-                    <button className={styles.botao_passagens}>Multidestino</button>
+                    <button onClick={() => {toggleIsClickedIdaEVolta()}} className={isClicked === 'idaEVolta' ? styles.botao_passagens_true : styles.botao_passagens_false}>Ida e volta</button>
+                    <button onClick={() => {toggleIsClickedSoIda()}} className={isClicked === 'soIda' ? styles.botao_passagens_true : styles.botao_passagens_false}>Só ida</button>
+                    <button onClick={() => {toggleIsClickedMultiDestino()}} className={isClicked === 'multiDestino' ? styles.botao_passagens_true : styles.botao_passagens_false}>Multidestino</button>
                     <p className={styles.separador_botoes}>|</p>
                     <div className={styles.container_voo_hospedagem}>
                     <p className={styles.paragrafo_desconto}>Até 30% mais barato</p>
-                    <button className={styles.botao_passagens}><img src="/images/aviao.png" className={styles.imagem_botao}/> Voo + <img src="/images/cama-de-casal.png" className={styles.imagem_botao}/>Hospedagem</button>
+                    <button onClick={() => {toggleIsClickedVooHospedagem()}} className={isClicked === 'vooHospedagem' ? styles.botao_passagens_true : styles.botao_passagens_false}><img src={isClicked === "vooHospedagem" ? "/images/aviao-preto.png": "/images/aviao.png"} className={styles.imagem_botao}/> Voo + <img src={isClicked === "vooHospedagem" ? "/images/cama-de-casal-preto.png" : "/images/cama-de-casal.png"} className={styles.imagem_botao}/>Hospedagem</button>
                     </div>
                     </div>
+                    {isClicked !== "multiDestino" ? <div className={styles.banner_passagens_aereas}>
                     <div className={styles.container_inputs}>
                     <div className={styles.div_input_origem_destino}>
-                    <div className={styles.div_label_input}>
+                    <div onClick={() => setMenuOrigem(!menuOrigem)} className={styles.div_label_input}>
                     
                     
                     <label className={styles.label_origem_destino}>ORIGEM</label>
                     <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
-                    <input className={styles.input_origem} placeholder='Origem'/>
-                    
+                    <input value={nomeCidadeOrigem} onChange={(e) => {setNomeCidadeOrigem(e.target.value)}} className={styles.input_origem} placeholder='Origem'/>
+                    {menuOrigem && (
+                        <div ref={menuOrigemRef} className={styles.menu_origem}>
+                            <div className={styles.container_imagem_cidades}>
+                            <img src="/images/cidade.png" className={styles.icone_cidade}/>
+                            
+                            <p>CIDADES</p>
+                            </div>
+                            <div className={styles.texto_cidades}>
+                            {cidades.filter((item) => {
+                            const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+                        return fullName.includes(nomeCidadeOrigem.toLowerCase())}).map((item,index) => {
+                                return (
+                                    <div onClick={() => setNomeCidadeOrigem(`${item.municipio}, ${item.estado}, ${item.pais}`)} key={index} className={styles.container_nome_cidade}>
+                                        <p className={styles.texto_municipio_estado_pais}>{item.municipio}, {item.estado}, {item.pais}</p>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                            <div className={styles.container_imagem_aeroportos}>
+                            <img src="/images/aeroportos.png" className={styles.icone_cidade}/>
+                            <p>AEROPORTOS</p>
+                            </div>
+                            <div className={styles.texto_aeroportos}>
+                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomeCidadeOrigem.toLowerCase())}).map((item,index) => {
+                                return (
+                                    <div onClick={() => {setNomeCidadeOrigem(item.aeroporto)}} key ={index} className={styles.container_nome_cidade}>
+                                        <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                        </div>
+                    )}
                     </div>
-                    <div className={styles.div_label_input}>
+                    <div onClick={()=> {setMenuDestino(!menuDestino)}} className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
-                    <input className={styles.input_destino} placeholder='Destino'/>
+                    <input value={nomeDestino} onChange={(e) => {setNomeDestino(e.target.value)}} className={styles.input_destino} placeholder='Destino'/>
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
+                    {menuDestino && (
+                        <div className={styles.menu_destino} ref={menuDestinoRef}>
+                            <div className={styles.container_destinos_mais_buscados}>
+                            <img src="/images/estrela.png" className={styles.imagem_estrela}/>
+                            <p>DESTINOS MAIS BUSCADOS</p>
+                            </div>
+                            {destinosMaisProcurados.filter((item) => { 
+                                const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+                                return(
+                                    fullName.includes(nomeDestino.toLowerCase())
+                            )}).map((item,index) => {return (
+                                <div key ={index} onClick={() => {setNomeDestino(`${item.municipio}, ${item.estado}, ${item.pais}`)}} className={styles.container_destinos_mais_procurados}>
+                                    <img src={item.imagem} className={styles.imagem_destino_mais_procurado}/>
+                                    <p>{item.municipio}, {item.estado}, {item.pais}</p>
+                                </div>
+                            )})}
+                        </div>
+                    )}
                     </div>
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
@@ -46,27 +372,97 @@ export default function BannerViagem() {
                     
                     <label className={styles.label_origem_destino}>DATAS</label>
                     <img src="/images/calendar.png" className={styles.imagem_input}/>
-                    <input className={styles.input_origem} placeholder='Ida'/>
+                    <DatePicker
+        className={isClicked == "soIda" ? styles.date_picker_origem : styles.date_picker_origem} 
+        selected={dataIda}
+        onChange={(date) => setDataIda(date)}
+        dateFormat="dd/MM/yyyy"
+        minDate={new Date()} // só permite hoje em diante
+        placeholderText='Ida'
+        customInput={<CustomInputDataIda/>}
+      />
                     </div>
                     <div className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
                     <img src="/images/calendar.png" className={styles.imagem_input}/>
-                    <input className={styles.input_destino} placeholder='Volta'/>
+                    <DatePicker
+        className={isClicked == "soIda" ? styles.date_picker : styles.date_picker} disabled = {isClicked === "soIda"}
+        selected={dataVolta}
+        onChange={(date) => setDataVolta(date)}
+        dateFormat="dd/MM/yyyy"
+        minDate={new Date()} // só permite hoje em diante
+        placeholderText='Volta'
+        customInput={isClicked == "soIda" ? <CustomInputDataVoltaOff/> : <CustomInputDataVolta/>}
+        calendarClassName={styles.calendario_custom}
+      />
                     </div>
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
                     
                     </div>
                     <div className={styles.div_input_origem_destino}>
-                    <div className={styles.div_label_input}>
+                    
+                    {isClicked !== "vooHospedagem" ? <div className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input className={styles.input_origem_destino} placeholder='1 pessoa,Econômica'/>
+                    <input onClick={() => {toggleMenuPassageirosClasse()}} onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={styles.input_origem_destino}/>
+                    <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
+                    {menuPassageirosClasse && (
+        <div ref={menuPassageirosRef} className={styles.menu_passageiros_classe}>
+            <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Maiores</p>
+          <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMaioresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Menores</p>
+          <p className={styles.texto_maior_idade}>Até 17 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMenoresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          <div className={styles.container_classe_select}>
+            <p>Classe</p>
+            <select className={styles.select_classe}>
+                <option>Econômica</option>
+            <option>Econômica</option>
+            <option>Premium economy</option>
+            <option>Executiva/Business</option>
+            <option>Primeira classe</option>
+            <option>Premium business</option>
+            <option>Premium Primeira classe</option>
+            </select>
+            
+            </div>
+            <div className={styles.container_botao_aplicar}>
+                <button className={styles.botao_aplicar}>Aplicar</button>
+            </div>
+        </div>
+      )}
+                    </div>: <div className={styles.div_label_input}>
+
                     
+                    <label className={styles.label_origem_destino}>QUARTOS</label>
                     
-                    </div>
+                    <input onClick={() => {}} className={styles.input_origem_destino}/>
+                    <p className={styles.numero_quartos}>{numeroQuartos}</p>
+                    <p className={styles.numero_pessoas}>{numeroPessoas}</p>
+                    <img src="/images/cama.png" className={styles.imagem_usuario_input_voo_hospedagem}/>
+                    <img src="/images/do-utilizador.png" className={styles.imagem_cama_input_voo_hospedagem}/>
+                    
+                    </div>}
                     
                     
                     
@@ -82,8 +478,78 @@ export default function BannerViagem() {
     </div>
                 <p>Buscar pelas data mais barata</p>
                 </div>
-                </div>
                 
+                </div> : <div className={styles.card_trecho}>
+                    
+                    {Array.from({length: mostrarTrechos}).map((_, index) => {
+                        return (
+                            <div className={styles.container_card_banner_multi_destino}>
+                    <div className={styles.container_titulo_excluir}>
+                            <h3 className={styles.texto_multi_destino}>Trecho {index + 1}</h3>
+                            <img src="/images/x.png" onClick={() => {toggleRemoverTrecho()}} className={index + 1 > 2 && index + 1 == mostrarTrechos ? styles.botao_excluir_trecho : styles.botao_excluir_trecho_disabled}/>
+                    </div>
+                    
+                    <div className={styles.container_inputs_multi_destino}>
+                        <div className={styles.container_origem_destino}>
+                        <div className={styles.div_label_input}>
+                    
+                    
+                    <label className={styles.label_origem_destino}>ORIGEM</label>
+                    <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
+                    <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
+                    <input value={index === 0 ? nomeCidadeOrigem : index === 1 ? nomeCidadeOrigem_2 : index=== 2 ? nomeCidadeOrigem_3 : index === 3 ? nomeCidadeOrigem_4 : nomeCidadeOrigem_5} className={styles.input_origem} placeholder='Origem'/>
+                    
+                    </div>
+                        <div className={styles.div_label_input}>
+                    <label className={styles.label_origem_destino}>DESTINO</label>
+                    <input className={styles.input_destino} placeholder='Destino'/>
+                    <img src="/images/gps.png" className={styles.imagem_input_destino}/>
+                    </div>
+                        </div>
+                        <div className={styles.container_data_passageiros}>
+                        <div className={styles.div_label_input}>
+
+                    
+                    <label className={styles.label_origem_destino}>DATAS</label>
+                    <img src="/images/calendar.png" className={styles.imagem_input}/>
+                    <DatePicker
+        className={index == 0 ? styles.date_picker_multi_destino : styles.date_picker_multi_destino_longo} 
+        selected={index === 0 ? dataIda : index === 1 ? dataIda_2 : index === 2 ? dataIda_3 : index === 3 ? dataIda_4 : dataIda_5}
+        onChange={index === 0 ? (date) => setDataIda(date) : index === 1 ? (date) => setDataIda_2(date) : index===2 ? (date) => setDataIda_3(date) : index === 3 ? (date) => setDataIda_4(date) : (date) => setDataIda_5(date)}
+        dateFormat="dd/MM/yyyy"
+        minDate={new Date()} // só permite hoje em diante
+        placeholderText='Ida'
+        calendarClassName={styles.calendario_personalizado}
+        customInput={index == 0 ? <CustomInputMultiDestino/> : <CustomInputMultiDestinoLongo/>}
+        
+      />
+                    </div>
+                        
+                    {index == 0 ? <div className={styles.div_label_input}>
+
+                    
+                    <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
+                    <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
+                    <input type="text" className={styles.input_origem_destino} />
+                    
+                    
+                    </div>: ""}
+                        </div>
+                        
+                        </div>
+                    </div>
+                        )
+                    })}
+                    <div className={mostrarTrechos !== 5 ? styles.container_paragrafo_botao_buscar : styles.container_paragrafo_botao_buscar_disabled}>
+                    <p onClick={() => {toggleAdicionarTrecho()}} className={mostrarTrechos !== 5 ? styles.paragrafo_novo_trecho : styles.paragrafo_novo_trecho_disabled}>Acrescentar novo trecho</p>
+                    <div className={styles.container_botao_imagem_multi_destino}>
+                    <img src="/images/lupa.png" className={styles.imagem_lupa}/>
+                    <p className={styles.botao_buscar}>Buscar</p>
+                    </div>
+                    </div>
+                    </div>} 
+                </div>
+                 
             </div>
         )
 }
