@@ -7,6 +7,7 @@ export default function BannerViagem() {
     const CustomInputMultiDestino = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
     <img src="/images/calendar.png" className={styles.imagem_input} />
+    <label className={styles.label_datas}>DATAS</label>
     <input
       value={value}
       onClick={onClick}
@@ -20,6 +21,7 @@ export default function BannerViagem() {
 const CustomInputMultiDestinoLongo = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
     <img src="/images/calendar.png" className={styles.imagem_input} />
+    <label className={styles.label_datas}>DATAS</label>
     <input
       value={value}
       onClick={onClick}
@@ -33,6 +35,7 @@ const CustomInputMultiDestinoLongo = forwardRef<HTMLInputElement, any>(({ value,
 const CustomInputDataIda = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
     <img src="/images/calendar.png" className={styles.imagem_input} />
+    <label className={styles.label_datas}>DATAS</label>
     <input
       value={value}
       onClick={onClick}
@@ -46,6 +49,7 @@ const CustomInputDataIda = forwardRef<HTMLInputElement, any>(({ value, onClick, 
 const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
     <img src="/images/calendar.png" className={styles.imagem_input} />
+    <label className={styles.label_datas}>VOLTA</label>
     <input
       value={value}
       onClick={onClick}
@@ -59,6 +63,7 @@ const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick
 const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
     <img src="/images/calendar.png" className={styles.imagem_input} />
+    <label className={styles.label_datas}>VOLTA</label>
     <input
       value={value}
       onClick={onClick}
@@ -91,14 +96,33 @@ const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onCl
     const [menuOrigem, setMenuOrigem] = useState(false);
     const menuOrigemRef = useRef<HTMLDivElement>(null);
     const menuPassageirosRef = useRef<HTMLDivElement>(null);
-    const [nomeCidadeOrigem, setNomeCidadeOrigem] = useState('');
-    const [nomeCidadeOrigem_2, setNomeCidadeOrigem_2] = useState('');
-    const [nomeCidadeOrigem_3, setNomeCidadeOrigem_3] = useState('');
-    const [nomeCidadeOrigem_4, setNomeCidadeOrigem_4] = useState('');
-    const [nomeCidadeOrigem_5, setNomeCidadeOrigem_5] = useState('');
+   
     const [menuDestino, setMenuDestino] = useState(false);
     const menuDestinoRef = useRef<HTMLDivElement>(null);
     const [nomeDestino, setNomeDestino] = useState('');
+    const [menuPassageirosClasseMultiDestino, setMenuPassageirosClasseMultiDestino] = useState(false);
+    const menuPassageirosClasseMultiDestinoRef = useRef<HTMLDivElement>(null);
+    const [menuQuarto, setMenuQuarto] = useState(false);
+    const menuQuartoRef = useRef<HTMLDivElement>(null);
+    const [numeroQuartosVooHospedagem, setNumeroQuartosVooHospedagem] = useState(1);
+    const [menuDestinoTrecho, setMenuDestinoTrecho] = useState(0);
+    const [menuOrigemTrecho, setMenuOrigemTrecho] = useState(0);
+    const menuOrigemTrechoRef = useRef<HTMLDivElement>(null);
+    const menuDestinoTrechoRef = useRef<HTMLDivElement>(null);
+    const [nomesCidadesOrigem, setNomesCidadesOrigem] = useState<string[]>(["", "", "", "", ""]);
+    const [nomesCidadesDestino, setNomesCidadesDestino] = useState<string[]>(["", "", "", "", ""]);
+    const [nomesAeroportosOrigem, setNomesAeroportosOrigem] = useState<string[]>(["", "", "", "", ""]);
+    const [nomesAeroportosDestino, setNomesAeroportosDestino] = useState<string[]>(["", "", "", "", ""]);
+    
+    
+    const toggleAdicionarQuarto = () => {
+        if(numeroQuartosVooHospedagem < 5)
+        setNumeroQuartosVooHospedagem((inicial) => (inicial + 1))
+    }
+    const toggleRemoverQuarto = () => {
+        if(numeroQuartosVooHospedagem > 1)
+        setNumeroQuartosVooHospedagem((inicial) => (inicial - 1))
+    }
     
     const cidades = [
   {
@@ -228,7 +252,7 @@ const destinosMaisProcurados = [
     }
     
     const toggleMenuPassageirosClasse = () => {
-        setMenuPassageirosClasse(!menuPassageirosClasse);
+        setMenuPassageirosClasse(true);
     }
     
      useEffect(() => {
@@ -279,6 +303,69 @@ const destinosMaisProcurados = [
     };
   }, [menuDestino]);
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuPassageirosClasseMultiDestinoRef.current && !menuPassageirosClasseMultiDestinoRef.current.contains(event.target as Node)) {
+        setMenuPassageirosClasseMultiDestino(false); // fecha se clicar fora
+      }
+    }
+
+    if (menuPassageirosClasseMultiDestino) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuPassageirosClasseMultiDestino]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuQuartoRef.current && !menuQuartoRef.current.contains(event.target as Node)) {
+        setMenuQuarto(false); // fecha se clicar fora
+      }
+    }
+
+    if (menuQuarto) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuQuarto]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuOrigemTrechoRef.current && !menuOrigemTrechoRef.current.contains(event.target as Node)) {
+        setMenuOrigemTrecho(0); // fecha se clicar fora
+      }
+    }
+
+    if (menuOrigemTrecho != 0) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOrigemTrecho]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuDestinoTrechoRef.current && !menuDestinoTrechoRef.current.contains(event.target as Node)) {
+        setMenuDestinoTrecho(0); // fecha se clicar fora
+      }
+    }
+
+    if (menuDestinoTrecho != 0) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuDestinoTrecho]);
 
   const toggleSwitch = () => setIsOn(!isOn);
         return (
@@ -304,8 +391,11 @@ const destinosMaisProcurados = [
                     <label className={styles.label_origem_destino}>ORIGEM</label>
                     <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
-                    <input value={nomeCidadeOrigem} onChange={(e) => {setNomeCidadeOrigem(e.target.value)}} className={styles.input_origem} placeholder='Origem'/>
-                    {menuOrigem && (
+                    <input value={nomesCidadesOrigem[0]} onChange={(e) => {
+                        const novo = [...nomesCidadesOrigem]; 
+  novo[0] = e.target.value;
+setNomesCidadesOrigem(novo)}} className={styles.input_origem} placeholder='Origem'/>
+                    {menuOrigem &&  (
                         <div ref={menuOrigemRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
                             <img src="/images/cidade.png" className={styles.icone_cidade}/>
@@ -313,24 +403,50 @@ const destinosMaisProcurados = [
                             <p>CIDADES</p>
                             </div>
                             <div className={styles.texto_cidades}>
-                            {cidades.filter((item) => {
-                            const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
-                        return fullName.includes(nomeCidadeOrigem.toLowerCase())}).map((item,index) => {
-                                return (
-                                    <div onClick={() => setNomeCidadeOrigem(`${item.municipio}, ${item.estado}, ${item.pais}`)} key={index} className={styles.container_nome_cidade}>
-                                        <p className={styles.texto_municipio_estado_pais}>{item.municipio}, {item.estado}, {item.pais}</p>
-                                    </div>
-                                )
-                            })}
+                            {cidades
+  .filter((item) => {
+    const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+    return fullName.includes(nomesCidadesOrigem[0].toLowerCase());
+  })
+  .map((item, index_origem) => {
+    return (
+      <div
+        key={index_origem}
+        onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesOrigem((prev) => {
+            const novo = [...prev];
+            novo[0] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuOrigem(false)}
+    }
+        className={styles.container_nome_cidade}
+      >
+        <p className={styles.texto_municipio_estado_pais}>
+          {item.municipio}, {item.estado}, {item.pais}
+        </p>
+      </div>
+    );
+  })}
                             </div>
                             <div className={styles.container_imagem_aeroportos}>
                             <img src="/images/aeroportos.png" className={styles.icone_cidade}/>
                             <p>AEROPORTOS</p>
                             </div>
                             <div className={styles.texto_aeroportos}>
-                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomeCidadeOrigem.toLowerCase())}).map((item,index) => {
+                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomesCidadesOrigem[0].toLowerCase())}).map((item,index_aeroporto) => {
                                 return (
-                                    <div onClick={() => {setNomeCidadeOrigem(item.aeroporto)}} key ={index} className={styles.container_nome_cidade}>
+                                    <div  onClick={(e) => {
+                                        e.stopPropagation();
+          setNomesCidadesOrigem((prev) => {
+            const novo = [...prev];
+            novo[0] = `${item.aeroporto}`;
+            return novo;
+          });
+          setMenuOrigem(false);
+        }}  className={styles.container_nome_cidade}>
                                         <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
                                     </div>
                                 )
@@ -341,9 +457,12 @@ const destinosMaisProcurados = [
                     </div>
                     <div onClick={()=> {setMenuDestino(!menuDestino)}} className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
-                    <input value={nomeDestino} onChange={(e) => {setNomeDestino(e.target.value)}} className={styles.input_destino} placeholder='Destino'/>
+                    <input value={nomesCidadesDestino[0]} onChange={(e) => {
+                        const novo = [...nomesCidadesDestino]; 
+  novo[0] = e.target.value;
+setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Destino'/>
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
-                    {menuDestino && (
+                    {menuDestino && nomesCidadesDestino[0].length < 3 && (
                         <div className={styles.menu_destino} ref={menuDestinoRef}>
                             <div className={styles.container_destinos_mais_buscados}>
                             <img src="/images/estrela.png" className={styles.imagem_estrela}/>
@@ -354,13 +473,82 @@ const destinosMaisProcurados = [
                                 return(
                                     fullName.includes(nomeDestino.toLowerCase())
                             )}).map((item,index) => {return (
-                                <div key ={index} onClick={() => {setNomeDestino(`${item.municipio}, ${item.estado}, ${item.pais}`)}} className={styles.container_destinos_mais_procurados}>
+                                <div key ={index} onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[0] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuDestino(false)}
+    } className={styles.container_destinos_mais_procurados}>
                                     <img src={item.imagem} className={styles.imagem_destino_mais_procurado}/>
                                     <p>{item.municipio}, {item.estado}, {item.pais}</p>
                                 </div>
                             )})}
                         </div>
                     )}
+                    {menuDestino && nomesCidadesDestino[0].length >= 3 &&(
+                        <div ref={menuDestinoRef} className={styles.menu_origem}>
+                            <div className={styles.container_imagem_cidades}>
+                            <img src="/images/cidade.png" className={styles.icone_cidade}/>
+                            
+                            <p>CIDADES</p>
+                            </div>
+                            <div className={styles.texto_cidades}>
+                            {cidades
+  .filter((item) => {
+    const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+    return fullName.includes(nomesCidadesDestino[0].toLowerCase());
+  })
+  .map((item, index_origem) => {
+    return (
+      <div
+        key={index_origem}
+        onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[0] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuDestino(false)}
+    }
+        className={styles.container_nome_cidade}
+      >
+        <p className={styles.texto_municipio_estado_pais}>
+          {item.municipio}, {item.estado}, {item.pais}
+        </p>
+      </div>
+    );
+  })}
+                            </div>
+                            <div className={styles.container_imagem_aeroportos}>
+                            <img src="/images/aeroportos.png" className={styles.icone_cidade}/>
+                            <p>AEROPORTOS</p>
+                            </div>
+                            <div className={styles.texto_aeroportos}>
+                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomesCidadesDestino[0].toLowerCase())}).map((item,index_aeroporto) => {
+                                return (
+                                    <div  onClick={(e) => {
+                                        e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[0] = `${item.aeroporto}`;
+            return novo;
+          });
+          setMenuDestino(false);
+        }}  className={styles.container_nome_cidade}>
+                                        <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                        </div>
+                    )}
+                    
                     </div>
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
@@ -402,12 +590,12 @@ const destinosMaisProcurados = [
                     </div>
                     <div className={styles.div_input_origem_destino}>
                     
-                    {isClicked !== "vooHospedagem" ? <div className={styles.div_label_input}>
+                    {isClicked !== "vooHospedagem" ? <div onClick={() => {toggleMenuPassageirosClasse()}} className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input onClick={() => {toggleMenuPassageirosClasse()}} onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={styles.input_origem_destino}/>
+                    <input onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={styles.input_origem_destino}/>
                     <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
                     {menuPassageirosClasse && (
         <div ref={menuPassageirosRef} className={styles.menu_passageiros_classe}>
@@ -447,21 +635,60 @@ const destinosMaisProcurados = [
             
             </div>
             <div className={styles.container_botao_aplicar}>
-                <button className={styles.botao_aplicar}>Aplicar</button>
+                <button onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasse(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div>
         </div>
       )}
-                    </div>: <div className={styles.div_label_input}>
+                    </div>: 
+                    <div onClick={()=> {setMenuQuarto(true)}} className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>QUARTOS</label>
                     
-                    <input onClick={() => {}} className={styles.input_origem_destino}/>
-                    <p className={styles.numero_quartos}>{numeroQuartos}</p>
+                    <input onFocus={(e) => e.target.blur()} className={styles.input_origem_destino}/>
+                    <p className={styles.numero_quartos}>{numeroQuartosVooHospedagem}</p>
                     <p className={styles.numero_pessoas}>{numeroPessoas}</p>
                     <img src="/images/cama.png" className={styles.imagem_usuario_input_voo_hospedagem}/>
                     <img src="/images/do-utilizador.png" className={styles.imagem_cama_input_voo_hospedagem}/>
                     
+                    {menuQuarto && (
+                        <div ref={menuQuartoRef} className={styles.menu_passageiros_classe}>
+            {Array.from({length:numeroQuartosVooHospedagem}).map((_,index) => { return (
+                <div>
+            <div className={styles.container_quarto_botao}><p className={styles.texto_quarto}>Quarto {index + 1}</p>
+            {index + 1 == numeroQuartosVooHospedagem && index !== 0 ? <button onClick={() => {toggleRemoverQuarto()}} className={styles.botao_eliminar}>Eliminar</button>: ""}
+            </div>
+            <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Maiores</p>
+          <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMaioresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Menores</p>
+          <p className={styles.texto_maior_idade}>Até 17 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMenoresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          
+            {index + 1 === numeroQuartosVooHospedagem ? <div  className={index + 1 < 5 ? styles.container_botao_aplicar_menu_quarto: styles.container_botao_aplicar_menu_quarto_end}>
+                {index + 1 < 5 ? <button onClick={() => {toggleAdicionarQuarto()}} className={styles.botao_adicionar_quarto}>Adicionar Quarto</button> : ""}
+                <button onClick={(e) => {setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade); setNumeroQuartos(numeroQuartos);e.stopPropagation();setMenuQuarto(false)}} className={styles.botao_aplicar}>Aplicar</button>
+            </div> : ""}
+                </div>
+            )})}
+        </div>
+                    )}
                     </div>}
                     
                     
@@ -491,19 +718,177 @@ const destinosMaisProcurados = [
                     
                     <div className={styles.container_inputs_multi_destino}>
                         <div className={styles.container_origem_destino}>
-                        <div className={styles.div_label_input}>
+                        <div onClick={() => {setMenuOrigemTrecho(index + 1)}} className={styles.div_label_input}>
                     
                     
                     <label className={styles.label_origem_destino}>ORIGEM</label>
                     <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
-                    <input value={index === 0 ? nomeCidadeOrigem : index === 1 ? nomeCidadeOrigem_2 : index=== 2 ? nomeCidadeOrigem_3 : index === 3 ? nomeCidadeOrigem_4 : nomeCidadeOrigem_5} className={styles.input_origem} placeholder='Origem'/>
-                    
+                    <input onChange={(e) => {
+    const novo = [...nomesCidadesOrigem];
+    novo[index] = e.target.value;
+    setNomesCidadesOrigem(novo);
+    const aeroporto = [...nomesAeroportosOrigem];
+    aeroporto[index] = e.target.value;
+    setNomesCidadesOrigem(aeroporto);
+
+  }} value={nomesCidadesOrigem[index]} className={styles.input_origem} placeholder='Origem'/>
+                    {menuOrigemTrecho == index+1 &&  (
+                        <div ref={menuOrigemTrechoRef} className={styles.menu_origem}>
+                            <div className={styles.container_imagem_cidades}>
+                            <img src="/images/cidade.png" className={styles.icone_cidade}/>
+                            
+                            <p>CIDADES</p>
+                            </div>
+                            <div className={styles.texto_cidades}>
+                            {cidades
+  .filter((item) => {
+    const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+    return fullName.includes(nomesCidadesOrigem[index].toLowerCase());
+  })
+  .map((item, index_origem) => {
+    return (
+      <div
+        key={index_origem}
+        onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesOrigem((prev) => {
+            const novo = [...prev];
+            novo[index] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuOrigemTrecho(0)}
+    }
+        className={styles.container_nome_cidade}
+      >
+        <p className={styles.texto_municipio_estado_pais}>
+          {item.municipio}, {item.estado}, {item.pais}
+        </p>
+      </div>
+    );
+  })}
+                            </div>
+                            <div className={styles.container_imagem_aeroportos}>
+                            <img src="/images/aeroportos.png" className={styles.icone_cidade}/>
+                            <p>AEROPORTOS</p>
+                            </div>
+                            <div className={styles.texto_aeroportos}>
+                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomesCidadesOrigem[index].toLowerCase())}).map((item,index_aeroporto) => {
+                                return (
+                                    <div  onClick={(e) => {
+                                        e.stopPropagation();
+          setNomesCidadesOrigem((prev) => {
+            const novo = [...prev];
+            novo[index] = `${item.aeroporto}`;
+            return novo;
+          });
+          setMenuOrigemTrecho(0);
+        }} key ={index} className={styles.container_nome_cidade}>
+                                        <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                        </div>
+                    )}
                     </div>
-                        <div className={styles.div_label_input}>
+                        <div onClick={() => {setMenuDestinoTrecho(index + 1)}} className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
-                    <input className={styles.input_destino} placeholder='Destino'/>
+                    <input onChange={(e) => {
+    const novo = [...nomesCidadesDestino];
+    novo[index] = e.target.value;
+    setNomesCidadesDestino(novo);
+    ;
+
+  }} value={nomesCidadesDestino[index]} className={styles.input_destino} placeholder='Destino'/>
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
+                    {menuDestinoTrecho === index +1 && nomesCidadesDestino[0].length < 3 && (
+                        <div className={styles.menu_destino} ref={menuDestinoTrechoRef}>
+                            <div className={styles.container_destinos_mais_buscados}>
+                            <img src="/images/estrela.png" className={styles.imagem_estrela}/>
+                            <p>DESTINOS MAIS BUSCADOS</p>
+                            </div>
+                            {destinosMaisProcurados.filter((item) => { 
+                                const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+                                return(
+                                    fullName.includes(nomesCidadesDestino[index].toLowerCase())
+                            )}).map((item,index) => {return (
+                                <div key ={index} onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[index] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuDestino(false)}
+    } className={styles.container_destinos_mais_procurados}>
+                                    <img src={item.imagem} className={styles.imagem_destino_mais_procurado}/>
+                                    <p>{item.municipio}, {item.estado}, {item.pais}</p>
+                                </div>
+                            )})}
+                        </div>
+                    )}
+                    {menuDestinoTrecho == index+1 && nomesCidadesDestino[index].length >= 3 && (
+                        <div ref={menuDestinoTrechoRef} className={styles.menu_origem}>
+                            <div className={styles.container_imagem_cidades}>
+                            <img src="/images/cidade.png" className={styles.icone_cidade}/>
+                            
+                            <p>CIDADES</p>
+                            </div>
+                            <div className={styles.texto_cidades}>
+                            {cidades
+  .filter((item) => {
+    const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
+    return fullName.includes(nomesCidadesDestino[index].toLowerCase());
+  })
+  .map((item, index_origem) => {
+    return (
+      <div
+        key={index_origem}
+        onClick={(e) => {
+            e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[index] = `${item.municipio}, ${item.estado}, ${item.pais}`;
+            return novo;
+          });
+        ;
+    setMenuDestinoTrecho(0)}
+    }
+        className={styles.container_nome_cidade}
+      >
+        <p className={styles.texto_municipio_estado_pais}>
+          {item.municipio}, {item.estado}, {item.pais}
+        </p>
+      </div>
+    );
+  })}
+                            </div>
+                            <div className={styles.container_imagem_aeroportos}>
+                            <img src="/images/aeroportos.png" className={styles.icone_cidade}/>
+                            <p>AEROPORTOS</p>
+                            </div>
+                            <div className={styles.texto_aeroportos}>
+                            {aeroportos.filter((item) => {return item.aeroporto.toLowerCase().includes(nomesCidadesDestino[index].toLowerCase())}).map((item,index_aeroporto) => {
+                                return (
+                                    <div  onClick={(e) => {
+                                        e.stopPropagation();
+          setNomesCidadesDestino((prev) => {
+            const novo = [...prev];
+            novo[index] = `${item.aeroporto}`;
+            return novo;
+          });
+          setMenuDestinoTrecho(0);
+        }} key ={index} className={styles.container_nome_cidade}>
+                                        <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                        </div>
+                    )}
                     </div>
                         </div>
                         <div className={styles.container_data_passageiros}>
@@ -525,14 +910,55 @@ const destinosMaisProcurados = [
       />
                     </div>
                         
-                    {index == 0 ? <div className={styles.div_label_input}>
+                    {index == 0 ? <div onClick={() => {setMenuPassageirosClasseMultiDestino(true)}} className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input type="text" className={styles.input_origem_destino} />
-                    
-                    
+                    <input value={numeroPessoas} type="text" className={styles.input_origem_destino} />
+                    <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
+                    {menuPassageirosClasseMultiDestino && (
+        <div ref={menuPassageirosClasseMultiDestinoRef} className={styles.menu_passageiros_classe}>
+            <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Maiores</p>
+          <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMaioresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          <div className={styles.container_maior_idade_input}>
+            <div className={styles.texto_idade}>
+          <p className={styles.texto_maior_menor}>Menores</p>
+          <p className={styles.texto_maior_idade}>Até 17 anos</p>
+          </div>
+          <div className={styles.botao_numero}>
+          <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <p>{numeroMenoresIdade}</p>
+          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          </div>
+          </div>
+          <div className={styles.container_classe_select}>
+            <p>Classe</p>
+            <select className={styles.select_classe}>
+                <option>Econômica</option>
+            <option>Econômica</option>
+            <option>Premium economy</option>
+            <option>Executiva/Business</option>
+            <option>Primeira classe</option>
+            <option>Premium business</option>
+            <option>Premium Primeira classe</option>
+            </select>
+            
+            </div>
+            <div className={styles.container_botao_aplicar}>
+                <button onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasseMultiDestino(false)}} className={styles.botao_aplicar}>Aplicar</button>
+            </div>
+        </div>
+      )}
                     </div>: ""}
                         </div>
                         

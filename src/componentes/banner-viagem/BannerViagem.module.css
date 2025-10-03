@@ -394,7 +394,7 @@
 .texto_pessoas{
     position:absolute;
     top:40%;
-    left:50px;
+    left:55px;
     font-size: 13px;
     font-weight: bold;
     cursor:pointer;
@@ -408,6 +408,7 @@
     width:130%;
     background-color:#eeeeee;
     border-radius:7px;
+    z-index: 1;
 }
 
 .texto_maior_idade{
@@ -481,6 +482,7 @@
     border:none;
     color:white;
     height:36px;
+    cursor:pointer;
 }
 .container_botao_aplicar{
     padding:20px;
@@ -537,7 +539,7 @@
 .menu_origem{
     position:absolute;
     width:270%;
-    z-index: 1;
+    z-index: 2;
     padding-top:5px;
     border:none;
     background-color: #eeeeee;
@@ -599,7 +601,7 @@
 .menu_destino{
     position:absolute;
     width:270%;
-    z-index: 1;
+    z-index: 2;
     padding-top:5px;
     border:none;
     background-color: #eeeeee;
@@ -640,4 +642,73 @@
     width:72px;
     height:72px;
     border-radius: 6px;
+}
+
+.label_datas{
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    font-size: 10px;
+    color: #72777f;
+}
+
+.container_botao_aplicar_menu_quarto{
+    padding:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid #444444;
+}
+
+.container_botao_aplicar_menu_quarto_end{
+    padding:20px;
+    display:flex;
+    justify-content: end;
+    align-items: center;
+    border-top:1px solid #444444;
+}
+
+.botao_adicionar_quarto{
+    color:#4300d2;
+    border:none;
+    cursor:pointer;
+    padding:0 16px;
+    border-radius: 24px;
+    height:36px;
+    font-weight: bold;
+}
+
+.botao_adicionar_quarto:hover{
+    background-color:#ebe5f5;
+}
+
+.texto_quarto{
+    color:#888888;
+    padding-top:20px;
+    padding-bottom:10px;
+    font-size:16px;
+}
+
+.container_quarto_botao{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:10px;
+    border-bottom:1px solid #444444;
+    border-top: 1px solid #444444;
+}
+
+.botao_eliminar{
+    padding: 0 16px;
+    height:49px;
+    border:none;
+    color:#4300d2;
+    font-weight: bold;
+    border-radius: 24px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.botao_eliminar:hover{
+    background-color:#ebe5f5;
 }
