@@ -113,13 +113,15 @@ const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onCl
     const [nomesCidadesDestino, setNomesCidadesDestino] = useState<string[]>(["", "", "", "", ""]);
     const [nomesAeroportosOrigem, setNomesAeroportosOrigem] = useState<string[]>(["", "", "", "", ""]);
     const [nomesAeroportosDestino, setNomesAeroportosDestino] = useState<string[]>(["", "", "", "", ""]);
+    const [erros, setErros] = useState(['']);
+    const [errosMultiplosTrechos, setErrosMultiplosTrechos] = useState(['']);
+
     
-    
-    const toggleAdicionarQuarto = () => {
+    const toggleAdicionarQuarto = () : void => {
         if(numeroQuartosVooHospedagem < 5)
         setNumeroQuartosVooHospedagem((inicial) => (inicial + 1))
     }
-    const toggleRemoverQuarto = () => {
+    const toggleRemoverQuarto = () : void => {
         if(numeroQuartosVooHospedagem > 1)
         setNumeroQuartosVooHospedagem((inicial) => (inicial - 1))
     }
@@ -367,6 +369,56 @@ const destinosMaisProcurados = [
     };
   }, [menuDestinoTrecho]);
 
+
+   const handleSubmit = (e : any) => {
+    e.preventDefault(); // evita o reload da página
+
+    let valido = true;
+    const novosErros = [...erros];
+
+    nomesCidadesOrigem.forEach((valor, index) => {
+      if (valor.trim() === "") {
+        novosErros[0] = "Por favor, insira uma origem";
+        valido = false;
+      } else if (valor.length < 3) {
+        novosErros[0] = "Digite pelo menos 3 letras";
+        valido = false;
+      } else {
+        novosErros[0] = "";
+      }
+    });
+    nomesCidadesDestino.forEach((valor, index) => {
+      if (valor.trim() === "") {
+        novosErros[1] = "Por favor, insira um destino";
+        valido = false;
+      } else if (valor.length < 3) {
+        novosErros[1] = "Digite pelo menos 3 letras";
+        valido = false;
+      } else {
+        novosErros[1] = "";
+      }
+    });
+
+    if(!dataIda){
+        novosErros[2] = "Selecione uma data de ida"
+    }
+    
+    if(!dataVolta){
+        novosErros[3] = "Selecione uma data de volta"
+    }
+
+
+    setErros(novosErros);
+
+    if (!valido) {
+      console.log("❌ Formulário inválido");
+      return;
+    }
+
+    console.log("✅ Enviando formulário com dados:", nomesCidadesOrigem);
+    // aqui você pode chamar a API ou fazer o que quiser com os dados
+  };
+
   const toggleSwitch = () => setIsOn(!isOn);
         return (
             <div className={styles.secao_banner}>
@@ -384,17 +436,21 @@ const destinosMaisProcurados = [
                     </div>
                     {isClicked !== "multiDestino" ? <div className={styles.banner_passagens_aereas}>
                     <div className={styles.container_inputs}>
+                    
                     <div className={styles.div_input_origem_destino}>
                     <div onClick={() => setMenuOrigem(!menuOrigem)} className={styles.div_label_input}>
-                    
                     
                     <label className={styles.label_origem_destino}>ORIGEM</label>
                     <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
                     <input value={nomesCidadesOrigem[0]} onChange={(e) => {
+                        const valor = e.target.value;
                         const novo = [...nomesCidadesOrigem]; 
-  novo[0] = e.target.value;
-setNomesCidadesOrigem(novo)}} className={styles.input_origem} placeholder='Origem'/>
+  novo[0] = valor;
+  
+setNomesCidadesOrigem(novo);
+}} className={styles.input_origem} placeholder='Origem'/>
+{erros[0] && <p className={styles.mensagem_erro}>{erros[0]}</p>}
                     {menuOrigem &&  (
                         <div ref={menuOrigemRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
@@ -419,6 +475,9 @@ setNomesCidadesOrigem(novo)}} className={styles.input_origem} placeholder='Orige
             novo[0] = `${item.municipio}, ${item.estado}, ${item.pais}`;
             return novo;
           });
+          const novosErros = [...erros];
+          novosErros[0] = "";
+          setErros(novosErros);
         ;
     setMenuOrigem(false)}
     }
@@ -445,6 +504,9 @@ setNomesCidadesOrigem(novo)}} className={styles.input_origem} placeholder='Orige
             novo[0] = `${item.aeroporto}`;
             return novo;
           });
+          const novosErros = [...erros];
+          novosErros[0] = "";
+          setErros(novosErros);
           setMenuOrigem(false);
         }}  className={styles.container_nome_cidade}>
                                         <p className={styles.texto_municipio_estado_pais}>{item.aeroporto}</p>
@@ -458,9 +520,12 @@ setNomesCidadesOrigem(novo)}} className={styles.input_origem} placeholder='Orige
                     <div onClick={()=> {setMenuDestino(!menuDestino)}} className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
                     <input value={nomesCidadesDestino[0]} onChange={(e) => {
+                        const valor = e.target.value;
                         const novo = [...nomesCidadesDestino]; 
-  novo[0] = e.target.value;
+  novo[0] = valor;
+
 setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Destino'/>
+{erros[1] && <p className={styles.mensagem_erro}>{erros[1]}</p>}
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestino && nomesCidadesDestino[0].length < 3 && (
                         <div className={styles.menu_destino} ref={menuDestinoRef}>
@@ -480,6 +545,9 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
             novo[0] = `${item.municipio}, ${item.estado}, ${item.pais}`;
             return novo;
           });
+          const novosErros = [...erros];
+          novosErros[1] = "";
+          setErros(novosErros);
         ;
     setMenuDestino(false)}
     } className={styles.container_destinos_mais_procurados}>
@@ -563,12 +631,17 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     <DatePicker
         className={isClicked == "soIda" ? styles.date_picker_origem : styles.date_picker_origem} 
         selected={dataIda}
-        onChange={(date) => setDataIda(date)}
+        onChange={(date) => {setDataIda(date);
+            const novosErros = [...erros];
+            novosErros[2] = "";
+            setErros(novosErros);
+        }}
         dateFormat="dd/MM/yyyy"
         minDate={new Date()} // só permite hoje em diante
         placeholderText='Ida'
         customInput={<CustomInputDataIda/>}
       />
+      {erros[2] && <p className={styles.mensagem_erro}>{erros[2]}</p>}
                     </div>
                     <div className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
@@ -576,13 +649,18 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     <DatePicker
         className={isClicked == "soIda" ? styles.date_picker : styles.date_picker} disabled = {isClicked === "soIda"}
         selected={dataVolta}
-        onChange={(date) => setDataVolta(date)}
+        onChange={(date) => {setDataVolta(date)
+        ;const novosErros = [...erros];
+            novosErros[3] = "";
+            setErros(novosErros);}
+        }
         dateFormat="dd/MM/yyyy"
         minDate={new Date()} // só permite hoje em diante
         placeholderText='Volta'
         customInput={isClicked == "soIda" ? <CustomInputDataVoltaOff/> : <CustomInputDataVolta/>}
         calendarClassName={styles.calendario_custom}
       />
+      {erros[3] && <p className={styles.mensagem_erro}>{erros[3]}</p>}
                     </div>
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
@@ -694,7 +772,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     
                     
                     </div>
-                    <div className={styles.container_botao_imagem}>
+                    <div onClick={(e) => {handleSubmit(e)}} className={styles.container_botao_imagem}>
                     <img src="/images/lupa.png" className={styles.imagem_lupa}/>
                     <p className={styles.botao_buscar}>Buscar</p>
                     </div>
@@ -708,14 +786,15 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                 
                 </div> : <div className={styles.card_trecho}>
                     
-                    {Array.from({length: mostrarTrechos}).map((_, index) => {
+                    {Array.from({length: mostrarTrechos - 1}).map((_, index) => {
                         return (
                             <div className={styles.container_card_banner_multi_destino}>
                     <div className={styles.container_titulo_excluir}>
                             <h3 className={styles.texto_multi_destino}>Trecho {index + 1}</h3>
-                            <img src="/images/x.png" onClick={() => {toggleRemoverTrecho()}} className={index + 1 > 2 && index + 1 == mostrarTrechos ? styles.botao_excluir_trecho : styles.botao_excluir_trecho_disabled}/>
+                            <img src="/images/x.png" onClick={() => {toggleRemoverTrecho()}} className={index + 1 > 2 && index + 1 == mostrarTrechos -1 ? styles.botao_excluir_trecho : styles.botao_excluir_trecho_disabled}/>
                     </div>
                     
+                    <form>
                     <div className={styles.container_inputs_multi_destino}>
                         <div className={styles.container_origem_destino}>
                         <div onClick={() => {setMenuOrigemTrecho(index + 1)}} className={styles.div_label_input}>
@@ -733,6 +812,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
     setNomesCidadesOrigem(aeroporto);
 
   }} value={nomesCidadesOrigem[index]} className={styles.input_origem} placeholder='Origem'/>
+     {erros[index] && !nomesCidadesOrigem[index] && <p className={styles.mensagem_erro}>{erros[0]}</p>}               
                     {menuOrigemTrecho == index+1 &&  (
                         <div ref={menuOrigemTrechoRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
@@ -802,6 +882,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
     ;
 
   }} value={nomesCidadesDestino[index]} className={styles.input_destino} placeholder='Destino'/>
+  {erros[index] && !nomesCidadesDestino[index] && <p className={styles.mensagem_erro}>{erros[1]}</p>}  
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestinoTrecho === index +1 && nomesCidadesDestino[0].length < 3 && (
                         <div className={styles.menu_destino} ref={menuDestinoTrechoRef}>
@@ -813,7 +894,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                                 const fullName = `${item.municipio}, ${item.estado}, ${item.pais}`.toLowerCase();
                                 return(
                                     fullName.includes(nomesCidadesDestino[index].toLowerCase())
-                            )}).map((item,index) => {return (
+                            )}).map((item,index_destino) => {return (
                                 <div key ={index} onClick={(e) => {
             e.stopPropagation();
           setNomesCidadesDestino((prev) => {
@@ -908,6 +989,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         customInput={index == 0 ? <CustomInputMultiDestino/> : <CustomInputMultiDestinoLongo/>}
         
       />
+      {erros[index] && (index === 0 ? !dataIda : index === 1 ? !dataIda_2 : index === 2 ? !dataIda_3 : index === 3 ? !dataIda_4 : index === 4 ? !dataIda_5 : "") &&  <p className={styles.mensagem_erro}>{erros[2]}</p>}  
                     </div>
                         
                     {index == 0 ? <div onClick={() => {setMenuPassageirosClasseMultiDestino(true)}} className={styles.div_label_input}>
@@ -963,12 +1045,15 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                         </div>
                         
                         </div>
+                        </form>
                     </div>
+                    
                         )
+                        
                     })}
                     <div className={mostrarTrechos !== 5 ? styles.container_paragrafo_botao_buscar : styles.container_paragrafo_botao_buscar_disabled}>
                     <p onClick={() => {toggleAdicionarTrecho()}} className={mostrarTrechos !== 5 ? styles.paragrafo_novo_trecho : styles.paragrafo_novo_trecho_disabled}>Acrescentar novo trecho</p>
-                    <div className={styles.container_botao_imagem_multi_destino}>
+                    <div onClick={(e) => {handleSubmit(e)}} className={styles.container_botao_imagem_multi_destino}>
                     <img src="/images/lupa.png" className={styles.imagem_lupa}/>
                     <p className={styles.botao_buscar}>Buscar</p>
                     </div>

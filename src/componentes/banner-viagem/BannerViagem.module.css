@@ -712,3 +712,18 @@
 .botao_eliminar:hover{
     background-color:#ebe5f5;
 }
+
+.input_erro {
+  border: 2px solid #e63946;
+}
+
+.mensagem_erro {
+  color:white;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  position:absolute;
+  background-color: #6e2119;
+  padding:10px;
+  top:-55%;
+  border-radius: 15px;
+}

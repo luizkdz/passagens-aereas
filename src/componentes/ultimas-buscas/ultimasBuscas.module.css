@@ -1,0 +1,111 @@
+.container_card_buscas{
+    display:flex;
+    align-items: center;
+    gap:30px;
+    padding-top:20px;
+}
+
+.secao_ultimas_buscas{
+    display:flex;
+    justify-content: center;
+    padding:20px;
+    background-color: #eeeeee;
+    align-items: center;
+}
+
+.imagem_card_busca{
+    width:122px;
+    height:198px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.card_busca{
+    display:flex;
+    width:416px;
+    border:1px solid grey;
+    border-radius:15px;
+}
+
+.imagem_tipo_card_busca{
+    width:20px;
+    height:20px;
+}
+
+.container_imagem_tipo_card_busca{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    padding:10px;
+}
+
+.texto_destino{
+    font-size:24px;
+    color:#444444;
+    font-weight: bold;
+}
+
+.texto_ida_volta{
+    font-size:14px;
+    color:#666666;
+}
+
+.texto_card_busca{
+    background-color:#ffffff;
+    padding:10px;
+    width:100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.botao_roteiro{
+    padding: 0 16px;
+    background-color: #ffffff;
+    color:#4300d2;
+    border:1px solid #4300d2;
+    border-radius: 24px;
+    font-size:14px;
+    height:36px;
+    cursor:pointer;
+}
+
+.botao_roteiro:hover{
+    background-color: #eeeeee;
+}
+
+.botao_buscar{
+    padding: 0 16px;
+    background-color: #4300d2;
+    color:white;
+    border:1px solid #4300d2;
+    border-radius: 24px;
+    font-size:14px;
+    height:36px;
+    cursor:pointer;
+}
+
+.botao_buscar:hover{
+    background-color: #2d028a
+}
+
+.container_botoes{
+    display:flex;
+    gap:15px;
+    padding-top:20px;
+}
+
+.container_texto_card_buscas{
+    
+    padding-left:20px;
+}
+
+.titulo_ultimas_buscas{
+    color:#323439;
+}
+
+.texto_tipo{
+    color:#888888;
+}

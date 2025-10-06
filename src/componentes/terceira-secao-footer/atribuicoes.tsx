@@ -8,7 +8,11 @@ export default function Atribuicoes(){
         Foto de <a href="https://unsplash.com/pt-br/@nirhimi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NIR HIMI</a> na <a href="https://unsplash.com/pt-br/fotografias/paisagem-urbana-densa-com-edificios-altos-ao-entardecer-lfXq-zbF-RU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       Foto de <a href="https://unsplash.com/pt-br/@debrupas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Pascal Debrunner</a> na <a href="https://unsplash.com/pt-br/fotografias/lago-sombrio-com-arvores-de-outono-e-costa-rochosa-5kFW8UdXTz0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       Foto de <a href="https://unsplash.com/pt-br/@debrupas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Pascal Debrunner</a> na <a href="https://unsplash.com/pt-br/fotografias/lago-sombrio-com-arvores-de-outono-e-costa-rochosa-5kFW8UdXTz0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      
+      Foto de <a href="https://unsplash.com/pt-br/@chrisvomradio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Weiher</a> na <a href="https://unsplash.com/pt-br/fotografias/a-palmeira-tem-vista-para-o-oceano-e-para-os-edificios-costeiros-cIbNGPpcIls?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      Foto de <a href="https://unsplash.com/pt-br/@chrisvomradio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Weiher</a> na <a href="https://unsplash.com/pt-br/fotografias/a-palmeira-tem-vista-para-o-oceano-e-para-os-edificios-costeiros-cIbNGPpcIls?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      Foto de <a href="https://unsplash.com/pt-br/@timmossholder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim Mossholder</a> na <a href="https://unsplash.com/pt-br/fotografias/paisagem-rochosa-do-deserto-com-arbustos-verdes-esparsos-0hqcv5B67lE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      <a href="https://www.flaticon.com/br/icones-gratis/aviao" title="avião ícones">Avião ícones criados por Freepik - Flaticon</a>
+      <a href="https://www.flaticon.com/br/icones-gratis/tiquete-de-suporte" title="tíquete de suporte ícones">Tíquete de suporte ícones criados por Freepik - Flaticon</a>
         </div>
     )
 }

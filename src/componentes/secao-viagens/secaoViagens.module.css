@@ -1,0 +1,131 @@
+.card_passagem_aerea{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background-color:white;
+    cursor:pointer;
+}
+
+.texto_card_passagem_aerea{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    background-color: white;
+    padding:20px;
+}
+
+.texto_passagem{
+    color:#565A60;
+    font-size: 12px;
+    
+}
+
+.texto_destino{
+    font-size: 20px;
+    color:#323439;
+}
+
+.texto_origem{
+    font-size: 14px;
+}
+
+.texto_companhia{
+    font-size: 14px;
+}
+
+.texto_ida_volta{
+    font-size: 12px;
+    background-color: #dde1e8;
+    width:60px;
+    padding:8px;
+    border-radius: 6px;
+    color:#323439;
+    
+}
+
+.texto_preco_ida_volta{
+    border-top: 1px solid #565A60;
+    font-size: 12px;
+    padding-top:20px;
+}
+
+.texto_preco{
+    font-size:24px;
+}
+
+.texto_data_referencia{
+    font-size: 12px;
+    color:#565A60;
+
+}
+
+.texto_passaporte{
+    color:#ff7a80;
+    font-size: 12px;
+
+}
+
+.imagem_passaporte{
+    width:24px;
+    height:18px;
+}
+
+.container_passaporte_pontos{
+    border-top:1px solid #565A60;
+    display:flex;
+    align-items: center;
+    padding-top:20px;
+}
+
+.texto_pontos{
+    font-size:12px;
+}
+
+.titulo_passagem_aerea{
+    color:#323439;
+}
+
+.imagem_passagem{
+    width:306px;
+    height:200px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.secao_viagens{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:#eeeeee;
+    position:relative;
+    padding:20px;
+}
+
+.container_secao_viagens{
+    display:grid;
+    align-items: center;
+     grid-template-columns: repeat(4, 1fr);
+    transition: transform 0.5s ease-in-out;
+    position:relative;
+    gap:20px;
+    padding-top:20px;
+    flex-wrap: wrap;
+}
+
+.botao_ver_mais_ofertas{
+    padding:0 16px;
+    color:#4300d2;
+    border-radius: 24px;
+    border: 1px solid #4300d2;
+    height:36px;
+    background-color: white;
+    cursor:pointer;
+}
+
+.botao_ver_mais_ofertas:hover{
+    background-color: #eeeeee;
+}
+
+.container_botao_ver_mais{
+    padding:20px;
+}
