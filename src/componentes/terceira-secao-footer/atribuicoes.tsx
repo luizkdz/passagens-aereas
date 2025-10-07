@@ -13,6 +13,12 @@ export default function Atribuicoes(){
       Foto de <a href="https://unsplash.com/pt-br/@timmossholder?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim Mossholder</a> na <a href="https://unsplash.com/pt-br/fotografias/paisagem-rochosa-do-deserto-com-arbustos-verdes-esparsos-0hqcv5B67lE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       <a href="https://www.flaticon.com/br/icones-gratis/aviao" title="avião ícones">Avião ícones criados por Freepik - Flaticon</a>
       <a href="https://www.flaticon.com/br/icones-gratis/tiquete-de-suporte" title="tíquete de suporte ícones">Tíquete de suporte ícones criados por Freepik - Flaticon</a>
+       <a href="https://www.flaticon.com/br/icones-gratis/bagagem" title="bagagem ícones">Bagagem ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/bagagem-de-mao" title="bagagem de mão ícones">Bagagem de mão ícones criados por Pronicon - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/bagagem" title="bagagem ícones">Bagagem ícones criados por Solid Icon Co - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/voar" title="voar ícones">Voar ícones criados por icon_small - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/voar" title="voar ícones">Voar ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/cia-aerea" title="cia aérea ícones">Cia aérea ícones criados por Flat Icons - Flaticon</a>
         </div>
     )
 }

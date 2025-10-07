@@ -2,7 +2,7 @@ import styles from './BannerViagem.module.css';
 import { useState,forwardRef,useRef, useEffect} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-export default function BannerViagem() {
+export default function BannerViagem({passagensAereas}) {
 
     const CustomInputMultiDestino = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
@@ -425,14 +425,14 @@ const destinosMaisProcurados = [
                 <div className={styles.card_banner}>
                     <div className={styles.container_passagens_aereas_botoes}>
                     <p className={styles.texto_viagens}>Passagens aéreas</p>
-                    <button onClick={() => {toggleIsClickedIdaEVolta()}} className={isClicked === 'idaEVolta' ? styles.botao_passagens_true : styles.botao_passagens_false}>Ida e volta</button>
-                    <button onClick={() => {toggleIsClickedSoIda()}} className={isClicked === 'soIda' ? styles.botao_passagens_true : styles.botao_passagens_false}>Só ida</button>
-                    <button onClick={() => {toggleIsClickedMultiDestino()}} className={isClicked === 'multiDestino' ? styles.botao_passagens_true : styles.botao_passagens_false}>Multidestino</button>
-                    <p className={styles.separador_botoes}>|</p>
-                    <div className={styles.container_voo_hospedagem}>
+                    <button type="button" onClick={() => {toggleIsClickedIdaEVolta()}} className={isClicked === 'idaEVolta' ? styles.botao_passagens_true : styles.botao_passagens_false}>Ida e volta</button>
+                    <button type="button" onClick={() => {toggleIsClickedSoIda()}} className={isClicked === 'soIda' ? styles.botao_passagens_true : styles.botao_passagens_false}>Só ida</button>
+                    <button type="button" onClick={() => {toggleIsClickedMultiDestino()}} className={isClicked === 'multiDestino' ? styles.botao_passagens_true : styles.botao_passagens_false}>Multidestino</button>
+                    {!passagensAereas ? <p className={styles.separador_botoes}>|</p> : ""}
+                    {!passagensAereas ? <div className={styles.container_voo_hospedagem}>
                     <p className={styles.paragrafo_desconto}>Até 30% mais barato</p>
-                    <button onClick={() => {toggleIsClickedVooHospedagem()}} className={isClicked === 'vooHospedagem' ? styles.botao_passagens_true : styles.botao_passagens_false}><img src={isClicked === "vooHospedagem" ? "/images/aviao-preto.png": "/images/aviao.png"} className={styles.imagem_botao}/> Voo + <img src={isClicked === "vooHospedagem" ? "/images/cama-de-casal-preto.png" : "/images/cama-de-casal.png"} className={styles.imagem_botao}/>Hospedagem</button>
-                    </div>
+                    <button type="button" onClick={() => {toggleIsClickedVooHospedagem()}} className={isClicked === 'vooHospedagem' ? styles.botao_passagens_true : styles.botao_passagens_false}><img src={isClicked === "vooHospedagem" ? "/images/aviao-preto.png": "/images/aviao.png"} className={styles.imagem_botao}/> Voo + <img src={isClicked === "vooHospedagem" ? "/images/cama-de-casal-preto.png" : "/images/cama-de-casal.png"} className={styles.imagem_botao}/>Hospedagem</button>
+                    </div> : ""}
                     </div>
                     {isClicked !== "multiDestino" ? <div className={styles.banner_passagens_aereas}>
                     <div className={styles.container_inputs}>
@@ -450,7 +450,7 @@ const destinosMaisProcurados = [
   
 setNomesCidadesOrigem(novo);
 }} className={styles.input_origem} placeholder='Origem'/>
-{erros[0] && <p className={styles.mensagem_erro}>{erros[0]}</p>}
+{erros[0] && !nomesCidadesOrigem[0] && <p className={styles.mensagem_erro}>{erros[0]}</p>}
                     {menuOrigem &&  (
                         <div ref={menuOrigemRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
@@ -525,7 +525,7 @@ setNomesCidadesOrigem(novo);
   novo[0] = valor;
 
 setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Destino'/>
-{erros[1] && <p className={styles.mensagem_erro}>{erros[1]}</p>}
+{erros[1] && !nomesCidadesDestino[0] && <p className={styles.mensagem_erro}>{erros[1]}</p>}
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestino && nomesCidadesDestino[0].length < 3 && (
                         <div className={styles.menu_destino} ref={menuDestinoRef}>
@@ -641,7 +641,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         placeholderText='Ida'
         customInput={<CustomInputDataIda/>}
       />
-      {erros[2] && <p className={styles.mensagem_erro}>{erros[2]}</p>}
+      {erros[2] && !dataIda && <p className={styles.mensagem_erro}>{erros[2]}</p>}
                     </div>
                     <div className={styles.div_label_input}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
@@ -660,7 +660,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         customInput={isClicked == "soIda" ? <CustomInputDataVoltaOff/> : <CustomInputDataVolta/>}
         calendarClassName={styles.calendario_custom}
       />
-      {erros[3] && <p className={styles.mensagem_erro}>{erros[3]}</p>}
+      {erros[3] && !dataVolta && isClicked!= "soIda" && <p className={styles.mensagem_erro}>{erros[3]}</p>}
                     </div>
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
@@ -683,9 +683,9 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMaioresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_maior_idade_input}>
@@ -694,9 +694,9 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <p className={styles.texto_maior_idade}>Até 17 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMenoresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_classe_select}>
@@ -713,7 +713,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
             
             </div>
             <div className={styles.container_botao_aplicar}>
-                <button onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasse(false)}} className={styles.botao_aplicar}>Aplicar</button>
+                <button type="button" onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasse(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div>
         </div>
       )}
@@ -734,7 +734,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
             {Array.from({length:numeroQuartosVooHospedagem}).map((_,index) => { return (
                 <div>
             <div className={styles.container_quarto_botao}><p className={styles.texto_quarto}>Quarto {index + 1}</p>
-            {index + 1 == numeroQuartosVooHospedagem && index !== 0 ? <button onClick={() => {toggleRemoverQuarto()}} className={styles.botao_eliminar}>Eliminar</button>: ""}
+            {index + 1 == numeroQuartosVooHospedagem && index !== 0 ? <button type="button" onClick={() => {toggleRemoverQuarto()}} className={styles.botao_eliminar}>Eliminar</button>: ""}
             </div>
             <div className={styles.container_maior_idade_input}>
             <div className={styles.texto_idade}>
@@ -742,9 +742,9 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMaioresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_maior_idade_input}>
@@ -753,15 +753,15 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <p className={styles.texto_maior_idade}>Até 17 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMenoresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           
             {index + 1 === numeroQuartosVooHospedagem ? <div  className={index + 1 < 5 ? styles.container_botao_aplicar_menu_quarto: styles.container_botao_aplicar_menu_quarto_end}>
                 {index + 1 < 5 ? <button onClick={() => {toggleAdicionarQuarto()}} className={styles.botao_adicionar_quarto}>Adicionar Quarto</button> : ""}
-                <button onClick={(e) => {setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade); setNumeroQuartos(numeroQuartos);e.stopPropagation();setMenuQuarto(false)}} className={styles.botao_aplicar}>Aplicar</button>
+                <button type="button" onClick={(e) => {setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade); setNumeroQuartos(numeroQuartos);e.stopPropagation();setMenuQuarto(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div> : ""}
                 </div>
             )})}
@@ -884,7 +884,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
   }} value={nomesCidadesDestino[index]} className={styles.input_destino} placeholder='Destino'/>
   {erros[index] && !nomesCidadesDestino[index] && <p className={styles.mensagem_erro}>{erros[1]}</p>}  
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
-                    {menuDestinoTrecho === index +1 && nomesCidadesDestino[0].length < 3 && (
+                    {menuDestinoTrecho === index +1 && nomesCidadesDestino[index].length < 3 && (
                         <div className={styles.menu_destino} ref={menuDestinoTrechoRef}>
                             <div className={styles.container_destinos_mais_buscados}>
                             <img src="/images/estrela.png" className={styles.imagem_estrela}/>
@@ -989,7 +989,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         customInput={index == 0 ? <CustomInputMultiDestino/> : <CustomInputMultiDestinoLongo/>}
         
       />
-      {erros[index] && (index === 0 ? !dataIda : index === 1 ? !dataIda_2 : index === 2 ? !dataIda_3 : index === 3 ? !dataIda_4 : index === 4 ? !dataIda_5 : "") &&  <p className={styles.mensagem_erro}>{erros[2]}</p>}  
+      {erros[index] && (index === 0 ? !dataIda : index === 1 ? !dataIda_2 : index === 2 ? !dataIda_3 : index === 3 ? !dataIda_4 : index === 4 ? !dataIda_5 : "") &&  <p className={erros[2] ? styles.mensagem_erro : styles.mensagem_erro_disabled}>{erros[2]}</p>}  
                     </div>
                         
                     {index == 0 ? <div onClick={() => {setMenuPassageirosClasseMultiDestino(true)}} className={styles.div_label_input}>
@@ -1007,9 +1007,9 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMaioresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_maior_idade_input}>
@@ -1020,7 +1020,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
           <div className={styles.botao_numero}>
           <button disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMenoresIdade}</p>
-          <button disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_classe_select}>
@@ -1037,7 +1037,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
             
             </div>
             <div className={styles.container_botao_aplicar}>
-                <button onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasseMultiDestino(false)}} className={styles.botao_aplicar}>Aplicar</button>
+                <button type="button" onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasseMultiDestino(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div>
         </div>
       )}

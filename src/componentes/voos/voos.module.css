@@ -1,0 +1,118 @@
+.container_titulo_voos{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.secao_voos{
+    display:flex;
+    justify-content: center;
+    background-color: #eeeeee;
+    padding:20px;
+}
+
+.card_voo{
+    width:300px;
+    font-size: 12px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding:10px;
+    border: 1px solid #d6d4d4;
+}
+
+.container_textos{
+    border-top: 1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    gap:20px;
+    padding:10px;
+}
+
+.imagem_bagagem{
+    width:24px;
+    height:24px;
+}
+
+.imagem_aviao_ida{
+    width:24px;
+    height:24px;
+}
+
+.imagem_aviao_volta{
+    width:24px;
+    height:24px;
+}
+
+.container_imagem_aviao{
+    display:flex;
+    align-items: center;
+}
+
+.container_preco{
+    border-top:1px solid #d6d4d4;
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.texto_preco_valor{
+    font-size:20px;
+}
+
+.botao_seguinte{
+    height:36px;
+    color:#4300d2;
+    border:none;
+    border-radius: 24px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    cursor:pointer;
+}
+.botao_seguinte:hover{
+    background-color: #eeeeee;
+}
+
+.container_nome_imagem_companhia{
+    display:flex;
+    align-items: center;
+    gap:20px;
+}
+
+.imagem_companhia{
+    width:33px;
+    height:33px;
+}
+
+.titulo_voos{
+    color:#323439;
+}
+
+.direto_span{
+    color:#028574;
+}
+
+.container_voos{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:20px;
+    padding-top:20px;
+}
+
+.container_botao_ver_mais{
+    padding:20px;
+    display:flex;
+    justify-content: center;
+}
+
+.botao_ver_mais_ofertas{
+    height:36px;
+    border:1px solid #4300d2;
+    color:#4300d2;
+    padding:0 16px;
+    border-radius: 24px;
+    cursor:pointer;
+}
+
+.botao_ver_mais_ofertas:hover{
+    background-color: #cecbcb;
+}

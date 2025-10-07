@@ -16,7 +16,7 @@ export default function PaginaInicial() {
     return (
         <div>
             <NavBar/>
-            <BannerViagem/>
+            <BannerViagem passagensAereas={""}/>
             <SecaoPropagandas/>
             <UltimasBuscas/>
             <SecaoViagens/>
