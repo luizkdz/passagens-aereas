@@ -1,14 +1,16 @@
 .container_titulo_voos{
     display:flex;
     flex-direction: column;
-    
+    justify-content: center;
 }
 
 .secao_voos{
     display:flex;
-    justify-content: center;
+    
     background-color: #eeeeee;
     padding:20px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card_voo{
@@ -76,11 +78,17 @@
     display:flex;
     align-items: center;
     gap:20px;
+    padding-left:20px;
 }
 
 .imagem_companhia{
     width:33px;
     height:33px;
+}
+
+.imagem_companhia_modal{
+    width:25px;
+    height:25px;
 }
 
 .titulo_voos{
@@ -115,4 +123,385 @@
 
 .botao_ver_mais_ofertas:hover{
     background-color: #cecbcb;
+}
+
+.container_card_filtros{
+    display:flex;
+    gap:10px;
+    background-color: #ffffff;
+    padding:15px;
+    border-radius: 7px;
+    border:1px solid rgb(214, 212, 212);
+}
+
+.card_filtro{
+    border:1px solid #565A60;
+    color:#565A60;
+    padding:0 16px;
+    border-radius: 24px;
+    height:36px;
+    display:flex;
+    align-items: center;
+    gap:10px;
+    cursor:pointer;
+}
+
+.card_filtro:hover{
+    color:#4300d2;
+    border-color: #4300d2;
+    background-color: #ebe5f5;
+}
+
+.imagem_filtros{
+    width:16px;
+    height:16px;
+}
+
+.card_filtro .imagem_filtros {
+  transition: 0.3s ease;
+}
+
+/* Quando o card for hover, muda a imagem dentro dele */
+.card_filtro:hover .imagem_filtros {
+  content: url('/images/filtro-roxo.png'); /* muda a imagem */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 200%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 90vh; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.3s ease;
+  overflow-y: auto;
+}
+
+.botao_fechar_modal{
+    width:24px;
+    height:24px;
+    cursor:pointer;
+}
+
+.container_texto_botao_fechar{
+    display:flex;
+    justify-content: space-between;
+    border-bottom:1px solid #d6d4d4;
+    padding-bottom:20px;
+}
+
+.icone_drop_down{
+    width:24px;
+    height:24px;
+}
+
+.container_texto_input{
+    display:flex;
+    justify-content: space-between;
+    padding:20px;
+    border-bottom:1px solid #d6d4d4;
+    cursor:pointer;
+}
+
+.container_mes_preco{
+    display:flex;
+    gap:10px;
+    font-size:14px;
+}
+
+.texto_mes{
+    font-size:20px;
+}
+
+.texto_preco{
+    color:#323439;
+}
+
+.container_input_semana{
+    display:flex;
+    align-items: center;
+    gap:20px;
+    font-size:14px;
+}
+
+.input_semana{
+    width:18px;
+    height:18px;
+}
+
+.container_grid_semanas{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding:20px;
+    gap:20px;
+}
+
+.botao_ver_mais_meses{
+    background-color: #ffffff;
+    border:none;
+    color:#4300d2;
+    font-weight: bold;
+    padding:0 16px;
+    border-radius: 24px;
+    height:36px;
+    cursor:pointer;
+}
+
+.botao_ver_mais_meses:hover{
+    background-color:#eeeeee;
+}
+
+.botao_ver_mais_meses_off{
+    display:none;
+}
+
+
+
+.container {
+  width: 302px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:20px;
+}
+
+.texto {
+  font-size: 14px;
+  color: #565A60;
+  margin-bottom: 15px;
+}
+
+.container_categoria_drop_down{
+    display:flex;
+    justify-content: space-between;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: #ccc;
+}
+
+.range {
+  position: absolute;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #270570, #8b5cf6);
+}
+
+.inputsRange {
+  position: relative;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+}
+
+.thumb {
+top:-20px;
+  position: absolute;
+  width: 100%;
+  -webkit-appearance: none;
+  background: none;
+  pointer-events: none;
+}
+
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #270570;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(39, 5, 112, 0.5);
+  transition: transform 0.2s;
+}
+
+.thumb::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.container_horario{
+    padding:20px;
+    display:flex;
+    gap:36px;
+}
+
+.container_imagem_ida{
+    display:flex;
+    align-items: center;
+    padding:0 16px;
+    font-size:12px;
+    gap:10px;
+    background-color: #dde1e8;
+    border-radius: 6px;
+    color:#323439;
+    height:24px;
+}
+
+.container_imagem_voo{
+    display:flex;
+    padding-bottom: 10px;
+    gap:10px;
+    color:#323439;
+    font-size:14px;
+    align-items: center;
+}
+
+.imagem_voo_ida{
+    width:14px;
+    height:14px;
+}
+
+.container_horario_ida{
+    width: 302px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.container_botao_aplicar{
+    display:flex;
+    justify-content: end;
+    padding:20px;
+    height:48px;
+    gap:10px;
+}
+
+.botao_aplicar{
+    padding:0 16px;
+    color:white;
+    border: 1px solid #4300d2;
+    border-radius: 24px;
+    background-color: #4300d2;
+    cursor:pointer;
+}
+
+.botao_aplicar_off{
+    padding:0 16px;
+    color:rgba(78, 76, 76, 0.8);
+    font-weight: bold;
+    border: 1px solid rgba(192, 190, 190, 0.8);
+    border-radius: 24px;
+    background-color: rgba(192, 190, 190, 0.8);
+}
+
+.botao_aplicar:hover{
+    background-color:#270570;
+}
+
+.botao_excluir_tudo{
+    padding:0 16px;
+    color:#4300d2;
+    border: 1px solid #ffffff;
+    border-radius: 24px;
+    background-color: #ffffff;
+    cursor:pointer;
+}
+
+.botao_excluir_tudo:hover{
+    background-color:#ebe5f5;
+}
+
+.container_botao_ver_mais_meses{
+    padding-top:20px;
+}
+
+.card_tendencia_de_precos{
+    display:flex;
+    flex-direction: column;
+}
+
+.menor_preco_grafico_span{
+    font-size:26px;
+    color:#028574;
+}
+
+.preco_grafico{
+    color:#028574;
+}
+
+.texto_preco_baixo{
+    font-size:14px;
+}
+
+.texto_preco_pessoas{
+    font-size:12px;
+}
+
+.container_texto_preco_pessoas{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-top:1px solid #ebe5f5;
+    padding-top:20px;
+}
+
+.container_alertas{
+    display:flex;
+    border: 1px solid #d6d4d4;
+    padding:20px;
+    padding-left:35px;
+    height:122px;
+    align-items: center;
+    background-color: #ffffff;
+    gap:40px;
+    border-radius: 6px;
+}
+.container_texto_botao{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.imagem_sino{
+    width:66px;
+    height:66px;
+}
+
+.botao_ativar_alerta{
+    padding:0 16px;
+    border:1px solid #4300d2;
+    color:#4300d2;
+    height:36px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.botao_ativar_alerta:hover{
+    background-color: #ebe5f5;
+}
+
+.texto_alerta{
+    color:#323439;
+    font-size:20px;
 }

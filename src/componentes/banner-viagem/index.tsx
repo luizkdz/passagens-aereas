@@ -421,7 +421,7 @@ const destinosMaisProcurados = [
 
   const toggleSwitch = () => setIsOn(!isOn);
         return (
-            <div className={styles.secao_banner}>
+            <div className={!passagensAereas ? styles.secao_banner : styles.secao_banner_passagens_aereas}>
                 <div className={styles.card_banner}>
                     <div className={styles.container_passagens_aereas_botoes}>
                     <p className={styles.texto_viagens}>Passagens aéreas</p>

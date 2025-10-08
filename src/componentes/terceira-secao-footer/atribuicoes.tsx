@@ -19,6 +19,10 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/voar" title="voar ícones">Voar ícones criados por icon_small - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/voar" title="voar ícones">Voar ícones criados por Freepik - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/cia-aerea" title="cia aérea ícones">Cia aérea ícones criados por Flat Icons - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/filtro" title="filtro ícones">Filtro ícones criados por Muhammad Ali - Flaticon</a>
+        Foto de Michal Vaško: https://www.pexels.com/pt-br/foto/golden-gate-nublado-ao-por-do-sol-32276235/
+        <a href="https://www.flaticon.com/free-icons/down-arrow" title="down arrow icons">Down arrow icons created by th studio - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/sino" title="sino ícones">Sino ícones criados por Freepik - Flaticon</a>
         </div>
     )
 }
