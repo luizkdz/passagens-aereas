@@ -23,6 +23,7 @@ export default function Atribuicoes(){
         Foto de Michal Vaško: https://www.pexels.com/pt-br/foto/golden-gate-nublado-ao-por-do-sol-32276235/
         <a href="https://www.flaticon.com/free-icons/down-arrow" title="down arrow icons">Down arrow icons created by th studio - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/sino" title="sino ícones">Sino ícones criados por Freepik - Flaticon</a>
+        Foto de Tetiana Hutsu: https://www.pexels.com/pt-br/foto/vista-aerea-panoramica-da-praia-grega-e-do-mar-turquesa-31554279/
         </div>
     )
 }

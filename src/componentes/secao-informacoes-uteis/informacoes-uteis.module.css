@@ -1,0 +1,303 @@
+.tabela_oferta{
+    display:flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.container_card_informacoes{
+    display:flex;
+
+}
+
+.container_texto_cards{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    padding-top:20px;
+    width:1348px;
+    
+}
+
+.secao_informacoes_uteis{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+    padding:20px;
+}
+
+.td_primeira_coluna{
+    padding:20px;
+    border:1px solid #d6d4d4;
+   
+    font-size:14px;
+    width:630px;
+    color:#323439;
+}
+
+.td_segunda_coluna{
+    padding:20px;
+    border:1px solid #d6d4d4;
+    
+    font-size:14px;
+    width:630px;
+}
+
+.container_colunas{
+    display:flex;
+}
+
+.texto_informacoes{
+    color:#444444;
+    font-size:32px;
+}
+
+.card_voo{
+    display:flex;
+    border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.imagem_card{
+    width:531px;
+    height:556px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.titulo_card{
+    font-size:20px;
+}
+
+.texto_card{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+    height:516px;
+}
+
+.texto_sugestoes{
+    font-size:32px;
+    color:#444444;
+}
+
+.imagem_card_sugestoes{
+    width:410px;
+    height:200px;
+}
+
+.card_sugestoes{
+    display:flex;
+    flex-direction: column;
+}
+
+.container_card_sugestoes{
+    display:flex;
+    justify-content: space-between;
+}
+
+.imagem_card_sugestoes{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.container_texto_card_sugestoes{
+    display:flex;
+    justify-content: center;
+    font-size:20px;
+    padding:25px;
+    background-color: #ffffff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.texto_voos_para{
+    color:#323439
+}
+
+.texto_titulo_opiniao{
+    font-size:20px;
+    color:#323439;
+}
+
+.card_opiniao{
+    width:256px;
+    height:154px;
+    padding:24px;
+    border:1px solid #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.texto_nome_opiniao{
+    font-size:20px;
+    color:#323439;
+}
+
+.texto_viajou_em{
+    font-size:14px;
+}
+
+.texto_opiniao{
+    font-size:14px;
+    font-style: italic;
+}
+
+.secao_opinioes{
+    display:flex;
+    flex-direction: column;
+    gap:40px;
+}
+
+.container_opinioes{
+    display:flex;
+    justify-content: space-between;
+}
+
+.container_texto_secao_opinioes{
+    padding-top:20px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+}
+
+.container_avaliacoes{
+    display:flex;
+}
+
+.card_avaliacao_linhas_aereas{
+    padding:24px;
+    width:176px;
+    border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.nome_companhia{
+    font-size:24px;
+    text-decoration: none;
+    color:#4300d2;
+}
+
+.nota_companhia{
+    font-size:24px;
+}
+
+.container_companhia_nota{
+    display:flex;
+    gap:10px;
+}
+
+.container_avaliacao_nota{
+    display:flex;
+    justify-content: space-between;
+}
+
+.container_card_avaliacoes{
+    display:flex;
+    gap:20px;
+}
+
+.titulo_avaliacoes{
+    width:266px;
+    
+    padding-right:20px;
+    padding-top:20px;
+    padding-bottom:20px
+}
+
+.texto_pergunta_frequentes{
+    font-size:16px
+}
+
+.titulo_perguntas_frequentes{
+    font-size:32px;
+    padding:10px;
+}
+
+.icone_drop_down{
+    width:16px;
+    height:16px;
+}
+
+.container_pergunta_frequente_dropdown{
+    display:flex;
+    justify-content: space-between;
+}
+
+.card_perguntas_frequentes{
+    padding:10px;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.copanhia_nome_perguntas{
+    color:#270570;
+}
+
+.container_perguntas_frequentes{
+    display:flex;
+    justify-content: space-between;
+    border-top:1px solid #d6d4d4;
+    padding:20px;
+    padding-left:10px;
+    flex-direction: column;
+}
+
+.container_texto_perguntas_frequentes{
+    padding-top:20px;
+}
+
+.texto_lista_pergunta{
+    list-style: none;
+}
+
+.texto_resposta{
+    font-size:14px;
+}
+
+.card_voo_outros_lugares{
+    padding:10px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.container_voos_outros_lugares{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+}
+
+.texto_voo_outros_lugares{
+    font-size:14px;
+    color:#4300d2;
+
+}
+
+.titulo_voo_outros_lugares{
+    font-size:14px;
+    color:#323439;
+}
+
+.card_companhias_aereas_voos_para_cidade{
+    padding:10px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.secao_voos_outros_lugares{
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+}
