@@ -2,7 +2,7 @@ import styles from './BannerViagem.module.css';
 import { useState,forwardRef,useRef, useEffect} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-export default function BannerViagem({passagensAereas}) {
+export default function BannerViagem({shop,passagensAereas}) {
 
     const CustomInputMultiDestino = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
   <div className={styles.container_input}>
@@ -14,7 +14,7 @@ export default function BannerViagem({passagensAereas}) {
       placeholder={placeholder}
       ref={ref}
       readOnly
-      className={styles.date_picker_multi_destino}
+      className={!shop ? styles.date_picker_multi_destino : styles.date_picker_multi_destino_shop}
     />
   </div>
 ));
@@ -28,7 +28,7 @@ const CustomInputMultiDestinoLongo = forwardRef<HTMLInputElement, any>(({ value,
       placeholder={placeholder}
       ref={ref}
       readOnly
-      className={styles.date_picker_multi_destino_longo}
+      className={!shop ? styles.date_picker_multi_destino_longo : styles.date_picker_multi_destino_longo_shop}
     />
   </div>
 ));
@@ -56,7 +56,7 @@ const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick
       placeholder={placeholder}
       ref={ref}
       readOnly
-      className={styles.date_picker}
+      className={!shop ? styles.date_picker : styles.date_picker_shop}
     />
   </div>
 ));
@@ -70,7 +70,7 @@ const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onCl
       placeholder={placeholder}
       ref={ref}
       readOnly
-      className={styles.date_picker}
+      className={!shop ? styles.date_picker : styles.date_picker_shop_off}
       disabled
     />
   </div>
@@ -421,9 +421,9 @@ const destinosMaisProcurados = [
 
   const toggleSwitch = () => setIsOn(!isOn);
         return (
-            <div className={!passagensAereas ? styles.secao_banner : styles.secao_banner_passagens_aereas}>
-                <div className={styles.card_banner}>
-                    <div className={styles.container_passagens_aereas_botoes}>
+            <div className={!passagensAereas && !shop ? styles.secao_banner : passagensAereas && !shop ? styles.secao_banner_passagens_aereas : styles.secao_banner_shop}>
+                <div className={!shop ? styles.card_banner : styles.card_banner_shop}>
+                    <div className={!shop ? styles.container_passagens_aereas_botoes: styles.container_passagens_aereas_botoes_shop}>
                     <p className={styles.texto_viagens}>Passagens aéreas</p>
                     <button type="button" onClick={() => {toggleIsClickedIdaEVolta()}} className={isClicked === 'idaEVolta' ? styles.botao_passagens_true : styles.botao_passagens_false}>Ida e volta</button>
                     <button type="button" onClick={() => {toggleIsClickedSoIda()}} className={isClicked === 'soIda' ? styles.botao_passagens_true : styles.botao_passagens_false}>Só ida</button>
@@ -435,13 +435,13 @@ const destinosMaisProcurados = [
                     </div> : ""}
                     </div>
                     {isClicked !== "multiDestino" ? <div className={styles.banner_passagens_aereas}>
-                    <div className={styles.container_inputs}>
+                    <div className={!shop ? styles.container_inputs: styles.container_inputs_shop}>
                     
-                    <div className={styles.div_input_origem_destino}>
+                    <div className={!shop ? styles.div_input_origem_destino : styles.div_input_origem_destino_shop}>
                     <div onClick={() => setMenuOrigem(!menuOrigem)} className={styles.div_label_input}>
                     
                     <label className={styles.label_origem_destino}>ORIGEM</label>
-                    <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
+                    <img src="/images/direita-e-esquerda.png" className={!shop ? styles.imagem_seta_esquerda_direita : styles.imagem_seta_esquerda_direita_shop}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
                     <input value={nomesCidadesOrigem[0]} onChange={(e) => {
                         const valor = e.target.value;
@@ -449,7 +449,7 @@ const destinosMaisProcurados = [
   novo[0] = valor;
   
 setNomesCidadesOrigem(novo);
-}} className={styles.input_origem} placeholder='Origem'/>
+}} className={!shop ? styles.input_origem : styles.input_origem_shop} placeholder='Origem'/>
 {erros[0] && !nomesCidadesOrigem[0] && <p className={styles.mensagem_erro}>{erros[0]}</p>}
                     {menuOrigem &&  (
                         <div ref={menuOrigemRef} className={styles.menu_origem}>
@@ -524,7 +524,7 @@ setNomesCidadesOrigem(novo);
                         const novo = [...nomesCidadesDestino]; 
   novo[0] = valor;
 
-setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Destino'/>
+setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.input_destino_shop} placeholder='Destino'/>
 {erros[1] && !nomesCidadesDestino[0] && <p className={styles.mensagem_erro}>{erros[1]}</p>}
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestino && nomesCidadesDestino[0].length < 3 && (
@@ -622,8 +622,10 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     <img src="" className={styles.imagem_input_origem_destino} />
                     
                     </div>
-                    <div className={styles.div_input_origem_destino}>
-                    <div className={styles.div_label_input}>
+                    
+                    <div className={!shop ? styles.div_input_origem_destino : styles.div_input_datas_shop}>
+                    
+                    <div className={!shop ? styles.div_label_input : styles.div_label_input_shop}>
 
                     
                     <label className={styles.label_origem_destino}>DATAS</label>
@@ -643,7 +645,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
       />
       {erros[2] && !dataIda && <p className={styles.mensagem_erro}>{erros[2]}</p>}
                     </div>
-                    <div className={styles.div_label_input}>
+                    <div className={!shop ? styles.div_label_input : styles.div_label_input_shop_off}>
                     <label className={styles.label_origem_destino}>DESTINO</label>
                     <img src="/images/calendar.png" className={styles.imagem_input}/>
                     <DatePicker
@@ -660,20 +662,28 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         customInput={isClicked == "soIda" ? <CustomInputDataVoltaOff/> : <CustomInputDataVolta/>}
         calendarClassName={styles.calendario_custom}
       />
+      
       {erros[3] && !dataVolta && isClicked!= "soIda" && <p className={styles.mensagem_erro}>{erros[3]}</p>}
+                    
                     </div>
+                    
                     <img src="" className={styles.imagem_input_origem_destino} />
                     <img src="" className={styles.imagem_input_origem_destino} />
                     
                     </div>
-                    <div className={styles.div_input_origem_destino}>
-                    
+                    <div className={!shop ? styles.div_input_origem_destino : styles.div_input_origem_destino_shop}>
+                    {shop ? <div className={styles.container_filtrar_por_data_mais_barata}>
+                <div className={isOn ? styles.switchContainer : styles.switchContainerOff} onClick={toggleSwitch}>
+      <div className={`${styles.switch} ${isOn ? styles.on : styles.off}`}></div>
+    </div>
+                <p>Buscar pelas data mais barata</p>
+                </div> : ""}
                     {isClicked !== "vooHospedagem" ? <div onClick={() => {toggleMenuPassageirosClasse()}} className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={styles.input_origem_destino}/>
+                    <input onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={!shop ? styles.input_origem_destino : styles.input_origem_destino_shop}/>
                     <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
                     {menuPassageirosClasse && (
         <div ref={menuPassageirosRef} className={styles.menu_passageiros_classe}>
@@ -772,17 +782,17 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     
                     
                     </div>
-                    <div onClick={(e) => {handleSubmit(e)}} className={styles.container_botao_imagem}>
+                    <div onClick={(e) => {handleSubmit(e)}} className={!shop ? styles.container_botao_imagem : styles.container_botao_imagem_shop}>
                     <img src="/images/lupa.png" className={styles.imagem_lupa}/>
                     <p className={styles.botao_buscar}>Buscar</p>
                     </div>
                     </div>
-                    <div className={styles.container_filtrar_por_data_mais_barata}>
+                    {!shop ? <div className={styles.container_filtrar_por_data_mais_barata}>
                 <div className={isOn ? styles.switchContainer : styles.switchContainerOff} onClick={toggleSwitch}>
       <div className={`${styles.switch} ${isOn ? styles.on : styles.off}`}></div>
     </div>
                 <p>Buscar pelas data mais barata</p>
-                </div>
+                </div> : ""}
                 
                 </div> : <div className={styles.card_trecho}>
                     
@@ -795,13 +805,13 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     </div>
                     
                     <form>
-                    <div className={styles.container_inputs_multi_destino}>
-                        <div className={styles.container_origem_destino}>
+                    <div className={!shop ? styles.container_inputs_multi_destino : styles.container_inputs_multi_destino_shop}>
+                        <div className={!shop ? styles.container_origem_destino : styles.container_origem_destino_shop}>
                         <div onClick={() => {setMenuOrigemTrecho(index + 1)}} className={styles.div_label_input}>
                     
                     
                     <label className={styles.label_origem_destino}>ORIGEM</label>
-                    <img src="/images/direita-e-esquerda.png" className={styles.imagem_seta_esquerda_direita}/>
+                    <img src="/images/direita-e-esquerda.png" className={!shop ? styles.imagem_seta_esquerda_direita : styles.imagem_seta_esquerda_direita_shop}/>
                     <img src="/images/contorno-do-circulo.png" className={styles.imagem_input}/>
                     <input onChange={(e) => {
     const novo = [...nomesCidadesOrigem];
@@ -811,7 +821,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
     aeroporto[index] = e.target.value;
     setNomesCidadesOrigem(aeroporto);
 
-  }} value={nomesCidadesOrigem[index]} className={styles.input_origem} placeholder='Origem'/>
+  }} value={nomesCidadesOrigem[index]} className={!shop ? styles.input_origem : styles.input_origem_shop} placeholder='Origem'/>
      {erros[index] && !nomesCidadesOrigem[index] && <p className={styles.mensagem_erro}>{erros[0]}</p>}               
                     {menuOrigemTrecho == index+1 &&  (
                         <div ref={menuOrigemTrechoRef} className={styles.menu_origem}>
@@ -881,7 +891,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
     setNomesCidadesDestino(novo);
     ;
 
-  }} value={nomesCidadesDestino[index]} className={styles.input_destino} placeholder='Destino'/>
+  }} value={nomesCidadesDestino[index]} className={!shop ? styles.input_destino : styles.input_destino_shop}  placeholder='Destino'/>
   {erros[index] && !nomesCidadesDestino[index] && <p className={styles.mensagem_erro}>{erros[1]}</p>}  
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestinoTrecho === index +1 && nomesCidadesDestino[index].length < 3 && (
@@ -972,7 +982,7 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
                     )}
                     </div>
                         </div>
-                        <div className={styles.container_data_passageiros}>
+                        <div className={!shop ? styles.container_data_passageiros : styles.container_data_passageiros_shop}>
                         <div className={styles.div_label_input}>
 
                     
@@ -989,15 +999,21 @@ setNomesCidadesDestino(novo)}} className={styles.input_destino} placeholder='Des
         customInput={index == 0 ? <CustomInputMultiDestino/> : <CustomInputMultiDestinoLongo/>}
         
       />
+      
       {erros[index] && (index === 0 ? !dataIda : index === 1 ? !dataIda_2 : index === 2 ? !dataIda_3 : index === 3 ? !dataIda_4 : index === 4 ? !dataIda_5 : "") &&  <p className={erros[2] ? styles.mensagem_erro : styles.mensagem_erro_disabled}>{erros[2]}</p>}  
                     </div>
-                        
+                        {shop && isClicked != "multiDestino"  ? <div className={styles.container_filtrar_por_data_mais_barata}>
+                <div className={isOn ? styles.switchContainer : styles.switchContainerOff} onClick={toggleSwitch}>
+      <div className={`${styles.switch} ${isOn ? styles.on : styles.off}`}></div>
+    </div>
+                <p>Buscar pelas data mais barata</p>
+                </div> : ""}
                     {index == 0 ? <div onClick={() => {setMenuPassageirosClasseMultiDestino(true)}} className={styles.div_label_input}>
 
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input value={numeroPessoas} type="text" className={styles.input_origem_destino} />
+                    <input value={numeroPessoas} type="text" className={!shop ? styles.input_origem_destino : styles.input_origem_destino_shop} />
                     <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
                     {menuPassageirosClasseMultiDestino && (
         <div ref={menuPassageirosClasseMultiDestinoRef} className={styles.menu_passageiros_classe}>

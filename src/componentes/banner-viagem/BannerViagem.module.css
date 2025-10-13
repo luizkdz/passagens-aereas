@@ -19,6 +19,15 @@
     padding:20px;
 }
 
+.secao_banner_shop{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:255px;
+    
+    
+}
+
 .card_banner{
     background-color: #270570;
     padding:20px;
@@ -278,9 +287,20 @@
     gap:20px;
 }
 
+.container_inputs_multi_destino_shop{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
 .container_origem_destino{
     display:flex;
 
+}
+
+.container_origem_destino_shop{
+    display:flex;
+    flex-direction: column;
 }
 
 .input_data_multidestino{
@@ -536,6 +556,15 @@
     height:60px;
 }
 
+.date_picker_multi_destino_shop{
+     padding-top:3px;
+    padding-left:40px;
+    border-radius:15px;
+    border:1px solid #444444;
+    height:60px;
+    width:190px;
+}
+
 .date_picker_multi_destino_longo{
     padding-top:3px;
     padding-left:40px;
@@ -543,6 +572,15 @@
     border:1px solid #444444;
     height:60px;
     width:384px;
+}
+
+.date_picker_multi_destino_longo_shop{
+    padding-top:3px;
+    padding-left:40px;
+    border-radius:15px;
+    border:1px solid #444444;
+    height:60px;
+    width:190px;
 }
 
 
@@ -740,4 +778,136 @@
 
 .mensagem_erro_disabled{
     opacity: 0;
+}
+
+.card_banner_shop{
+    background-color: #270570;
+    padding:24px 12px;
+    border-radius: 15px;
+    width:231px;
+    
+}
+
+.container_passagens_aereas_botoes_shop{
+    display:flex;
+    
+    flex-wrap: wrap;
+    align-items: center;
+    gap:15px;
+    padding-top:10px;
+    padding-bottom:20px;
+}
+
+.container_inputs_shop{
+    display:flex;
+    gap:20px;
+    flex-wrap: wrap;
+}
+
+.div_input_origem_destino_shop{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.div_input_datas_shop{
+    display:flex;
+    
+}
+
+.div_label_input_shop{
+    position:relative;
+    width:115px;
+}
+
+.div_label_input_shop_off{
+    position:relative;
+    width:200px;
+}
+
+.date_picker_shop{
+    padding-top:3px;
+    padding-left:40px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border:1px solid #444444;
+    height:60px;
+    width:75px;
+    
+}
+
+.date_picker_shop_off{
+    padding-top:3px;
+    padding-left:40px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border:1px solid #444444;
+    height:60px;
+    width:75px;
+    background-color: #c0c4cc;
+}
+.input_origem_shop{
+    padding-top:3px;
+    padding-left:40px;
+    border-top-left-radius: 15px;
+    
+    border:1px solid #444444;
+    height:60px;
+    width:190px;
+    border-top-right-radius: 15px;
+    
+}
+
+.input_destino_shop{
+    padding-top:3px;
+    padding-left:40px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border:1px solid #444444;
+    height:60px;
+    width:190px;
+}
+
+.input_origem_destino_shop{
+    padding-top:2px;
+    padding-left:40px;
+    border-radius: 12px;
+    border:1px solid #444444;
+    height:60px;
+    font-weight: bold;
+    cursor:pointer;
+    width:190px;
+}
+
+.container_botao_imagem_shop{
+    display:flex;
+    align-items: center;
+    background-color:#e61a06;
+    border:none;
+    padding:0 20px;
+    border-radius: 48px;
+    color:white;
+    font-size: 16px;
+    cursor:pointer;
+    width:100%;
+    justify-content: center;
+    height:48px;
+}
+
+.imagem_seta_esquerda_direita_shop{
+    width:20px;
+    height:20px;
+    position:absolute;
+    right:20px;
+    top:50px;
+    z-index: 1;
+    background-color: white;
+    border:1px solid #72777f;
+    border-radius: 4px;
+    padding:5px
+}
+
+.container_data_passageiros_shop{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
 }

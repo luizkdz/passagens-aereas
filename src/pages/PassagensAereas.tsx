@@ -11,7 +11,7 @@ export default function PaginaPassagensAereas() {
     return (
         <div>
             <NavBar/>
-            <BannerViagem passagensAereas={true} />
+            <BannerViagem shop = {false} passagensAereas={true} />
             <Voos/>
             <InformacoesUteis/>
             <Inscrever/>

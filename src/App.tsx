@@ -3,6 +3,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import PaginaInicial from './pages/PaginaInicial.tsx';
 import PaginaPassagensAereas from './pages/PassagensAereas.tsx';
 import './App.css'
+import PaginaVoos from './pages/PaginaVoos.tsx';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         
         </Route>
         <Route path = "/passagens-aereas" element={<PaginaPassagensAereas/>}></Route>
+        <Route path = "/shop" element={<PaginaVoos/>}></Route>
       </Routes>
       </BrowserRouter>
     </>

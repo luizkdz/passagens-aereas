@@ -1,0 +1,457 @@
+.secao_shop_voos{
+    background-color:#eeeeee;
+}
+
+
+
+.container_relogio{
+    font-family: monospace;
+    color: #270570;
+    display:flex;
+    padding-top:40px;
+}
+
+.container_horas{
+    background-color: #ffffff;
+    color:#323439;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tipo_relogio{
+    font-size:9px;
+}
+
+.marcacao_tempo{
+    font-size:30px;
+    font-weight: bold;
+}
+
+.container_minutos{
+    background-color: #ffffff;
+    color:#323439;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_segundos{
+    background-color: #ffffff;
+    color:#323439;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem_propaganda{
+    width:92px;
+    height:92px;
+    padding:10px 20px 10px 10px;
+}
+
+.card_propaganda{
+    display:flex;
+    background-color: #270570;
+    border-radius: 15px;
+    padding:10px;
+    
+    justify-content: space-between;
+    width:1280px;
+}
+
+.container_propaganda{
+    display:flex;
+    justify-content: center;
+    padding:15px;
+}
+
+.container_imagem_paragrafo{
+    display:flex;
+    align-items: center;
+    gap:20px;
+}
+
+.titulo_oferta{
+    color:#c1ecdc;
+}
+
+.paragrafo_oferta{
+    color:#ffffff;
+}
+
+.container_titulo_cupom{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.titulo_aproveite{
+    position:absolute;
+    color:#ffffff;
+    background-color:#5300d2;
+    padding:5px 10px 5px 15px;
+    width:250px;
+    left:-70px;
+    font-size:12px;
+    font-weight: bold;
+    height:20px;
+    display:flex;
+    align-items: center;
+}
+
+.titulo_relogio{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    position: relative;
+}
+
+.secao_passagens_voos{
+    display:flex;
+    gap:40px;
+    width:1300px;
+    margin:0 auto;
+}
+
+.secao_passagens_filtros_voos{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    width:255px;
+}
+
+.container_texto_dropdown{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:20px;
+}
+
+.imagem_dropdown{
+    width:16px;
+    height:16px;
+}
+
+.titulo_filtro{
+    font-size:16px;
+    color:#323439;
+}
+
+.container_input_texto_quantidade{
+    display:flex;
+    justify-content: space-between;
+}
+
+.container_input_texto{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.nome_filtro{
+    font-size:14px;
+}
+
+.container_input_texto_quantidade{
+    padding:20px;
+}
+
+.input_checkbox{
+    width:18px;
+    height:18px;
+}
+
+.container {
+  
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top:20px;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: #ccc;
+}
+
+.range {
+  position: absolute;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #270570, #8b5cf6);
+}
+
+.inputsRange {
+  position: relative;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thumb {
+top:-20px;
+  position: absolute;
+  width: 100%;
+  -webkit-appearance: none;
+  background: none;
+  pointer-events: none;
+}
+
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #270570;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(39, 5, 112, 0.5);
+  transition: transform 0.2s;
+}
+
+.thumb::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.container_moeda{
+    display:flex;
+    gap:10px;
+}
+
+.card_preco{
+    padding-top:20px;
+}
+
+.imagem_voo_ida{
+    width:16px;
+    height:16px;
+}
+
+.container_imagem_ida{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    background-color: #565A60;
+    color:white;
+    padding:0 8px;
+    font-size:12px;
+    height:20px;
+    border-radius: 24px;
+}
+
+.container_imagem_voo{
+    display:flex;
+    gap:10px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.texto_voos{
+    font-size:14px;
+}
+
+.texto_data{
+    font-size:12px;
+}
+
+.texto{
+    font-size:14px;
+}
+
+.imagem_logo{
+    height:25px;
+    width:25px;
+    background-color: #eeeeee;
+}
+
+.container_voos{
+    width:816px;
+    display:flex;
+    flex-direction: column;
+    
+    gap:20px;
+}
+
+.card_voo_ida_e_volta_monte_seu_voo{
+    display:flex;
+    border:1px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 24px;
+}
+
+.card_voo_ida{
+    display:flex;
+    align-items: center;
+    font-size:13px;
+    color:#4300d2;
+    height:52px;
+    width:406px;
+    justify-content: center;
+    border-right: 1px solid #d6d4d4;
+    background-color: #ffffff;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius:7px;
+}
+
+.imagem_ticket{
+    width:13px;
+    height:13px;
+}
+
+.card_preço_companhia_tendencia_de_preco{
+    display:flex;
+    
+    width:100%;
+    
+}
+
+.container_preco_companhia{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:37.5%;
+    justify-content: center;
+}
+
+.container_preco_companhia_3_dias{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:28.4%;
+    justify-content: center;
+}
+
+.container_tendencia_de_precos{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:31%;
+    justify-content: center;
+}
+
+.container_companhias{
+    display:flex;
+    flex-direction: column;
+}
+
+.companhias{
+    width:135px;
+    display:flex;
+}
+
+.companhias_escolhida{
+    width:225px;
+
+}
+
+.companhias li{
+    list-style: none;
+}
+
+.companhias ul{
+    display:flex;
+}
+
+
+
+
+
+.container_titulo{
+    display:flex;
+}
+
+.titulo_companhias{
+    list-style: none;
+    width:105px;
+    height:44px;
+    border:1px solid #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    font-size:14px;
+    padding:6px 12px;
+    font-weight: bold;
+}
+
+.texto_nota{
+    background-color: #028574;
+    padding:2px 4px;
+    border-radius:6px;
+    color:white;
+}
+
+.container_texto_nota{
+border-top:1px solid #d6d4d4;
+width:100%;
+display:flex;
+align-items: center;
+justify-content: center;
+gap:10px;
+padding-top:4px;
+
+}
+
+.preco_passagem{
+    list-style: none;
+    width:226px;
+    height:44px;
+    border:1px solid #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size:14px;
+    padding:6px 0px;
+    color:#565A60;
+}
+
+.icone_companhia{
+    width:25px;
+    height:25px;
+}
+
+.container_nome_companhia_imagem{
+    display:flex;
+    align-items: center;
+    font-size:14px;
+    color:#323439;
+    
+}
+
+.span_avaliacao{
+    font-size:12px;
+    color:#028574;
+}
+
+.container_titulo_avaliacoes{
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #d6d4d4;
+}

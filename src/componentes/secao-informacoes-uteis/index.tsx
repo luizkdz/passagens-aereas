@@ -5,9 +5,9 @@ export default function InformacoesUteis(){
 
 const texto = `Os voos de São Paulo para Rio de Janeiro do SkyPass é a melhor opção para as suas férias. Descubra todas as companhias áreas com voos a Rio de Janeiro e encontre o plano que mais se adapta a sua forma de viajar. E o melhor, tudo em um só lugar! Entre outras coisas, você poderá escolher os trechos mais rápidos ou os serviços mais baratos para o seu voo. Viaje à sua maneira. Além de poder buscar passagens aéreas a Rio de Janeiro para uma data específica, você também terá a disposição muitos filtros para ajudá-lo a encontrar oportunidades únicas para as suas férias. Por exemplo, você pode selecionar a opção: ver somente voos a Rio de Janeiro que não tenham escalas ou que tenham 1, 2 ou mais escalas. Também poderá ver as ofertas de voos baratos de cada semana pelos próximos 8 meses, podendo planejar a compra e economizar. Outros filtros que podem ser utilizados na sua busca são: duração de estadia, limite de orçamento, horário em que gostaria de voar e muitos outros. O voo perfeito para você está a um clique de distância. Se você ainda está em processo de investigação para sua viagem e deseja esperar futuras ofertas de voos a Rio de Janeiro saindo de São Paulo, também poderá criar um alerta. Desta forma, você receberá atualizações no seu e-mail sempre que aparecer promoções adaptadas à sua busca. Além disso, poderá cancelar este alerta em qualquer momento a partir de Minha Conta. Os voos a Rio de Janeiro perfeitos para as suas férias estão esperando por você aqui no SkyPass. Faça já a reserva das suas passagens!`;
 const [perguntasSelecionadas, setPerguntasSelecionadas] = useState<string[]>(["", "", "", "", ""]);
-const perguntasFrequentes = ['Quais companhias aéreas voam de São Paulo para Rio de Janeiro?','Qual é o mês mais barato para comprar seu voo para Rio de Janeiro saindo de São Paulo?','Quanto dura em média um voo de São Paulo para Rio de Janeiro?','Qual é o preço mais baixo de um voo para Rio de Janeiro saindo de São Paulo?','Quantos pontos posso acumular no Passaporte Decolar comprando um voo de São Paulo para Rio de Janeiro?','Existem voos diretos de São Paulo para Rio de Janeiro e qual é o preço mais barato?']
+const perguntasFrequentes = ['Quais companhias aéreas voam de São Paulo para Rio de Janeiro?','Qual é o mês mais barato para comprar seu voo para Rio de Janeiro saindo de São Paulo?','Quanto dura em média um voo de São Paulo para Rio de Janeiro?','Qual é o preço mais baixo de um voo para Rio de Janeiro saindo de São Paulo?','Quantos pontos posso acumular no Passaporte SkyPass comprando um voo de São Paulo para Rio de Janeiro?','Existem voos diretos de São Paulo para Rio de Janeiro e qual é o preço mais barato?']
 
-const handlePerguntasSelecionadas = (index,item) => {
+const handlePerguntasSelecionadas = (index: number,item) => {
     const novasPerguntas = [...perguntasSelecionadas];
     if(perguntasSelecionadas[index] === item){
         novasPerguntas[index] = "";
@@ -253,8 +253,8 @@ function quebrarTexto(texto, n) {
                         </div> : item === "Qual é o preço mais baixo de um voo para Rio de Janeiro saindo de São Paulo?" ? <div>
                         <p className={styles.texto_resposta}>Atualmente, o preço mais baixo que você pode encontrar para Rio de Janeiro saindo de São Paulo é R$ 423.</p>
                     
-                        </div> : item === "Quantos pontos posso acumular no Passaporte Decolar comprando um voo de São Paulo para Rio de Janeiro?" ? <div>
-                        <p className={styles.texto_resposta}>Com a compra de uma passagem de São Paulo para Rio de Janeiro, você pode acumular pelo menos 7 pontos no seu Passaporte Decolar.</p>
+                        </div> : item === "Quantos pontos posso acumular no Passaporte SkyPass  comprando um voo de São Paulo para Rio de Janeiro?" ? <div>
+                        <p className={styles.texto_resposta}>Com a compra de uma passagem de São Paulo para Rio de Janeiro, você pode acumular pelo menos 7 pontos no seu Passaporte SkyPass.</p>
 
                         </div> : <div>
                         <p className={styles.texto_resposta}>Existem 346 companhias aéreas com voos diretos saindo de São Paulo para Rio de Janeiro e a passagem mais barata custa R$ 423</p>
