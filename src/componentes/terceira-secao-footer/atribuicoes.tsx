@@ -25,6 +25,16 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/sino" title="sino ícones">Sino ícones criados por Freepik - Flaticon</a>
         Foto de Tetiana Hutsu: https://www.pexels.com/pt-br/foto/vista-aerea-panoramica-da-praia-grega-e-do-mar-turquesa-31554279/
         <a href="https://www.flaticon.com/br/icones-gratis/promocao" title="promoção ícones">Promoção ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/coracao" title="coração ícones">Coração ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/calendario" title="calendário ícones">Calendário ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/carteira" title="carteira ícones">Carteira ícones criados por feen - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/corrigir" title="corrigir ícones">Corrigir ícones criados por Pixel perfect - Flaticon</a>
+        Foto de M&W Studios: https://www.pexels.com/pt-br/foto/consolador-de-cama-branco-durante-o-dia-90317/
+        <a href="https://www.flaticon.com/br/icones-gratis/doacao-online" title="doação online ícones">Doação online ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/qr-code" title="qr code icons">Qr code icons created by Anatoly - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/logo-bing" title="logo bing ícones">Logo bing ícones criados por Laisa Islam Ani - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/smartphone" title="smartphone ícones">Smartphone ícones criados por Flat Icons - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/viagem" title="viagem ícones">Viagem ícones criados por Freepik - Flaticon</a>
         </div>
     )
 }

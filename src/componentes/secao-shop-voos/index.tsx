@@ -1,7 +1,7 @@
 import BannerViagem from '../banner-viagem';
 import styles from './shop-voos.module.css';
 import { useEffect, useState } from "react";
-
+import { Bar } from 'react-chartjs-2';
 export default function ShopVoos(){
 
     const [tempoRestante, setTempoRestante] = useState(10 * 60 * 60);
@@ -102,7 +102,67 @@ export default function ShopVoos(){
     }
 
 
-     useEffect(() => {
+    const [opcaoEscolhida,setOpcaoEscolhida] = useState("preco_companhia");
+    const meses = ['Outubro 2025', 'Novembro 2025', 'Dezembro 2025', 'Janeiro 2026','Fevereiro 2026', 'Março 2026', 'Abril 2026', 'Maio 2026','Junho 2026','Julho 2026','Agosto 2026', 'Setembro 2026']
+    const precos = [443, 480, 520, 610, 590, 560, 470, 450, 490, 530, 500,500];
+    const menorPreco = Math.min(...precos);
+    const maiorPreco = Math.max(...precos);
+  // 🔹 Define a cor de cada barra (verde pro menor, roxo pros demais)
+  const cores = precos.map((preco) =>
+    preco === menorPreco ? "#028574" : "#270570"
+  );
+   const data = {
+    labels: meses,
+    datasets: [
+      {
+        label: "Preço médio (R$)",
+        data: precos,
+        backgroundColor: cores,
+        borderRadius: 8,
+      },
+    ],
+  };
+
+  const options = {
+  plugins: {
+    legend: { display: false },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      suggestedMin: menorPreco - 50,
+      suggestedMax: maiorPreco + 50,
+      ticks: {
+        display: false,
+      },
+    },
+  },
+};
+
+// 👇 Aqui você registra o plugin separadamente (não dentro do options)
+const customLabels = {
+  id: 'customLabels',
+  afterDraw: (chart: any) => {
+    const ctx = chart.ctx;
+    const yScale = chart.scales.y;
+
+    const yMenor = yScale.getPixelForValue(menorPreco);
+    ctx.fillStyle = '#565a60';
+    ctx.font = '14px sans-serif';
+
+    ctx.fillText(`R$ ${menorPreco}`, 10, yMenor);
+
+    const yMaior = yScale.getPixelForValue(maiorPreco);
+    ctx.fillStyle = '#565a60';
+    ctx.fillText(`R$ ${maiorPreco}`, 10, yMaior);
+  },
+};
+
+
+const [mostrarModal,setMostrarModal] = useState(false);
+const [mostrarMaisDetalhesModal, setMostrarMaisDetalhesModal] = useState(false);
+    
+    useEffect(() => {
     const intervalo = setInterval(() => {
       setTempoRestante((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
@@ -560,17 +620,17 @@ export default function ShopVoos(){
                 <div className={styles.container_titulo_avaliacoes}>
                 <div className={styles.card_preço_companhia_tendencia_de_preco}>
                     
-                    <div className={styles.container_preco_companhia}>
+                    <div onClick={() => {setOpcaoEscolhida("preco_companhia") }} className={opcaoEscolhida === "preco_companhia" ? styles.container_preco_companhia_select : styles.container_preco_companhia}>
                     <p>Preços por companhia aérea</p>
                     </div>
-                    <div className={styles.container_preco_companhia_3_dias}>
+                    <div onClick={() => {setOpcaoEscolhida("preco_3_dias")}} className={opcaoEscolhida === "preco_3_dias" ? styles.container_preco_companhia_3_dias_select : styles.container_preco_companhia_3_dias}>
                     <p>Preços +/- 3 dias</p>
                     </div>
-                    <div className={styles.container_tendencia_de_precos}>
+                    <div onClick={() => {setOpcaoEscolhida("tendencia_precos")}} className={opcaoEscolhida === "tendencia_precos" ? styles.container_tendencia_de_precos_select : styles.container_tendencia_de_precos}>
                     <p>Tendência de preços</p>
                     </div>
                 </div>
-               <div className={styles.container_titulo}>
+               {opcaoEscolhida === "preco_companhia" ? <div className={styles.container_titulo}>
                 <ul>
                     <li className={styles.titulo_companhias}>Companhias</li>
                     <li className={styles.titulo_companhias}>Direto</li>
@@ -599,11 +659,1065 @@ export default function ShopVoos(){
                     <li className={styles.preco_passagem}>R$ 544</li>
                     <li className={styles.preco_passagem}> </li>
                 </ul>
-               </div>
+               </div> : opcaoEscolhida === "preco_3_dias" ? <div>
+                <table className={styles.tabela_precos}>
+  <thead>
+    <tr>
+      <th className={styles.titulo_coluna_tabela}><div className={styles.container_saida_retorno_tabela}><p className={styles.texto_saida_barra}>Saída</p><div className={styles.barra_divisora}></div><p className={styles.texto_retorno_barra}>Retorno</p></div></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Terça-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Quarta-feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Quinta-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Sexta-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Sábado</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}>Domingo</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+      <th className={styles.titulo_coluna_tabela}><p className={styles.dia_semana_tabela}> Segunda-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Quinta-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td><p className={styles.preco_tabela}>R$ 491</p></td><td ><p className={styles.preco_mais_barato_tabela}>R$ 480</p></td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Sexta-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Sábado</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Domingo</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Segunda-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Terça-Feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><th className={styles.titulo_linha_tabela}><p className={styles.dia_semana_tabela}> Quarta-feira</p>
+      <p className={styles.dia_mes_tabela}>13 de jan.</p></th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+  </tbody>
+  
+</table>
+<div>
+<p className={styles.descricao_tabela}>As previsões se baseiam em um histórico de buscas e foram criadas para fornecer informações adicionais na cotação de um voo. Use-as levando em consideração que podem não ser 100% compatíveis com os resultados que você obteve. Nosso compromisso é apresentar previsões cada vez mais precisas</p>
+</div>
+                </div> : <div>
+
+<div className={styles.card_tendencia_de_precos}>
+<div style={{padding:"20px",display:"flex",flexDirection:"column",backgroundColor:"#FFFFFF",borderBottomRightRadius:"6px",borderBottomLeftRadius:"6px",borderTop:"1px solid #d6d4d4"}}>
+      <div style={{padding:"20px",display:"flex",alignItems:"center",justifyContent:"space-between",height:"200px"}}>
+      <Bar data={data} options={options} plugins={[customLabels]}/>
+    <div>
+    <p className={styles.preco_grafico}>A partir de</p> 
+    <p className={styles.preco_grafico}>BRL <span className={styles.menor_preco_grafico_span}>{menorPreco}</span></p>
+    <p className={styles.texto_preco_baixo}>Este é o preço mais baixo para viajar<br/> para o seu Rio de Janeiro</p>
+    </div>
+    
+    </div>
+    <div className={styles.container_texto_preco_pessoas}>
+<p className={styles.texto_preco_pessoas}>Os preços que mostramos são por pessoa, ida e volta, e têm como base o histórico de busca de outros usuários.Leve em consideração que os preços podem não estar atualizados</p>
+</div>
+    
+</div>
+</div>
+</div>}
 
            </div>
-           <p>oI</p>
-            </div></div>
+           <div className={styles.container_alerta_botoes}>
+           <div className={styles.container_botoes}>
+            <div className={styles.container_botao}>
+                <button className={styles.botao_recomendados}>
+                    <p>Recomendados</p>
+                <p>R$ 759</p>
+                </button>
+                <div className={styles.balao_botao}><p className={styles.texto_balao_botao}>São as melhores opções considerando o preço, duração, escalas e bagagens incluídas</p></div>
+            </div>
+            <div className={styles.container_botao}>
+                <button className={styles.botao_recomendados_nao_selecionado}>
+                    <p>Mais baratos</p>
+                <p>R$ 759</p>
+                </button>
+                <div className={styles.balao_botao_mais_baratos}><p className={styles.texto_balao_botao}>São as opções com melhor preço</p></div>
+            </div>
+            <div className={styles.container_botao}>
+                <button className={styles.botao_recomendados_nao_selecionado}>
+                    <p>Recomendados</p>
+                <p>R$ 759</p>
+                </button>
+                <div className={styles.balao_botao_recomendados}><p className={styles.texto_balao_botao}>São as opções que consideram a duração e o menor número de escalas</p></div>
+            </div>
+           </div>
+           <div className={styles.botao}>
+                <button className={styles.botao_alerta}>
+                    <div className={styles.container_imagem_alerta_texto}>
+                    <img src="/images/sino.png" className={styles.imagem_sino_alerta}/>
+                    <p>Criar alerta de preço</p>
+                    </div>
+                
+                </button>
+            </div>
+           </div>
+           <div className={styles.container_voos_preco}>
+           <div className={styles.container_card_voos}>
+           <div className={styles.card_voos}>
+            
+            <div className={styles.header}>
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>IDA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p className={styles.paragrafo_horario}>07:55</p>
+                    <p className={styles.paragrafo_direto}>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p className={styles.paragrafo_horario}>09:00</p>
+                    <p className={styles.paragrafo_duracao}>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div onClick={() => {setMostrarModal(true)}}className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    
+                    </div>
+                    {mostrarModal && <div className={styles.overlay}>
+                      <div className={styles.modal}>
+                        <div className={styles.container_botao_fechar}>
+                          <img onClick={() => {setMostrarModal(false)}} src="/images/x-preto.png" className={styles.imagem_botao_fechar}/>
+                        </div>
+                        <div className={styles.card_modal}>
+                          
+                          <div className={styles.container_companhia_numero_voo_classe}>
+                          <div className={styles.container_imagem_companhia}>
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                          <div className={styles.nome_companhia_notas}>
+                          <p>Azul</p>
+                          <div className={styles.container_nota_avaliacao}>
+                          <p className={styles.nota_numero}>8.1</p><span className={styles.span_nota}>Muito bom</span>
+                          </div>
+                          </div>
+                          </div>
+                          <div className={styles.container_texto_numero_voo_classe}>
+                            <p className={styles.texto_numero_voo_classe}>Voo Nº: AD2797</p>
+                            <p className={styles.texto_numero_voo_classe}>Classe: Econômica</p>
+                            </div>
+                          </div>
+                          <div className={styles.container_horario_voo_chegada}>
+                            <div className={styles.texto_horario_voo}>
+                              <p className={styles.texto_dia}>Sex. 16 Jan.</p>
+                              <p className={styles.texto_horario}>06:00</p>
+                              <p className={styles.texto_codigo_aeroporto}>VCP</p>
+                              <p className={styles.texto_cidade}>São Paulo</p>
+                              <p className={styles.texto_aeroporto}>Aeroporto Internacional Viracopos</p>
+                            </div>
+                            <div className={styles.texto_horario_voo}>
+                              <p className={styles.texto_duracao}>- Duração -</p>
+                              <p className={styles.texto_hora_duracao}>1h 5m</p>
+                            </div>
+                            <div className={styles.texto_horario_voo}>
+                              <p className={styles.texto_dia}>Sex. 16 Jan.</p>
+                              <p className={styles.texto_horario}>07:05</p>
+                              <p className={styles.texto_codigo_aeroporto}>SDU</p>
+                              <p className={styles.texto_cidade}>Rio de Janeiro</p>
+                              <p className={styles.texto_aeroporto}>Aeroporto Santos Dumont</p>
+                            </div>
+                          </div>
+                          {mostrarMaisDetalhesModal && (
+                            <div className={styles.container_mostrar_mais_detalhes_modal}>
+                              <p>Voo flexível</p>
+                              <div className={styles.container_texto_cancelamento_alteracoes}>
+                              <div className={styles.container_icone_cancelamento_texto}>
+                                <img src="/images/x-preto.png" className={styles.icone_cancelamento}/>
+                                <p>Não permite cancelamento</p>
+                              </div>
+                              <div className={styles.container_icone_cancelamento_texto}>
+                                <img src="/images/verificado-verde.png" className={styles.icone_cancelamento}/>
+                                <p>Permite alterações a partir de R$ 1.050</p>
+                              </div>
+                              <p className={styles.texto_podera_revisar_detalhes}>Você poderá revisar mais detalhes sobre alterações e cancelamentos no passo seguinte</p>
+                            </div>
+                            </div>
+                          )}
+                          <div className={styles.container_mais_detalhes}>
+                            <button onClick={() => {setMostrarMaisDetalhesModal(!mostrarMaisDetalhesModal)}} className={styles.botao_mais_detalhes}>Mais detalhes<img src="/images/drop-down.png" className={styles.icone_drop_down} /></button>
+                          </div>
+                          </div>
+                          <div className={styles.container_duracao_modal}>
+                            <p>Duração: <span className={styles.duracao_hora_modal}>1h 5m</span></p>
+                          </div>
+                          <div className={styles.container_horario_local_cada_cidade}>
+                            <p className={styles.texto_horario_hora_local}>Horários em hora local de cada cidade</p>
+
+                          </div>
+                          <div className={styles.card_bagagem_modal}>
+                            <div className={styles.container_texto_bagagem_modal}>
+                            <p className={styles.titulo_bagagem}>Bagagem</p>
+                            </div>
+                            <div className={styles.container_bagagem_modal}>
+                              <div className={styles.container_imagem_bagagem_modal_texto}>
+                                <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                                <div className={styles.container_texto_inclui_descricao}>
+                                  <p className={styles.texto_inclui}>Inclui uma mochila ou bolsa</p>
+                                  <p className={styles.texto_inclui_descricao}>Deve caber embaixo do assento dianterio</p>
+                                </div>
+                              </div>
+                              <div className={styles.container_imagem_bagagem_modal_texto}>
+                                <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                                <div className={styles.container_texto_inclui_descricao}>
+                                  <p className={styles.texto_inclui}>Inclui bagagem de mão</p>
+                                  <p className={styles.texto_inclui_descricao}>Deve caber no compartimento superior do avião</p>
+                                </div>
+                              </div>
+                              <div className={styles.container_imagem_bagagem_modal_texto}>
+                                <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                                <div className={styles.container_texto_inclui_descricao}>
+                                  <p className={styles.texto_inclui}>Não inclui bagagem para despachar</p>
+                                  <p className={styles.texto_inclui_descricao}>Você poderá comprar malas online por um preço exclusivo</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  
+                    </div>}
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           <div className={styles.card_voos}>
+            <div className={styles.header}>
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>VOLTA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           </div>
+           <div className={styles.container_preco}>
+            
+            <div className={styles.container_descricao_preco}>
+            <p className={styles.descricao_preco}>Preço por adulto</p>
+            </div>
+            <p className={styles.preco}>R$ <span className={styles.span_preco}>634</span></p>
+            <div className={styles.container_numero_adultos_preco}>
+            <p className={styles.numero_adultos}>1 adulto</p>
+            <p className={styles.numero_preco}>R$ 634</p>
+            </div>
+            <div className={styles.container_texto_impostos_preco}>
+            <p className={styles.texto_impostos}>Impostos, taxas e encargos</p>
+            <p className={styles.numero_preco}>R$ 158</p>
+            </div>
+            <div className={styles.container_preco_final_botoes}>
+            <div className={styles.container_preco_final}>
+            <p>Preço final</p>
+            <p>R$ 792</p>
+            </div>
+            <div className={styles.container_botoes_coracao_comprar}>
+            <button className={styles.botao_coracao}><img src="/images/coracao.png" className={styles.imagem_coracao} /></button>
+            <button className={styles.botao_comprar}>Comprar</button>
+            </div>
+            </div>
+            <div className={styles.container_passaporte_pontos}>
+                        <img src="/images/passaporte-pontos.png" className={styles.imagem_passaporte}/>
+                        <div className={styles.container_texto_passaporte_pontos}>
+                        <p className={styles.texto_passaporte}>Passaporte Skypass</p>
+                        <p className={styles.texto_pontos}>Você acumula <strong>5 pontos</strong></p>
+                        </div>
+                        
+                        </div>
+           </div>
+           </div>
+           <div className={styles.card_inteligencia_artificial}>
+            <div className={styles.container_imagem_estrela_sugestoes}>
+            <img src="/images/estrelas-de-natal.png" className={styles.estrela_de_natal}/>
+            <h5 className={styles.titulo_sugestoes}>Sugestões da nossa inteligência artificial baseada na sua busca</h5>
+            </div>
+            <p className={styles.dica_sugestao}>Para sua viagem de São Paulo ao Rio, considere levar bagagem de mão, mas se precisar de mais espaço, a bagagem despachada é uma boa opção.</p>
+            </div>
+            <div className={styles.container_voos_preco}>
+           <div className={styles.container_card_voos}>
+           <div className={styles.card_voos}>
+            <div className={styles.container_header_patrocionio}>
+              <div className={styles.container_imagem_patrocinio}>
+                <img src="https://toppng.com/uploads/preview/gol-linhas-aereas-inteligentes-logo-vector-115741168058p8w7rkk3v.png" className={styles.icone_companhia}/>
+                <p>Patrocinado</p>
+              </div>
+            <div className={styles.header}>
+                
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>IDA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           <div className={styles.card_voos}>
+            <div className={styles.header}>
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>VOLTA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           </div>
+           <div className={styles.container_preco}>
+            
+            <div className={styles.container_descricao_preco}>
+            <p className={styles.descricao_preco}>Preço por adulto</p>
+            </div>
+            <p className={styles.preco}>R$ <span className={styles.span_preco}>634</span></p>
+            <div className={styles.container_numero_adultos_preco}>
+            <p className={styles.numero_adultos}>1 adulto</p>
+            <p className={styles.numero_preco}>R$ 634</p>
+            </div>
+            <div className={styles.container_texto_impostos_preco}>
+            <p className={styles.texto_impostos}>Impostos, taxas e encargos</p>
+            <p className={styles.numero_preco}>R$ 158</p>
+            </div>
+            <div className={styles.container_preco_final_botoes}>
+            <div className={styles.container_preco_final}>
+            <p>Preço final</p>
+            <p>R$ 792</p>
+            </div>
+            <div className={styles.container_botoes_coracao_comprar}>
+            <button className={styles.botao_coracao}><img src="/images/coracao.png" className={styles.imagem_coracao} /></button>
+            <button className={styles.botao_comprar}>Comprar</button>
+            </div>
+            </div>
+           </div>
+           </div>
+           <div className={styles.card_voos_mais_baratos}>
+            <div className={styles.container_imagem_calendario_texto}>
+              <img src="/images/calendario.png" className={styles.icone_calendario}/>
+              <p>Buscando voos mais baratos? Confira opções para datas mais próximas</p>
+            </div>
+            <div className={styles.container_card_noites}>
+            <div className={styles.card_noites}>
+              <div className={styles.container_noites}>
+              <p>2 noites</p>
+              </div>
+              <div className={styles.container_datas}>
+              <div className={styles.container_ida}>
+              <p className={styles.dia_semana}>sábado</p>
+              <p>17 jan</p>
+              </div>
+              <div className={styles.container_volta}>
+              <p className={styles.dia_semana}>segunda-feira</p>
+              <p>19 jan</p>
+              </div>
+              </div>
+              <div className={styles.container_preco_card_noite}>
+              <p className={styles.preco_card_noite}>R$ <span className={styles.span_bold_preco}>440</span></p>
+              </div>
+            </div>
+            <div className={styles.card_noites}>
+              <div className={styles.container_noites}>
+              <p>2 noites</p>
+              </div>
+              <div className={styles.container_datas}>
+              <div className={styles.container_ida}>
+              <p className={styles.dia_semana}>sábado</p>
+              <p>17 jan</p>
+              </div>
+              <div className={styles.container_volta}>
+              <p className={styles.dia_semana}>segunda-feira</p>
+              <p>19 jan</p>
+              </div>
+              </div>
+              <div className={styles.container_preco_card_noite}>
+              <p className={styles.preco_card_noite}>R$ <span className={styles.span_bold_preco}>440</span></p>
+              </div>
+            </div>
+            </div>
+           </div>
+           <div className={styles.container_voos_preco}>
+           <div className={styles.container_card_voos_bagagem_despacho}>
+            <div className={styles.container_imagem_texto_bagagem_despacho}>
+            
+            <img src="/images/bagagem-para-despacho.png" className={styles.imagem_bagagem_despacho}/>
+            <div className={styles.texto_bagagem_despacho}>
+            <p className={styles.texto_leve_bagagem}>Leve tudo o que você precisa!</p>
+            <p>Este voo inclui bagagem para despachar.</p>
+            </div>
+            </div>
+            
+           <div className={styles.card_voos}>
+            
+            
+            <div className={styles.header}>
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>IDA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           <div className={styles.card_voos}>
+            <div className={styles.header}>
+                <div className={styles.header_ida}>
+                    <div className={styles.container_imagem_titulo}>
+                    <img src="/images/aviao-ida.png" className={styles.imagem_aviao_ida}/>
+                    <p className={styles.titulo_ida}>VOLTA</p>
+                    </div>
+                    <p className={styles.descricao_data}>Sex. 5 dez 2025</p>
+                </div>
+                <div className={styles.header_local_ida}>
+                    <p>CGH</p>
+                    <p className={styles.nome_cidade_bagagem}>São Paulo</p>
+                </div>
+                <div className={styles.header_local_volta}>
+                    <p>GIG</p>
+                    <p className={styles.nome_cidade_bagagem}>Rio de Janeiro</p>
+                </div>
+                <div className={styles.header_bagagem}>
+                    <p></p>
+                    <p className={styles.nome_cidade_bagagem}>Bagagem</p>
+                </div>
+                
+            </div>
+            <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div className={styles.container_voo_escolhido}>
+                <div className={styles.container_input_imagem_nome}>
+                <input className={styles.input_radio_voo} type="radio"/>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LOGO_AZUL_LINHAS_AEREAS.png" className={styles.icone_companhia}/>
+                <p>Azul</p>
+                </div>
+                <div className={styles.horario_direto}>
+                    <div className={styles.container_ida_direto}>
+                    <p>07:55</p>
+                    <p>Direto</p>
+                    </div>
+                    <div className={styles.container_volta_direto}>
+                    <p>09:00</p>
+                    <p>1h 5m</p>
+                    </div>
+                    <div className={styles.container_bagagens}>
+                    <div className={styles.container_imagens}>
+                    <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                    <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    <div className={styles.input_dropdown}>
+                        <img src="/images/drop-down.png" className={styles.imagem_dropdown}/>
+                    </div>
+                    </div>
+                </div>
+                </div>
+           </div>
+           </div>
+           <div className={styles.container_preco}>
+            
+            <div className={styles.container_descricao_preco}>
+            <p className={styles.descricao_preco}>Preço por adulto</p>
+            </div>
+            <p className={styles.preco}>R$ <span className={styles.span_preco}>634</span></p>
+            <div className={styles.container_numero_adultos_preco}>
+            <p className={styles.numero_adultos}>1 adulto</p>
+            <p className={styles.numero_preco}>R$ 634</p>
+            </div>
+            <div className={styles.container_texto_impostos_preco}>
+            <p className={styles.texto_impostos}>Impostos, taxas e encargos</p>
+            <p className={styles.numero_preco}>R$ 158</p>
+            </div>
+            <div className={styles.container_preco_final_botoes}>
+            <div className={styles.container_preco_final}>
+            <p>Preço final</p>
+            <p>R$ 792</p>
+            </div>
+            <div className={styles.container_botoes_coracao_comprar}>
+            <button className={styles.botao_coracao}><img src="/images/coracao.png" className={styles.imagem_coracao} /></button>
+            <button className={styles.botao_comprar}>Comprar</button>
+            </div>
+            </div>
+            
+           </div>
+           </div>
+           <div className={styles.card_propaganda_pacote_voo_hotel}>
+            <div className={styles.container_titulo_itens}>
+            <div className={styles.container_imagem_titulo_card_voo_hotel}>
+              <img src="/images/carteira.png" className={styles.imagem_carteira}/>
+              <h2>Economize até 30% montando seu pacote com voo e hotel</h2>
+            </div>
+            <div className={styles.container_vantagens}>
+              <img src="/images/verificado.png" className={styles.imagem_verificado}/>
+              <p>Comprar em pacote é o jeito mais econômico de viajar</p>
+            </div>
+            <div className={styles.container_vantagens}>
+              <img src="/images/verificado.png" className={styles.imagem_verificado}/>
+              <p>Escolha o voo e o hotel que cabem no seu orçamento</p>
+            </div>
+            <div className={styles.container_vantagens}>
+              <img src="/images/verificado.png" className={styles.imagem_verificado}/>
+              <p>Em uma compra você já resolve toda a viagem</p>
+            </div>
+           </div>
+           <div className={styles.card_pacote}>
+            <div className={styles.container_imagem_desconto}>
+            <img src="/images/quarto.jpg" className={styles.imagem_quarto}/>
+            <p className={styles.texto_desconto}>Até -30%</p>
+            </div>
+            <div className={styles.container_titulo_pacotes}>
+            <div className={styles.container_icone_voo_e_icone_hotel}>
+              <img src="/images/aviao-ida.png" className={styles.icone_voo_hotel}/>
+              <p>VOO</p>
+              <p>+</p>
+              <img src="/images/cama.png" className={styles.icone_voo_hotel}/>
+              <p>HOTEL</p>
+            </div>
+            <p className={styles.texto_pacote}>Pacote para Rio de Janeiro</p>
+            <div className={styles.container_botao_montar_pacote}>
+              <button className={styles.botao_montar_pacote}>Montar meu pacote</button>
+            </div>
+            </div>
+           </div>
+           </div>
+           <div className={styles.card_app_qrcode}>
+            <img src="/images/celular.png" className={styles.imagem_celular}/>
+            <div className={styles.container_textos}>
+            <div className={styles.container_imagem_texto_preco}>
+              <img src="/images/celular-pequeno.png" className={styles.icone_celular} /><p>Melhor preco no app</p>
+            </div>
+            <h2>No app você tem preços mais baixos</h2>
+            <p>Escaneie o QR e continue sua busca no app</p>
+            </div>
+            <img src="/images/qrcode.png" className={styles.imagem_qrcode}/>
+            <img src="/images/aplicativo-movel.png" className={styles.imagem_aplicativo_movel}/>
+           </div>
+           <div className={styles.card_parcelada_cartao}>
+            <div className={styles.container_texto_cartao}>
+            <p>SUA VIAGEM PARCELADA NO CARTÃO</p>
+            <h3>Pague com o seu cartão e ganhe 5% Cashback</h3>
+            <p>Parcele em até 12x e resgate seu cashback no aplicativo</p>
+            <p>Limitado a R$ 70</p>
+           </div>
+           <button className={styles.botao_montar_pacote}>Aproveitar agora</button>
+           <img src="/images/bing.png" className={styles.icone_bing}/>
+           </div>
+            </div>
+            </div>
         </div>
     )
 }

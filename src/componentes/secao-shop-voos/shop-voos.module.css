@@ -120,7 +120,7 @@
 .secao_passagens_filtros_voos{
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    
     
     width:255px;
 }
@@ -135,6 +135,7 @@
 .imagem_dropdown{
     width:16px;
     height:16px;
+    cursor:pointer;
 }
 
 .titulo_filtro{
@@ -333,6 +334,24 @@ top:-20px;
     height:52px;
     width:37.5%;
     justify-content: center;
+    cursor:pointer;
+}
+
+.container_preco_companhia_select{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:37.5%;
+    justify-content: center;
+    cursor:pointer;
+    border-bottom:2px solid #4300d2;
+}
+
+.container_preco_companhia:hover{
+    background-color: #ebe5f5;
 }
 
 .container_preco_companhia_3_dias{
@@ -344,6 +363,24 @@ top:-20px;
     height:52px;
     width:28.4%;
     justify-content: center;
+    cursor:pointer;
+}
+
+.container_preco_companhia_3_dias_select{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:28.4%;
+    justify-content: center;
+    cursor:pointer;
+    border-bottom:2px solid #4300d2;
+}
+
+.container_preco_companhia_3_dias:hover{
+    background-color: #ebe5f5;
 }
 
 .container_tendencia_de_precos{
@@ -355,6 +392,24 @@ top:-20px;
     height:52px;
     width:31%;
     justify-content: center;
+    cursor:pointer;
+}
+
+.container_tendencia_de_precos_select{
+    font-size:14px;
+    padding:0 12px;
+    border-right:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    height:52px;
+    width:31%;
+    justify-content: center;
+    cursor:pointer;
+    border-bottom:2px solid #4300d2;
+}
+
+.container_tendencia_de_precos:hover{
+    background-color: #ebe5f5;
 }
 
 .container_companhias{
@@ -454,4 +509,1238 @@ padding-top:4px;
     background-color: #ffffff;
     border-radius: 6px;
     border: 1px solid #d6d4d4;
+}
+
+.container_botoes{
+    display:flex;
+    gap:15px;
+}
+
+.botao_recomendados{
+    width:150px;
+    height:50px;
+    padding:8px 0px;
+    border-radius:6px;
+    border:1px solid #4300d2;
+    color:#4300d2;
+    background-color:#ffffff;
+    cursor:pointer;
+}
+
+.botao_recomendados_nao_selecionado{
+    width:150px;
+    height:50px;
+    padding:8px 0px;
+    border-radius:6px;
+    border:1px solid #d6d4d4;
+    color:#323439;
+    background-color:#ffffff;
+    cursor:pointer;
+}
+
+.botao_recomendados_nao_selecionado:hover{
+    border:1px solid #4300d2;
+    color:#4300d2;
+}
+
+.container_alerta_botoes{
+    display:flex;
+    justify-content: space-between;
+}
+
+.imagem_sino_alerta{
+    width:20px;
+    height:20px;
+}
+
+.container_imagem_alerta_texto{
+    display:flex;
+    align-items: center;
+    font-size:14px;
+    color:#4300d2;
+    font-weight: bold;
+    gap:10px;
+}
+
+.botao_alerta{
+     width:190px;
+    height:46px;
+    padding:8px 0px;
+    border-radius:6px;
+    border:1px solid #d6d4d4;
+    color:#323439;
+    background-color:#ffffff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    
+}
+.botao_alerta:hover{
+    border:1px solid #4300d2;
+}
+
+.imagem_aviao_ida{
+    width:14px;
+    height:14px;
+}
+
+.titulo_ida{
+    font-size:14px;
+    color:#323439;
+}
+
+.descricao_data{
+    font-size:12px;
+    color:#565A60;
+}
+
+.container_imagem_titulo{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+
+.header_ida{
+    background-color:#f2f4f5;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding:16px 26px 16px 16px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    width:110px;
+
+    
+    
+}
+
+.header{
+    display:flex;
+    
+    
+    
+}
+
+.card_voos{
+    border-radius: 6px;
+    background-color: #ffffff;
+    width:602px;
+    border-top:1px solid #d6d4d4;
+}
+
+.header_local_ida{
+    color:#565A60;
+    padding-left:10px;
+    width:133px;
+}
+.header_local_volta{
+    padding-left:10px;
+    color:#565A60;
+    width:133px;
+}
+.header_bagagem{
+    padding-left:10px;
+    color:#565A60;
+    width:123px;
+    border-right:1px solid #d6d4d4;
+    padding-right:30px;
+}
+
+.nome_cidade_bagagem{
+    font-size:12px;
+    color:#72777f;
+}
+
+.container_voo_escolhido{
+    display:flex;
+    padding-left:10px; 
+    width:592px;
+    
+}
+
+.container_voo_escolhido:hover{
+    outline: 1px solid #4300d2;
+    border-radius: 24px;
+}
+
+
+
+.container_input_imagem_nome{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    width:142px;
+    height:50px;
+}
+
+.icone_bagagem{
+    width:24px;
+    height:24px;
+}
+
+.horario_direto{
+    display:flex;
+    
+}
+
+.container_ida_direto{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:143px;
+    height:50px;
+}
+
+.container_volta_direto{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:133px;
+    height:50px;
+    padding-left:10px;
+}
+
+.container_bagagens{
+    display:flex;
+    justify-content: space-between;
+    width:133px;
+    padding-right:20px;
+    align-items: center;
+    padding-left:10px;
+    border-right:1px solid #d6d4d4;
+}
+
+.input_radio_voo{
+    width:20px;
+    height:20px;
+}
+
+.container_imagens{
+    
+}
+
+.container_voos_preco{
+    display:flex;
+}
+
+.container_preco{
+    background-color: #ffffff;
+    padding:12px;
+    width:209px;
+    display:flex;
+    flex-direction: column;
+    gap:7px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+}
+
+.container_descricao_preco{
+    display:flex;
+    justify-content: end;
+}
+
+.descricao_preco{
+    font-size:12px;
+    color:#323439;
+}
+
+.preco{
+    font-size:13px;
+    color:#323439;
+}
+
+.span_preco{
+    font-size:24px;
+}
+
+.numero_adultos{
+    font-size:12px;
+    color:#323439;
+}
+
+.container_numero_adultos_preco{
+    display:flex;
+    justify-content: space-between;
+}
+
+.numero_preco{
+    font-size:12px;
+    color:#323439;
+    
+}
+
+.texto_impostos{
+    font-size:12px;
+    color:#323439;
+    width:106px;
+}
+
+.container_texto_impostos_preco{
+    display:flex;
+    justify-content: space-between;
+}
+
+.container_preco_final{
+     display:flex;
+    justify-content: space-between;
+    font-size:14px;
+
+}
+
+.imagem_coracao{
+    width:36px;
+    height:36px;
+}
+
+.botao_coracao{
+    border:none;
+    background-color: #ffffff;
+}
+
+.botao_comprar{
+    height:36px;
+    background-color: #4300d2;
+    color:white;
+    font-weight: bold;
+    border-radius: 24px;
+    padding:0 16px;
+    width:141px;
+    border:none;
+}
+
+.container_botoes_coracao_comprar{
+    padding-top:5px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.container_preco_final_botoes{
+    padding-top:10px;
+}
+
+.container_imagem_estrela_sugestoes{
+    display:flex;
+    align-items: center;
+}
+
+.estrela_de_natal{
+    width:17px;
+    height:16px;
+}
+.titulo_sugestoes{
+    font-size:16px;
+    font-weight: bold;
+    color:#323439;
+}
+
+.card_inteligencia_artificial{
+    padding:16px;
+    background-color: #ebe5f5;
+    border-radius:6px;
+}
+
+.dica_sugestao{
+    font-size:14px;
+}
+
+.container_imagem_patrocinio{
+    align-items: center;
+    gap:10px;
+    display:flex;
+    padding:12px 0px 12px 16px;
+    border-right: 1px solid #d6d4d4;
+    border-bottom:1px solid #d6d4d4;
+    color:#323439;
+}
+
+.icone_calendario{
+    width:38px;
+    height:35px;
+}
+
+.container_imagem_calendario_texto{
+    display:flex;
+    align-items: start;
+    font-size:20px;
+    gap:10px;
+    font-weight: bold;
+    color:#323439;
+}
+
+.container_datas{
+    display:flex;
+    
+}
+
+.container_ida{
+    display:flex;
+    flex-direction: column;
+    width:114px;
+    height:32px;
+    padding:8px 0px;
+    border-right:1px solid #d6d4d4;
+    border-top:1px solid #d6d4d4;
+    border-bottom:1px solid #d6d4d4;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.container_volta{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom:1px solid #d6d4d4;
+    width:114px;
+    height:32px;
+    padding:8px 0px;
+    border-top:1px solid #d6d4d4;
+    background-color: #ffffff;
+}
+
+.card_noites{
+    border:1px solid #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.container_card_noites{
+    display:flex;
+    gap:20px;
+}
+
+.dia_semana{
+    font-size:12px;
+    color:#72777f;
+}
+
+.preco_card_noite{
+    padding:8px 0;
+    
+}
+
+.container_preco_card_noite{
+    display:flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width:100%;
+    align-items: center;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.card_voos_mais_baratos{
+    background-color: #ffffff;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+}
+
+.container_noites{
+    font-size:12px;
+    color:#323439;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#f2f4f5;
+    height:20px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.span_bold_preco{
+    font-weight: bold;
+}
+
+.card_propaganda_pacote_voo_hotel{
+    position:relative;
+    margin-top:40px;
+    padding:40px 24px 24px;
+    background-color: #adeddd;
+    color:#270570;
+    margin-bottom:40px;
+    border-top-left-radius: 35px;
+}
+
+.container_titulo_itens{
+    width:440px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+}
+
+.imagem_carteira{
+    width:72px;
+    height:72px;
+    position:absolute;
+    top:-75px;
+}
+
+.container_imagem_titulo_card_voo_hotel{
+    
+    display:flex;
+    flex-direction: column;
+    position:relative;
+}
+
+.container_vantagens{
+    display:flex;
+    align-items: center;
+    gap:20px;
+    font-size:14px;
+}
+
+.imagem_verificado{
+    width:20px;
+    height:20px;
+}
+
+.imagem_quarto{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    width: 300px;
+    height:121px;
+}
+
+.icone_voo_hotel{
+    width:16px;
+    height:16px;
+}
+
+.container_icone_voo_e_icone_hotel{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.texto_pacote{
+    color:#323439;
+    font-size:20px;
+    padding-bottom:10px;
+}
+
+.botao_montar_pacote{
+    height:36px;
+    background-color: #4300d2;
+    padding:0 16px;
+    border-radius: 24px;
+    border:none;
+    color:white;
+    font-weight: bold;
+}
+
+.card_pacote{
+    position:absolute;
+    
+    right:25px;
+    top:-35px;
+    background-color: #ffffff;
+    width:300px;
+    height:305px;
+    border-radius: 6px;
+}
+
+.container_botao_montar_pacote{
+    padding-top:20px;
+    border-top:1px solid #d6d4d4;
+}
+
+.container_titulo_pacotes{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+}
+
+.texto_desconto{
+    color:white;
+    position:absolute;
+    background-color: #028574;
+    right:0;
+    top:12px;
+    padding:0 12px;
+    border-radius: 5px;
+    height:32px;
+    display:flex;
+    align-items: center;
+}
+
+.container_imagem_desconto{
+    position:relative;
+}
+
+.card_app_qrcode{
+    position:relative;
+    padding:20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+    display:flex;
+    gap:40px;
+}
+
+.imagem_celular{
+    width:83px;
+    height:98px;
+}
+
+.imagem_qrcode{
+    width:116px;
+    height:116px;
+}
+
+.imagem_aplicativo_movel{
+    position:absolute;
+    width:76px;
+    height:76px;
+    right:10px;
+    bottom:40px;
+}
+
+.icone_celular{
+    width:16px;
+    height:16px;
+}
+
+.container_imagem_texto_preco{
+    display:flex;
+    align-items: center;
+    background-color: #e6fbf4;
+    color:#007d6d;
+    font-size:12px;
+    font-weight: bold;
+    padding:8px;
+    height:8px;
+    width:35%;
+    border-radius: 6px;
+}
+
+.container_textos{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width:408px;
+}
+
+.card_parcelada_cartao{
+    position:relative;
+    background-color: #dff4e0;
+    padding:20px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+    display:flex;
+    align-items: center;
+    gap:50px;
+}
+
+.container_texto_cartao{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.icone_bing{
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:20px;
+}
+
+.container_card_voos_bagagem_despacho{
+    padding:0 4px 4px;
+    background-color:#028574;
+    border-radius: 6px;
+    display:flex;
+    flex-direction: column;
+}
+
+.imagem_bagagem_despacho{
+    height:75px;
+    width:75px;
+}
+.container_imagem_bagagem_texto{
+    display:flex;
+    align-items: center;
+}
+
+.container_imagem_texto_bagagem_despacho{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color:white;
+    padding-top:10px;
+}
+
+.texto_leve_bagagem{
+    font-size:20px;
+    font-weight: bold;
+}
+
+.texto_bagagem_despacho{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.texto_passaporte{
+    color:#ff7a80;
+    font-size: 12px;
+
+}
+
+.imagem_passaporte{
+    width:24px;
+    height:18px;
+}
+
+.container_passaporte_pontos{
+    border-top:1px solid #565A60;
+    display:flex;
+    align-items: center;
+    padding-top:10px;
+}
+
+.texto_pontos{
+    font-size:12px;
+}
+
+.paragrafo_direto{
+    font-size:12px;
+    border-bottom:1px solid #028574;
+    padding-bottom:4px;
+}
+
+.paragrafo_horario{
+    font-size:14px;
+}
+
+.paragrafo_duracao{
+    font-size:13px;
+}
+
+.tabela_precos{
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.dia_semana_tabela{
+    font-size:12px;
+}
+
+.dia_mes_tabela{
+    font-size:12px;
+}
+
+.titulo_coluna_tabela{
+    width:103px;
+    border:1px solid #eee;
+    font-weight: 100;
+}
+
+.container_saida_retorno_tabela{
+    position:relative;
+}
+
+.barra_divisora{
+    position:absolute;
+    top:-25px;
+    left:-10px;
+    transform: rotate(23deg); /* inclina 45° da horizontal */
+    transform-origin: left center; 
+    width:116px;
+    height:2px;
+    border-bottom:1px solid #ddd;
+}
+
+.texto_retorno_barra{
+    position:absolute;
+    left:0;
+    font-size:12px;
+    bottom:-17px;
+}
+
+.texto_saida_barra{
+    position:absolute;
+    right:0;
+    top:-15px;
+    font-size:12px;
+}
+
+.titulo_linha_tabela{
+    width:90px;
+    border:1px solid #eee;
+    font-weight: 100;
+}
+
+.preco_mais_barato_tabela{
+    background-color: #028574;
+    color:white;
+    font-weight: bold;
+    padding:0 8px;
+    font-size:14px;
+    display: inline-block;
+    border-radius: 6px;
+}
+
+.tabela_precos {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.tabela_precos th,
+.tabela_precos td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.titulo_coluna_tabela,
+.titulo_linha_tabela {
+  background: #f8f8f8;
+}
+
+.tabela_precos td:hover {
+  background-color: #f3f0ff;
+  cursor: pointer;
+  outline: 1px solid #4300d2;
+}
+
+.preco_tabela{
+    font-size:14px;
+}
+
+.descricao_tabela{
+    font-size:12px;
+    color:#dde1e8;
+    padding:10px;
+}
+
+.card_tendencia_de_precos{
+    display:flex;
+    flex-direction: column;
+}
+
+.preco_grafico{
+    color:#028574;
+}
+
+
+.menor_preco_grafico_span{
+    font-size:26px;
+    color:#028574;
+}
+
+.texto_preco_baixo{
+    font-size:14px;
+}
+
+.texto_preco_pessoas{
+    font-size:12px;
+}
+
+.container_texto_preco_pessoas{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-top:1px solid #ebe5f5;
+    padding-top:20px;
+}
+
+.container_botao{
+    position:relative;
+}
+
+.balao_botao {
+  position: absolute;
+  top: -75px; /* posição acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #6200ee;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-size: 14px;
+  color: #333;
+  width:250px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  
+}
+
+/* setinha do balão */
+.balao_botao::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #4300d2 transparent transparent transparent;
+  
+}
+
+/* mostra o balão quando o botão for hover */
+.container_botao:hover .balao_botao {
+  opacity: 1;
+  pointer-events: auto;
+  
+}
+
+.balao_botao_mais_baratos{
+  position: absolute;
+  top: -40px; /* posição acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #6200ee;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-size: 14px;
+  color: #333;
+  width:215px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  
+}
+
+.balao_botao_mais_baratos::after{
+    content: "";
+  position: absolute;
+  bottom: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #4300d2 transparent transparent transparent;
+  
+}
+
+.container_botao:hover .balao_botao_mais_baratos {
+  opacity: 1;
+  pointer-events: auto;
+  
+}
+
+.balao_botao_recomendados{
+  position: absolute;
+  top: -75px; /* posição acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #6200ee;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-size: 14px;
+  color: #333;
+  width:215px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  
+}
+
+.balao_botao_recomendados:after{
+    content: "";
+  position: absolute;
+  bottom: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #4300d2 transparent transparent transparent;
+  
+}
+
+.container_botao:hover .balao_botao_recomendados {
+  opacity: 1;
+  pointer-events: auto;
+  
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 200%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 90vh; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.3s ease;
+  overflow-y: auto;
+}
+
+.container_nota_avaliacao{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    
+}
+
+.container_imagem_companhia{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.container_companhia_numero_voo_classe{
+    display:flex;
+    justify-content: space-between;
+    border-bottom:1px solid #d6d4d4;
+    padding:10px;
+}
+
+.container_horario_voo_chegada{
+    display:flex;
+    justify-content: space-between;
+    padding:15px;
+    align-items: center;
+    border-bottom:1px solid #d6d4d4;
+}
+
+.texto_horario_voo{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto_dia{
+    font-size:12px;
+    color:#323439;
+}
+
+.texto_horario{
+    font-size:24px;
+    color:#323439;
+}
+
+.texto_codigo_aeroporto{
+    font-size:12px;
+    color:#72777f;
+}
+
+.texto_cidade{
+    font-size:12px;
+    color:#72777f;
+}
+.texto_aeroporto{
+    font-size:12px;
+    color:#72777f;
+}
+
+.texto_duracao{
+    font-size:12px;
+    color:#72777f;
+}
+
+.texto_hora_duracao{
+    font-size:12px;
+    color:#323439;
+}
+
+.texto_numero_voo_classe{
+    font-size:12px;
+    color:#72777f;
+}
+
+.container_mais_detalhes{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+
+    
+    border-radius: 6px;
+}
+
+.icone_drop_down{
+    width:16px;
+    height:16px;
+}
+
+.botao_mais_detalhes{
+    display:flex;
+    
+    border:none;
+    background-color: #ffffff;
+    font-size:14px;
+    color:#4300d2;
+    cursor:pointer;
+}
+
+.card_modal{
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+}
+
+.span_nota{
+    color:#028574;
+    font-size:12px;
+}
+
+.nota_numero{
+    font-size:12px;
+    color:white;
+    padding:5px;
+    background-color: #028574;
+    border-radius: 6px;
+    
+    
+}
+
+.nome_companhia_notas{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.container_duracao_modal{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:8px;
+    background-color: #f2f4f5;
+    border-radius: 6px;
+    margin:12px 0;
+    color:#323439;
+    font-size:14px;
+}
+
+.duracao_hora_modal{
+    color:#323439;
+    font-size:14px;
+    font-weight: bold;
+}
+
+.texto_horario_hora_local{
+    font-size:12px;
+    color:#72777f;
+}
+
+.container_horario_local_cada_cidade{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_imagem_bagagem_modal_texto{
+    display:flex;
+    align-items: center;
+}
+
+.card_bagagem_modal{
+    display:flex;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    padding:16px 12px;
+}
+
+.container_texto_bagagem_modal{
+    border-right:1px solid #d6d4d4;
+    padding-right:30px;
+}
+
+.texto_inclui{
+    color:#028574;
+    font-size:14px;
+}
+
+.texto_inclui_descricao{
+    color:#565A60;
+    font-size:14px;
+}
+
+.container_bagagem_modal{
+    padding-left:30px;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.container_texto_inclui_descricao{
+    display:flex;
+    flex-direction: column;
+    gap:3px;
+}
+
+.titulo_bagagem{
+    color:#72777f;
+    font-size:14px;
+}
+
+.container_botao_fechar{
+    display:flex;
+    justify-content: end;
+    padding-bottom:30px;
+}
+
+.imagem_botao_fechar{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+.container_mostrar_mais_detalhes_modal{
+    font-size:12px;
+    padding:16px 12px;
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+    border-bottom: 1px solid #d6d4d4;
+}
+
+.container_icone_cancelamento_texto{
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.icone_cancelamento{
+    width:16px;
+    height:16px;
+}
+
+.texto_podera_revisar_detalhes{
+    color:#72777f;
+}
+
+.container_texto_cancelamento_alteracoes{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
 }

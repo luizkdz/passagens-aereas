@@ -1,0 +1,30 @@
+.container_logo_nome{
+    display:flex;
+    align-items: center;
+    padding:20px;
+}
+
+.container_imagem_ajuda{
+    display:flex;
+    align-items: center;
+    padding:20px;
+    color:#444444;
+    font-size:14px;
+}
+
+.imagem_ajuda{
+    width:20px;
+    height:20px;
+}
+
+.container_navbar{
+    display:flex;
+    width:1280px;
+    justify-content: space-between;
+}
+
+.secao_nav_bar{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

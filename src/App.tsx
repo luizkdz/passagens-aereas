@@ -4,6 +4,7 @@ import PaginaInicial from './pages/PaginaInicial.tsx';
 import PaginaPassagensAereas from './pages/PassagensAereas.tsx';
 import './App.css'
 import PaginaVoos from './pages/PaginaVoos.tsx';
+import PaginaCheckout from './pages/PaginaCheckout.tsx';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         </Route>
         <Route path = "/passagens-aereas" element={<PaginaPassagensAereas/>}></Route>
         <Route path = "/shop" element={<PaginaVoos/>}></Route>
+        <Route path="/checkout" element= {<PaginaCheckout/>}></Route>
       </Routes>
       </BrowserRouter>
     </>
