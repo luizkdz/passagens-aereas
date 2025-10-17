@@ -35,6 +35,14 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/logo-bing" title="logo bing ícones">Logo bing ícones criados por Laisa Islam Ani - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/smartphone" title="smartphone ícones">Smartphone ícones criados por Flat Icons - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/viagem" title="viagem ícones">Viagem ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/van-de-campista" title="van de campista ícones">Van de campista ícones criados por Vectors Tank - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/lixeira-de-reciclagem" title="lixeira de reciclagem ícones">Lixeira de reciclagem ícones criados por Hilmy Abiyyu A. - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/mais" title="mais ícones">Mais ícones criados por verry purnomo - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/do-utilizador" title="do utilizador ícones">Do utilizador ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/calendario" title="calendário ícones">Calendário ícones criados por SeyfDesigner - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/presente" title="presente ícones">Presente ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/passaporte" title="passaporte ícones">Passaporte ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/angulo-direito" title="ângulo direito ícones">Ângulo direito ícones criados por Kiranshastry - Flaticon</a>
         </div>
     )
 }

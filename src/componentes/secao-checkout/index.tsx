@@ -11,10 +11,23 @@ export default function SecaoCheckout(){
 const [selectedOption, setSelectedOption] = useState<OptionType | null>(options[0]);
 const [mostrarBagagem, setMostrarBagagem] = useState(false);
 const [mostrarSeguro, setMostrarSeguro] = useState(true);
-  const handleChange = (option: SingleValue<OptionType>) => {
+const [mostrarTelefone, setMostrarTelefone] = useState(1);
+const [mostrarTodosMeiosPagamentos, setMostrarTodosMeiosPagamentos] = useState(false);
+const handleMostrarTelefone = () => {
+    if(mostrarTelefone < 4)
+    setMostrarTelefone((inicial => (inicial + 1)));
+}
+
+const handleRemoverTelefone = () => {
+    if(mostrarTelefone > 1)
+    setMostrarTelefone((inicial => (inicial - 1)));
+}
+
+const handleChange = (option: SingleValue<OptionType>) => {
     setSelectedOption(option);
  
   };
+
     return (
         <div className={styles.secao_checkout}>
             <div className={styles.container_pagamento}>
@@ -311,6 +324,8 @@ const [mostrarSeguro, setMostrarSeguro] = useState(true);
                 </div>
                 <div className={styles.card_numero}>
                     <h2 className={styles.titulo_card_email}>Qual número podemos usar para entrar em contato com você?</h2>
+                    
+                    <div>
                     <div className={styles.container_label_input}>
                     <label>TELEFONE</label>
                     <select className={styles.select_celular}>
@@ -319,14 +334,230 @@ const [mostrarSeguro, setMostrarSeguro] = useState(true);
                     </div>
                     <div className={styles.container_label_input}>
                     <label>CÓDIGO DO PAÍS</label>
+                    <div style={{width:"200px"}}>
+                        <Select value={selectedOption}
+                        onChange={handleChange} options={options}
+                         formatOptionLabel={(option) => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
+          <img src={option.image} alt="" width={20} height={20} />
+          <span>{option.label}</span>
+        </div>
+      )}
+    />
+    </div>
+    <div className={styles.container_area_numero}>
+    <div className={styles.container_label_input}>
+                    <label>ÁREA</label>
+                    <input type="text" className={styles.input_area_celular}/>
+                    </div>
+                    <div className={styles.container_label_input}>
+    <label>NÚMERO</label>
+    <input type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    </div>
+                    </div>
+                    </div>
+                    </div>
+                    
+                    {mostrarTelefone && (
+                        <div>
+                            {Array.from({length: mostrarTelefone - 1}).map((item,index) => {
+                                return (
+                                    <div>
+                    <div className={styles.container_label_input}>
+                    <label>TELEFONE {index + 2}</label>
                     <select className={styles.select_celular}>
                         <option>Celular</option>
                     </select>
                     </div>
+                    <div className={styles.container_label_input}>
+                    <label>CÓDIGO DO PAÍS</label>
+                    <div style={{width:"200px"}}>
+                        <Select value={selectedOption}
+                        onChange={handleChange} options={options}
+                         formatOptionLabel={(option) => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
+          <img src={option.image} alt="" width={20} height={20} />
+          <span>{option.label}</span>
+        </div>
+      )}
+    />
+    </div>
+    <div className={styles.container_area_numero}>
+    <div className={styles.container_label_input}>
+                    <label>ÁREA</label>
+                    <input type="text" className={styles.input_area_celular}/>
+                    </div>
+                    <div className={styles.container_label_input}>
+    <label>NÚMERO</label>
+    <input type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    </div>
+                    </div>
+                    </div>
+                    </div>
+                                )
+                            })}
+                        </div>
+                    )}
+                    <div  className={mostrarTelefone < 4 ? styles.container_imagem_incluir_telefone : styles.container_imagem_incluir_telefone_off}>
+                        <div onClick={() => {handleMostrarTelefone()}} className={mostrarTelefone < 4 ? styles.container_imagem_mais_incluir : styles.container_imagem_mais_incluir_off}>
+                        <img src="/images/mais.png" className={styles.imagem_mais}/>
+                        <p>Incluir outro telefone</p>
+                        </div>
+                        <div onClick={() => {handleRemoverTelefone()}} className={mostrarTelefone > 1 ? styles.container_imagem_lixeira_remover:styles.container_imagem_lixeira_remover_off}>
+                        <img src="/images/lixeira.png" className={styles.imagem_lixeira}/>
+                        <p>Remover</p>
+                        </div>
+                    </div>
+                    <div className={styles.container_input_alerta_detalhes}>
+                        <input type="checkbox" className={styles.input_checkbox}/>
+                        <p className={styles.paragrafo_alerta_detalhes}>Quero receber detalhes da minha compra, estado do voo e possíveis alterações da minha reserva por WhatsApp ou SMS</p>
+                    </div>
+                    
+                </div>
+                <div className={styles.card_como_quer_pagar}>
+                    <h2 className={styles.titulo_como_quer_pagar}>Como você quer pagar</h2>
+                    <p className={styles.texto_mais_usados}>Mais usados</p>
+                    <div className={styles.card_meios_de_pagamento}>
+                        <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>Cartão de crédito</p>
+                            <span className={styles.span_melhor_preco}>Até 20% OFF</span>
+                        </div>
+                        <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>Pix</p>
+                            <span className={styles.span_melhor_preco}>Até 4% OFF</span>
+                        </div>
+                        <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>Koin(Boleto Parcelado)</p>
+                            <span className={styles.span_melhor_preco}>Até R$70 de cashback</span>
+                        </div>
+                        <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>2 cartões (débito e/ou crédito combinados)</p>
+                            <span className={styles.span_melhor_preco}>Até 19% OFF</span>
+                        </div>
+                    {mostrarTodosMeiosPagamentos && (
+                        <div>
+                            <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>Cartão de débito</p>
+                            <span className={styles.span_melhor_preco}>Até 19% OFF</span>
+                        </div>
+                        <div className={styles.container_meio_de_pagamento}>
+                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <p className={styles.paragrafo_meio_de_pagamento}>Pagamento em dinheiro</p>
+                            <span className={styles.span_melhor_preco}>Até 19% OFF</span>
+                        </div>
+                        </div>
+                    )}
+                    </div>
+                    <button onClick={() => {setMostrarTodosMeiosPagamentos(!mostrarTodosMeiosPagamentos)}}className={styles.botao_ver_todos}> {!mostrarTodosMeiosPagamentos ? "Ver todos" : "Ver menos"} <img src="/images/drop-down.png" className={styles.icone_drop_down}/></button>
+                    <div className={styles.container_cupom}>
+                    <p className={styles.paragrafo_cupom}>Você tem um cupom?</p><span className={styles.span_cupom}>Ative seu cupom aqui</span>
+                    </div>
+                </div>
+                <div className={styles.card_nota_fiscal}>
+                    <h2 className={styles.titulo_nota_fiscal}>Em nome de quem emitimos a nota fiscal?</h2>
+                    <div className={styles.container_situacao_fiscal}>
+                        <label className={styles.label_situacao_fiscal}>SITUAÇÃO FISCAL</label>
+                        <select className={styles.select_situacao_fiscal}>
+                            <option>Pessoa Física</option>
+                            <option>Pessoa Jurídica</option>
+                        </select>
+                        <div className={styles.container_input_contribuinte_estrangeiro}>
+                            <input type="checkbox" className={styles.input_checkbox}/>
+                            <p>Contribuinte estrangeiro</p>
+                        </div>
+                        <div className={styles.container_label_input}>
+                    <label>NOME COMPLETO</label>
+                    <input type="text" className={styles.input_nome} placeholder='Como está no documento'/>
+                    </div>
+                    <div className={styles.container_cpf_cep}>
+                    <div className={styles.container_label_input}>
+                    <label>CPF</label>
+                    <input type="text" className={styles.input_cpf} placeholder='Como está no documento'/>
+                    </div>
+                    <div className={styles.container_label_input}>
+                    <label>CEP</label>
+                    <input type="text" className={styles.input_cep} placeholder='Ex.:54789218390'/>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <div className={styles.card_verificar_dados}>
+                    <h2 className={styles.titulo_card_verificar_dados}>Antes de finalizar verifique os dados informados</h2>
+                    <div className={styles.container_imagem_calendario_data}>
+                        <img src="/images/calendario_verifique.png" className={styles.icone_calendario}/>
+                        <p>Data</p>
+                        </div>
+                        <div className={styles.container_ida_volta}>
+                        <p>Ida: terca-feira 16 dez. 2025, 6:15</p>
+                        <p>Volta: terca-feira 16 dez. 2025, 13:15</p>
+                        </div>
+                    
+                    <div className={styles.container_imagem_quem_viaja}>
+                        <img src="/images/usuarios.png" className={styles.icone_usuario}/>
+                        <p>Quem viaja?</p>
+                    </div>
+                    <div className={styles.container_nome_sobrenome}>
+                        <p>Nome:</p>
+                        <p>Último sobrenome:</p>
+                    </div>
+                </div>
+                <div className={styles.container_input_li_e_aceito_condicoes}>
+                    <input type="checkbox" className={styles.input_checkbox}/>
+                    <p className={styles.paragrafo_li_e_aceito}>Li e aceito as <span className={styles.span_politicas_aceito}>condições de compra</span> , <span className={styles.span_politicas_aceito}>política de privacidade</span> e <span className={styles.span_politicas_aceito}>política de alterações e cancelamentos</span>.</p>
+                </div>
+                <div className={styles.container_botao_comprar}>
+                    <button className={styles.botao_comprar_laranja}>Comprar</button>
+                </div>
+                <div className={styles.container_compre_e_ganhe_cupom}>
+                    <img src="/images/presente.png" className={styles.imagem_presente}/>
+                    <p className={styles.paragrafo_presente}>Compre e ganhe um cupom de até 30% OFF em produtos selecionados</p>
                 </div>
 
             </div>
-            
+            <div className={styles.container_detalhes_pagamento}>
+                <p className={styles.titulo_detalhe_pagamento}>Detalhe do pagamento</p>
+                <div className={styles.container_passaporte_skypass}>
+                    <img src="/images/passaporte-rosa.png" className={styles.icone_passaporte}/>
+                    <div className={styles.container_texto_passaporte_pontos}>
+                    <p className={styles.texto_pontos_passaporte}>Passaporte SkyPass</p>
+                    <div className={styles.container_texto_acumular_seta}>
+                    <p className={styles.texto_pontos_ganhos}>Você poderia acumular 8 pontos</p>
+                    <img src="/images/seta-para-a-direita-rosa.png" className={styles.icone_seta_direita}/>
+                    </div>
+                    </div>
+                </div>
+                <div className={styles.card_voo}>
+                    <div className={styles.container_voo_preco_impostos}>
+                    <div className={styles.container_voo_preco}>
+                        <p>Voo para 1 pessoa</p>
+                        <p>R$ 351</p>
+                    </div>
+                    <div className={styles.container_voo_preco}>
+                        <p>Impostos e taxas</p>
+                        <p>R$ 135</p>
+                    </div>
+                    </div>
+                    <div className={styles.container_total}>
+                        <p>TOTAL</p>
+                        <p>R$ <span className={styles.span_preco_total}>486</span></p>
+                    </div>
+
+                </div>
+                <div className={styles.container_titulo_detalhe_da_compra}>
+                <p>Detalhe da compra</p>
+                </div>
+                <div className={styles.card_detalhe_da_compra}>
+                    <img src="/images/aviao-ida.png" className={styles.icone_aviao}/>
+                    <p className={styles.texto_cidade_ida_e_volta}>São Paulo - Rio de Janeiro</p>
+                    <p className={styles.texto_descricao_ida_volta_adulto}>Ida e volta, 1 adulto</p>
+                    <p>IDA</p>
+                </div>
+            </div>
         </div>
     )
 }
