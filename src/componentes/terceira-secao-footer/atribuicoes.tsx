@@ -43,6 +43,9 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/presente" title="presente ícones">Presente ícones criados por Freepik - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/passaporte" title="passaporte ícones">Passaporte ícones criados por Freepik - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/angulo-direito" title="ângulo direito ícones">Ângulo direito ícones criados por Kiranshastry - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/informacao" title="informação ícones">Informação ícones criados por Digby Garrett - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/estrela" title="estrela ícones">Estrela ícones criados por Filip Škoda - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/aviao" title="avião ícones">Avião ícones criados por Made by Made - Flaticon</a>
         </div>
     )
 }

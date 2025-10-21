@@ -971,3 +971,273 @@
     font-size:14px;
     color:#72777f;
 }
+
+.container_companhia_informacoes{
+    display:flex;
+    justify-content: space-between;
+    padding-right:20px;
+    padding-top:20px;
+}
+
+.container_icone_companhia_nome{
+    display:flex;
+    align-items: center;
+    gap:15px;
+}
+
+.icone_companhia{
+    width:25px;
+    height:25px;
+}
+
+.icone_informacoes{
+    width:25px;
+    height:25px;
+}
+
+.container_horario_voo_ida{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top:20px;
+}
+
+.texto_codigo_voo{
+    font-size:12px;
+    color:#323439;
+}
+
+.texto_horario_voo{
+    font-size:20px;
+    color:#323439;
+}
+
+.texto_direto{
+    color:#028574;
+    border-bottom:1px solid #028574;
+    padding-right:13px;
+    padding-left:13px;
+    padding-bottom:5px;
+    font-size:13px;
+}
+
+.texto_duracao{
+    font-size:14px;
+    color:#72777f;
+}
+
+.texto_tempo_duracao_voo{
+    font-size:14px;
+    color:#323439;
+}
+
+.container_imagem_bagagens{
+    display:flex;
+    padding-top:20px;
+}
+
+.container_detalhes_ida{
+    padding-bottom:20px;
+    border-bottom:1px solid #d6d4d4;
+}
+
+.container_detalhes_volta{
+    padding-top:20px;
+}
+
+.titulo_politicas{
+    font-size:16px;
+    color:#323439;
+    font-weight: bold;
+    border-bottom:1px solid #d6d4d4;
+    padding-bottom:20px;
+}
+
+.container_imagem_alteracoes_texto{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    font-size:14px;
+    color:#028574;
+}
+
+.container_imagem_cancelamento_texto{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    font-size:14px;
+    
+}
+
+.icone_cancelamento{
+    width:16px;
+    height:16px;
+}
+
+.texto_cancelamento{
+    font-size:12px;
+    color: #72777f;
+}
+
+.texto_politicas{
+    color:#4300d2;
+    font-size:14px;
+}
+
+.container_politicas_e_cancelamentos{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding-top:20px;
+}
+
+.container_cancelamento{
+    display:flex;
+    flex-direction: column;
+    gap:7px;
+}
+
+.titulo_alteracoes_cancelamento{
+    font-size:14px;
+    color:#323439;
+}
+
+.descricao_reembolsavel{
+    font-size:14px;
+    color:#323439;
+}
+
+.container_alteracoes_cancelamentos{
+    display:flex;
+    flex-direction: column;
+    gap:7px;
+    padding-top:10px;
+}
+
+.botao_ver_condicoes{
+    padding:0 16px;
+    height:36px;
+    border-radius: 24px;
+    color:white;
+    border:1px solid white;
+    background-color: #323439;
+    margin-top:20px;
+}
+
+
+.card_politicas_alteracoes{
+   background-color: #323439;
+   margin-top:20px;
+   border-radius: 6px;
+   padding:20px;
+}
+
+.container_icone_titulo_politicas{
+    display:flex;
+    align-items: center;
+    gap:15px;
+    color:white;
+}
+
+.overlay{
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 200%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal{
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 90vh; 
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.3s ease;
+  overflow-y: auto;
+}
+
+.card_modal{
+    
+    border-radius: 6px;
+}
+
+.container_botao_fechar{
+    display:flex;
+    justify-content: end;
+}
+
+.imagem_botao_fechar{
+    width:24px;
+    height:24px;
+}
+
+.botao_calcular_preco_modal_transfer{
+    padding:0 16px;
+    height:36px;
+    background-color: #4300d2;
+    border-radius: 24px;
+    border:none;
+    color:white;
+}
+
+.botao_nao_tenho_hospedagem_modal_transfer{
+     padding:0 16px;
+    height:36px;
+    background-color: white;
+    border-radius: 24px;
+    border:none;
+    color:#4300d2;
+}
+
+.container_botoes_hospedagem{
+    display:flex;
+    justify-content: end;
+}
+
+.imagem_aviao_hospedagem{
+    width:20px;
+    height:20px;
+}
+
+.container_aviao_hospedagem{
+    display:flex;
+    
+}
+
+.imagem_estrela_hospedagem{
+    width:20px;
+    height:20px;
+}
+
+.container_imagem_hospedagem{
+    display:flex;
+    
+}
+
+.container_hospedagem_modal{
+    display:flex;
+    flex-direction: column;
+    
+    
+}
+
+.input_hospedagem{
+    width:300px;
+}
+
+.container_aeroporto_hospedagem{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+    padding:20px;
+}

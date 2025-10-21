@@ -28,6 +28,8 @@ const handleChange = (option: SingleValue<OptionType>) => {
  
   };
 
+  const [mostrarModalPrecoTransfer, setMostrarModalPrecoTransfer] = useState(false);
+
     return (
         <div className={styles.secao_checkout}>
             <div className={styles.container_pagamento}>
@@ -186,7 +188,40 @@ const handleChange = (option: SingleValue<OptionType>) => {
                             </div>
                             <p className={styles.texto_viagem}>Viaje com tudo organizado e sem preocupação! Chegue a sua hospedagem e ao aeroporto de forma comoda e segura.</p>
                         </div>
-                        <button className={styles.botao_preco}>Calcular o preço</button>
+                        <button onClick={() => {setMostrarModalPrecoTransfer(true)}} className={styles.botao_preco}>Calcular o preço</button>
+                        {mostrarModalPrecoTransfer && (<div className={styles.overlay}>
+                      <div className={styles.modal}>
+                        <div className={styles.container_botao_fechar}>
+                          <img onClick={() => {setMostrarModalPrecoTransfer(false)}} src="/images/x-preto.png" className={styles.imagem_botao_fechar}/>
+                        </div>
+                        <div className={styles.card_modal}>
+                            <p>Insira o nome da hospedagem</p>
+                            <p>Assim poderemos encontrar a melhor opção para o seu transfer de ida e volta.</p>
+                            <div className={styles.container_aeroporto_hospedagem}>
+                            <div className={styles.container_aviao_hospedagem}>
+                                <img src="/images/aviao_modal_transfer.png" className={styles.imagem_aviao_hospedagem}/>
+                                <div className={styles.container_texto_aeroporto_modal}>
+                                <p>AEROPORTO</p>
+                                <p>Aeroporto Internacional Galeão Antonio Carlos Jobim, Rio de Janeiro</p>
+                                </div>
+                                </div>
+                                <div className={styles.container_hospedagem_modal}>
+                                    <div className={styles.container_imagem_hospedagem}>
+                                    <img src="/images/estrela-hospedagem.png" className={styles.imagem_estrela_hospedagem}/>
+                                    <p>HOSPEDAGEM</p>
+                                    </div>
+                                    <input placeholder="Nome da hospedagem" type="text" className={styles.input_hospedagem}/>
+
+                                </div>
+                                </div>
+                                <div className={styles.container_botoes_hospedagem}>
+                                    <button className={styles.botao_nao_tenho_hospedagem_modal_transfer}>Não tenho hospedagem</button>
+                                    <button className={styles.botao_calcular_preco_modal_transfer}>Calcular o preço</button>
+                                </div>
+                            
+                        </div>
+                        </div>
+                        </div>)}
                     </div>
                 </div>
                 <div className={styles.card_cuide}>
@@ -555,8 +590,100 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <img src="/images/aviao-ida.png" className={styles.icone_aviao}/>
                     <p className={styles.texto_cidade_ida_e_volta}>São Paulo - Rio de Janeiro</p>
                     <p className={styles.texto_descricao_ida_volta_adulto}>Ida e volta, 1 adulto</p>
+                    <div className={styles.container_detalhes_ida}>
                     <p>IDA</p>
-                </div>
+                    <p>Ter.16 dez. 2025</p>
+                    <div className={styles.container_companhia_informacoes}>
+                        <div className={styles.container_icone_companhia_nome}>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MduLD3BMOnAFv0qjmgI4qvei89O9CqiWmg&s" className={styles.icone_companhia}/>
+                            <p>Gol</p>
+                    </div>
+                    <img src="/images/informacoes.png" className={styles.icone_informacoes}/>
+                    </div>
+                    <div className={styles.container_horario_voo_ida}>
+                        <div className={styles.container_codigo_horario_voo}>
+                            <p className={styles.texto_codigo_voo}>CGH</p>
+                            <p className={styles.texto_horario_voo}>06:15</p>
+                        </div>
+                        <p className={styles.texto_direto}>Direto</p>
+                        <div className={styles.container_codigo_horario_voo}>
+                            <p className={styles.texto_codigo_voo}>GIG</p>
+                            <p className={styles.texto_horario_voo}>07:20</p>
+                        </div>
+                        <div className={styles.container_duracao_hora}>
+                            <p className={styles.texto_duracao}>Duração</p>
+                            <p className={styles.texto_tempo_duracao_voo}>1h 5m</p>
+                        </div>
+                    </div>
+                    <div className={styles.container_imagem_bagagens}>
+                        <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                        <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                        <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    </div>
+                    <div className={styles.container_detalhes_volta}>
+                    <p>VOLTA</p>
+                    <p>Ter.16 dez. 2025</p>
+                    <div className={styles.container_companhia_informacoes}>
+                        <div className={styles.container_icone_companhia_nome}>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1MduLD3BMOnAFv0qjmgI4qvei89O9CqiWmg&s" className={styles.icone_companhia}/>
+                            <p>Gol</p>
+                    </div>
+                    <img src="/images/informacoes.png" className={styles.icone_informacoes}/>
+                    </div>
+                    <div className={styles.container_horario_voo_ida}>
+                        <div className={styles.container_codigo_horario_voo}>
+                            <p className={styles.texto_codigo_voo}>CGH</p>
+                            <p className={styles.texto_horario_voo}>06:15</p>
+                        </div>
+                        <p className={styles.texto_direto}>Direto</p>
+                        <div className={styles.container_codigo_horario_voo}>
+                            <p className={styles.texto_codigo_voo}>GIG</p>
+                            <p className={styles.texto_horario_voo}>07:20</p>
+                        </div>
+                        <div className={styles.container_duracao_hora}>
+                            <p className={styles.texto_duracao}>Duração</p>
+                            <p className={styles.texto_tempo_duracao_voo}>1h 5m</p>
+                        </div>
+                    </div>
+                    <div className={styles.container_imagem_bagagens}>
+                        <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                        <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                        <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    </div>
+                    </div>
+                    <div className={styles.container_politicas_e_cancelamentos}>
+                        <p className={styles.titulo_politicas}>Políticas de alterações e cancelamentos</p>
+                        <div className={styles.container_alteracoes_cancelamentos}>
+                            <p className={styles.titulo_alteracoes_cancelamento}>Alterações</p>
+                            <div className={styles.container_imagem_alteracoes_texto}>
+                                <img src="/images/verificado-verde.png" className={styles.icone_verificado}/>
+                                <p>Permite (com custo)</p>
+                            </div>
+                        </div>
+                        <div className={styles.container_cancelamento}>
+                            <p className={styles.titulo_alteracoes_cancelamento}>Cancelamento</p>
+                            <div className={styles.container_imagem_cancelamento_texto}>
+                                <img src="/images/x-preto.png" className={styles.icone_cancelamento}/>
+                                <p className={styles.descricao_reembolsavel}>Não reembolsável *</p>
+                            </div>
+                        </div>
+                        <div className={styles.container_texto_cancelamento}>
+                            <p className={styles.texto_cancelamento}>*Caso o cancelamento seja solicitado 24h após a realização da compra e ao menos 7 dias antes da data do embarque, o reembolso será integral conforme Resoluções da SKYPASS.</p>
+                        </div>
+                        <div className={styles.container_ver_politicas_e_cancelamentos}>
+                            <p className={styles.texto_politicas}>Ver políticas de alterações e cancelamentos</p>
+                        </div>
+                    </div>
+                    
+                                    </div>
+                                    <div className={styles.card_politicas_alteracoes}>
+                                        <div className={styles.container_icone_titulo_politicas}>
+                                            <img src="/images/informacoes-branco.png" className={styles.icone_informacoes}/>
+                                            <p>Ver políticas de alterações e cancelamentos</p>
+                                        </div>
+                                        <button className={styles.botao_ver_condicoes}>Ver condições</button>
+                                    </div>
             </div>
         </div>
     )
