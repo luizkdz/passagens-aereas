@@ -1,0 +1,82 @@
+.secao_cadastre{
+    background-color: #eeeeee;
+    display:flex;
+    justify-content: center;
+    height:92.3vh;
+    
+}
+
+.card_cadastre{
+    background-color: #ffffff;
+    height:180px;
+    display:flex;
+    margin-top:20px;
+    width:288px;
+    padding:40px 30px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    flex-direction: column;
+    
+}
+
+.container_inicie_sessao{
+    display:flex;
+    gap:10px;
+    font-size:14px;
+}
+
+.icone_seta_direita{
+    font-size:16px;
+    height:16px;
+}
+
+.texto_inicie_sessao{
+    color:#4300d2;
+}
+
+.texto_criar_uma_conta{
+    color:#323439;
+}
+
+.titulo_crie_conta{
+    font-size:20px;
+    color:#323439;
+    padding-top:20px;
+}
+
+.botao_inscrever{
+    color:#4300d2;
+    border:1px solid #4300d2;
+    padding:0 16px;
+    height:36px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor:pointer;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    width:100%;
+}
+
+.botao_inscrever:hover{
+    color:white;
+    background-color: #4300d2;
+}
+
+.botao_inscrever:hover img{
+    content: url('/images/email-icone-branco.png')
+}
+
+.icone_email_acesso_botao{
+    width:16px;
+    height:16px;
+}
+
+.container_botoes{
+    padding-top:20px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}

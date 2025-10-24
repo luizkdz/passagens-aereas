@@ -1,0 +1,250 @@
+.container_minhas_viagens{
+    display:flex;
+    padding-top:20px;
+    padding-bottom:20px;
+    justify-content: center;
+}
+
+.secao_minhas_viagens{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:20px;
+}
+
+.titulo_minhas_viagens{
+    width:1280px;
+    display:inline-block;
+    font-size:32px;
+    font-weight: 100;
+    border-bottom:1px solid #d6d4d4;
+    padding-bottom:20px;
+}
+
+.lista_passagens{
+    display:flex;
+    list-style: none;
+    width:1280px;
+}
+
+.item_lista{
+    width:33.3%;
+    display:flex;
+    justify-content: center;
+    height:52px;
+    align-items: center;
+    cursor:pointer;
+    border-right:1px solid #d6d4d4;
+    font-size:14px;
+}
+
+.item_lista:hover{
+    background-color:#ebe5f5;
+}
+
+.item_lista_ativa{
+    width:33.3%;
+    display:flex;
+    justify-content: center;
+    height:52px;
+    align-items: center;
+    cursor:pointer;
+    border-right:1px solid #d6d4d4;
+    font-size:14px;
+    border-bottom:3px solid #4300d2;
+    color:#4300d2;
+}
+
+.item_lista_ativa:hover{
+    background-color:#ebe5f5;
+}
+
+.item_lista_passada{
+     width:33.3%;
+    display:flex;
+    justify-content: center;
+    height:52px;
+    align-items: center;
+    cursor:pointer;
+    font-size:14px;
+    
+}
+
+.icone_mochila{
+    width:72px;
+    height:72px;
+}
+
+.card_planeje_viagem{
+    width:345px;
+    padding:32px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    background-color: #ffffff;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.botao_criar_roteiro{
+    display:flex;
+    align-items: center;
+    padding:0 16px;
+    height:48px;
+    color:white;
+    background-color: #4300d2;
+    border:none;
+    border-radius: 24px;
+    font-size:16px;
+    gap:15px;
+    cursor:pointer;
+}
+
+.botao_criar_roteiro:hover{
+    background-color: #270570;
+}
+
+.icone_estrelas_natal{
+    width:24px;
+    height:24px;
+}
+
+.container_botao_criar_roteiro{
+    padding-top:20px;
+}
+
+.container_viagens_planejadas{
+    padding-top:40px;
+    background-color:#eeeeee;
+    height:806px;
+    display:flex;
+    justify-content: center;
+}
+
+.container_card{
+    width:1280px;
+
+}
+
+.container_planejadas_ativas_passadas{
+    display:flex;
+    justify-content: center;
+}
+
+.titulo_planeje{
+    color:#323439;
+}
+
+.descricao_planeje{
+    color:#565A60;
+}
+
+.card_inteligencia_artificial{
+    width:1280px;
+}
+
+.container_imagem_inteligencia_artificial_planeje{
+    display:flex;
+    gap:48px;
+}
+
+.imagem_inteligencia_artificial{
+    width:260px;
+    height:211px;
+}
+
+.titulo_planeje_ia{
+    font-size:28px;
+    color:#323439;
+}
+
+.container_texto_botao_planeje{
+    width:500px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.descricao_planeje_ia{
+    font-size:16px;
+    color:#323439;
+}
+
+.botao_planeje_viagem{
+    background-color:#4300d2;
+    color:white;
+    border-radius: 24px;
+    padding:0 16px;
+    height:48px;
+    border:none;
+    font-size:16px;
+    font-weight: bold;
+    width:187px;
+    cursor:pointer;
+}
+
+.botao_planeje_viagem:hover{
+    background-color: #270570;
+}
+
+.span_buscar_reservas{
+    color:#4300d2;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.span_buscar_reservas:hover{
+    color:#270570;
+}
+
+.texto_nao_encontrou{
+    color:#323439;
+}
+
+.container_nao_encontrou{
+    padding-top:40px;
+}
+
+.container_imagem_texto_economize{
+    display:flex;
+    gap:15px;
+    align-items: center;
+}
+
+.imagem_celular{
+    width:128px;
+    height:100px;
+}
+
+.titulo_economize{
+    font-size:24px;
+    color:white;
+}
+
+.card_economize_qr_code{
+    background-color: #270570;
+    width:805px;
+    padding:20px;
+    border-radius: 12px;
+    margin-top:40px;
+}
+
+.descricao_economize{
+     color:white;
+     font-size:14px;
+}
+
+
+.container_texto_economize{
+    display:flex;
+    flex-direction: column;
+    justify-content:center ;
+    gap:10px;
+}
+
+.icone_qr_code{
+    width:112px;
+    height:112px;
+    background-color: white;
+    padding: 10px;
+}

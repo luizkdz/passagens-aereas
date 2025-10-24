@@ -1,0 +1,79 @@
+.card_login{
+    background-color: #ffffff;
+    height:260px;
+    display:flex;
+    margin-top:20px;
+    width:288px;
+    padding:40px 30px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.secao_login{
+    background-color: #eeeeee;
+    display:flex;
+    justify-content: center;
+    height:92.3vh;
+    
+}
+
+.titulo_bem_vindo{
+    font-size:24px;
+    color:#323439;
+    
+}
+
+.container_botoes{
+    display:flex;
+    justify-content: end;
+    flex-direction: column;
+    gap:25px;
+}
+
+
+.botao_inscrever{
+    color:#4300d2;
+    border:1px solid #4300d2;
+    padding:0 16px;
+    height:36px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.botao_inscrever:hover{
+    color:white;
+    background-color: #4300d2;
+}
+
+.botao_acesse_com_seu_email{
+    color:#4300d2;
+    border:1px solid #4300d2;
+    padding:0 16px;
+    height:36px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    font-weight: bold;
+    cursor:pointer;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+
+.botao_acesse_com_seu_email:hover{
+    color:white;
+    background-color: #4300d2;
+}
+
+.botao_acesse_com_seu_email:hover img{
+    content: url('/images/email-icone-branco.png')
+}
+
+.icone_email_acesso_botao{
+    width:16px;
+    height:16px;
+}

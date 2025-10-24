@@ -188,6 +188,10 @@
     cursor:pointer;
 }
 
+.botao_adicionar_bagagem:hover{
+    background-color:#ebe5f5;
+}
+
 .container_texto_imagem_botoes{
     display:flex;
     justify-content: space-between;
@@ -296,6 +300,11 @@
     background-color: #ffffff;
     padding:0 16px;
     border-radius: 24px;
+    cursor:pointer;
+}
+
+.botao_preco:hover{
+    background-color:#ebe5f5;
 }
 
 .imagem_bing{
@@ -396,7 +405,15 @@
     border-radius: 24px;
     background-color: #ffffff;
     width:225px;
+    cursor:pointer;
+
 }
+
+.botao_selecionar_seguro:hover{
+    background-color: #ebe5f5;
+}
+
+
 
 .titulo_segunda_secao_card_seguro{
     font-size:14px;
@@ -471,17 +488,27 @@
     font-weight: bold;
     align-items: center;
     justify-content: center;
-    
 }
 
 .container_ver_mais{
     border-right:1px solid #d6d4d4;
     padding-right:15px;
+    cursor:pointer;
 }
 
+.container_ver_mais:hover{
+    color:#270570;
+}
+
+
+
 .container_politicas{
-    
+    cursor:pointer;
     padding-left:15px;
+}
+
+.container_politicas:hover{
+    color:#270570;
 }
 
 .titulo_ofertas{
@@ -498,6 +525,11 @@
 .span_politicas{
     font-size:12px;
     color:#4300d2;
+    cursor:pointer;
+}
+
+.span_politicas:hover{
+    color:#270570;
 }
 
 .card_email{
@@ -595,9 +627,17 @@
     gap:5px;
 }
 
+.container_imagem_lixeira_remover:hover{
+    color:#270570;
+}
+
 .container_imagem_mais_incluir{
     display:flex;
     gap:5px;
+}
+
+.container_imagem_mais_incluir:hover{
+    color:#270570;
 }
 
 .imagem_lixeira{
@@ -665,6 +705,11 @@
     padding-top:10px;
     gap:10px;
     font-weight: bold;
+    cursor:pointer;
+}
+
+.botao_ver_todos:hover{
+    color:#270570;
 }
 
 .titulo_como_quer_pagar{
@@ -680,6 +725,11 @@
 .span_cupom{
     font-size:14px;
     color:#4300d2;
+    cursor:pointer;
+}
+
+.span_cupom:hover{
+    color:#270570;
 }
 
 .paragrafo_cupom{
@@ -802,6 +852,11 @@
 .span_politicas_aceito{
     font-size:14px;
     color:#4300d2;
+    cursor:pointer;
+}
+
+.span_politicas_aceito:hover{
+    color:#270570;
 }
 
 .paragrafo_li_e_aceito{
@@ -811,9 +866,15 @@
 
 .container_input_li_e_aceito_condicoes{
     display:flex;
-    gap:15px;
-    align-items: center;
+    gap:10px;
     padding-left:20px;
+    flex-direction: column;
+    
+}
+
+.container_imagem_input_texto{
+    display:flex;
+    gap:15px;
     
 }
 
@@ -993,6 +1054,7 @@
 .icone_informacoes{
     width:25px;
     height:25px;
+    cursor:pointer;
 }
 
 .container_horario_voo_ida{
@@ -1082,7 +1144,13 @@
 .texto_politicas{
     color:#4300d2;
     font-size:14px;
+    cursor:pointer;
 }
+
+.texto_politicas:hover{
+    color:#270570;
+}
+
 
 .container_politicas_e_cancelamentos{
     display:flex;
@@ -1122,6 +1190,12 @@
     border:1px solid white;
     background-color: #323439;
     margin-top:20px;
+    cursor:pointer;
+}
+
+.botao_ver_condicoes:hover{
+    color:#4300d2;
+    background-color: white;
 }
 
 
@@ -1141,14 +1215,14 @@
 
 .overlay{
 position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100vw;
   height: 100vh;
   max-height: 200%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
+  
   justify-content: center;
   z-index: 999;
 }
@@ -1159,15 +1233,18 @@ position: fixed;
   border-radius: 12px;
   max-width: 650px;
   width: 90%;
-  max-height: 90vh; 
+  max-height: 35vh; 
+  margin-top:100px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   animation: aparecer 0.3s ease;
   overflow-y: auto;
 }
 
 .card_modal{
-    
+    display:flex;
     border-radius: 6px;
+    flex-direction: column;
+    gap:15px;
 }
 
 .container_botao_fechar{
@@ -1178,6 +1255,7 @@ position: fixed;
 .imagem_botao_fechar{
     width:24px;
     height:24px;
+    cursor:pointer;
 }
 
 .botao_calcular_preco_modal_transfer{
@@ -1187,6 +1265,11 @@ position: fixed;
     border-radius: 24px;
     border:none;
     color:white;
+    cursor:pointer;
+}
+
+.botao_calcular_preco_modal_transfer:hover{
+    background-color: #270570;
 }
 
 .botao_nao_tenho_hospedagem_modal_transfer{
@@ -1196,11 +1279,17 @@ position: fixed;
     border-radius: 24px;
     border:none;
     color:#4300d2;
+    cursor:pointer;
+}
+
+.botao_nao_tenho_hospedagem_modal_transfer:hover{
+    background-color: #ebe5f5;
 }
 
 .container_botoes_hospedagem{
     display:flex;
     justify-content: end;
+    gap:15px;
 }
 
 .imagem_aviao_hospedagem{
@@ -1226,13 +1315,10 @@ position: fixed;
 .container_hospedagem_modal{
     display:flex;
     flex-direction: column;
-    
+    gap:10px;
     
 }
 
-.input_hospedagem{
-    width:300px;
-}
 
 .container_aeroporto_hospedagem{
     display:flex;
@@ -1240,4 +1326,138 @@ position: fixed;
     gap:10px;
     justify-content: center;
     padding:20px;
+}
+
+.input_hospedagem{
+    width:288px;
+    padding:0px 40px 0px 16px;
+    height:32px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+    font-size:14px;
+}
+.container_texto_aeroporto_modal{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.titulo_insira_hospedagem_modal{
+    font-size:20px;
+    color:#323439;
+}
+
+.titulo_aeroporto{
+    font-size:12px;
+}
+
+.nome_aeroporto{
+    font-size:14px;
+}
+
+.icone_informacoes_taxas{
+    width:16px;
+    height:16px;
+    cursor:pointer;
+    
+}
+
+.container_impostos_e_taxas_icone_informacoes{
+    display:flex;
+    align-items: center;
+    gap:7px;
+    position:relative;
+}
+
+.menu_hover {
+  display: none;
+  position: absolute;
+  top: 120%; /* abaixo do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 10;
+}
+
+.icone_informacoes_taxas:hover + .menu_hover {
+  display: block;
+}
+
+.menu_hover_bagagem {
+  display: none;
+  position: absolute;
+  bottom: 100%; /* abaixo do ícone */
+  left: 35%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding-top:10px;
+  padding-left:20px;
+  padding-right:20px;
+  padding-bottom:20px;
+  border-radius: 8px;
+  width:290px;
+  z-index: 10;
+  
+}
+
+.container_imagem_bagagens{
+    position:relative;
+    cursor:pointer;
+}
+.container_imagem_bagagens:hover .menu_hover_bagagem{
+    display:block
+}
+
+.container_imagem_bagagem_menu_hover_bagagem{
+    display:flex;
+    gap:15px;
+    font-size:14px;
+    border-bottom:1px solid #d6d4d4;
+    padding-top:10px;
+}
+
+.texto_inclui_menu_hover_bagagem{
+    color:#028574;
+}
+
+.descricao_texto_inclui_menu_hover_bagagem{
+    color:#323439;
+}
+
+.texto_nao_inclui_menu_hover_bagagem{
+    font-size:14px;
+    color:#72777f;
+}
+
+.container_imagem_bagagem_menu_hover_bagagem_despacho{
+    display:flex;
+    gap:15px;
+    font-size:14px;
+    padding-top:10px;
+}
+
+.icone_erro{
+    width:14px;
+    height:14px;
+}
+
+.container_erro{
+    display:flex;
+    align-items: center;
+    gap:8px;
+    color:#cb4032;
+    font-size:14px;
+}
+
+.container_select_erro{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
 }

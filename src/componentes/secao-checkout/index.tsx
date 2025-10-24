@@ -1,12 +1,18 @@
 import styles from './secao-checkout.module.css';
 import Select from 'react-select';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 export default function SecaoCheckout(){
 
     const options = [
   { value: 'voo1', label: 'Brasil', image: '/images/aviao.png' },
   { value: 'voo2', label: 'Tunísia', image: '/images/aviao2.png' },
 ];
+
+const defaultCountry: OptionType = {
+  value: '55',
+  label: 'Brasil',
+  image: '/images/brasil.png',
+};
 
 const [selectedOption, setSelectedOption] = useState<OptionType | null>(options[0]);
 const [mostrarBagagem, setMostrarBagagem] = useState(false);
@@ -23,12 +29,175 @@ const handleRemoverTelefone = () => {
     setMostrarTelefone((inicial => (inicial - 1)));
 }
 
-const handleChange = (option: SingleValue<OptionType>) => {
+const [selectedOptions, setSelectedOptions] = useState<OptionType[]>([defaultCountry]);
+
+const handleChangePaisDeResidencia = (option: SingleValue<OptionType>) => {
     setSelectedOption(option);
- 
+    handleChangeForm('paisDeResidencia', option);
   };
 
+  const handleChangeCodigoPais = (index: number, option: SingleValue<OptionType>) => {
+  if (!option) return;
+  const novasOptions = [...selectedOptions];
+  novasOptions[index] = option;
+  setSelectedOptions(novasOptions);
+  handleCelularChange(index, "codigoPais", option.value); // ✅ campo correto
+};
+
   const [mostrarModalPrecoTransfer, setMostrarModalPrecoTransfer] = useState(false);
+
+  
+
+  const [formData, setFormData] = useState({
+  nome: '',
+  ultimoSobrenome: '',
+  paisDeResidencia: '',
+  cpf: '',
+  passaporte:'',
+  numero: '',
+  nascimento: {
+    dia: '',
+    mes: '',
+    ano: '',
+  },
+  sexo: '',
+  email: '',
+  confirmeEmail:'',
+  celulares: [
+    { codigoPais: '55', area: '', numero: '' },
+    { codigoPais:'55', area: '', numero: ''},
+    { codigoPais:'55', area: '', numero: ''},
+    { codigoPais:'55', area: '', numero: ''},
+  ],
+  receberOfertas: false,
+  formaPagamento:'',
+  nomeCompleto:'',
+  cpfNotaFiscal:'',
+  cep:'',
+  condicoes:false,
+  tipoDePessoa:'fisica',
+  estrangeiro:false,
+  alerta:false,
+  tipoTelefone:[
+    { tipoTelefone: ''},
+    { tipoTelefone: ''},
+    { tipoTelefone: ''},
+  ]
+});
+
+
+const [mostrarErros,setMostrarErros] = useState({
+    erroNome:false,
+    erroSobrenome:false,
+    erroCpf:false,
+    erroNascimento:{
+        erroDia:false,
+        erroMes:false,
+        erroAno:false,
+    }
+    ,erroSexo:false,
+    erroEmail:false,
+    erroConfirmeEmail:false,
+    erroCodigoDoPais:[{
+        erroCodigoDoPais:false
+    },
+    {erroCodigoDoPais:false},
+    {erroCodigoDoPais:false},
+    {erroCodigoDoPais:false}
+],
+    erroAreaPais:[{
+        erroAreaPais:false,
+    },
+    {
+        erroAreaPais:false,
+    },
+    {erroAreaPais:false},
+    {erroAreaPais:false}],
+    erroNumeroPais:[{
+        erroNumeroPais:false
+    },
+    {erroNumeroPais:false},
+    {erroNumeroPais:false},
+    {erroNumeroPais:false}],
+    erroMetodoPagamento:false,
+    erroNomeCompleto:false,
+    erroCpfNota:false,
+    erroCep:false,
+    erroCondicoes:false
+})
+
+const handleTipoTelefoneChange = (index: number, valor: string) => {
+  setFormData((prev) => {
+    const novosTipos = [...prev.tipoTelefone]; // copia o array
+    novosTipos[index] = { ...novosTipos[index], tipoTelefone: valor }; // altera o item desejado
+
+    return {
+      ...prev,
+      tipoTelefone: novosTipos, // substitui o array alterado
+    };
+  });
+};
+
+const handleChangeForm = (campo: string, valor: string | boolean) => {
+  setFormData((prev) => ({
+    ...prev,
+    [campo]: valor,
+  }));
+};
+const handleNascimentoChange = (campo: string, valor: string) => {
+  setFormData((prev) => ({
+    ...prev,
+    nascimento: {
+      ...prev.nascimento,
+      [campo]: valor,
+    },
+  }));
+};
+
+const handleCelularChange = (index: number, campo: string, valor: string) => {
+  const novosCelulares = [...formData.celulares];
+  novosCelulares[index][campo] = valor;
+
+  setFormData((prev) => ({
+    ...prev,
+    celulares: novosCelulares,
+  }));
+};
+
+const handleMostrarErro = (campo: string, valor: boolean) => {
+  setMostrarErros((prev) => ({
+    ...prev,
+    [campo]: valor,
+  }));
+};
+
+
+const handleMostrarErroNascimento = (campo: 'erroDia' | 'erroMes' | 'erroAno', valor: boolean) => {
+  setMostrarErros((prev) => ({
+    ...prev,
+    erroNascimento: {
+      ...prev.erroNascimento,
+      [campo]: valor,
+    },
+  }));
+};
+
+const handleMostrarErroTelefone = (
+  tipoErro: 'erroCodigoDoPais' | 'erroAreaPais' | 'erroNumeroPais',
+  index: number,
+  valor: boolean
+) => {
+  setMostrarErros((prev) => {
+    const novosErros = [...prev[tipoErro]]; // copia o array de erros daquele campo
+    novosErros[index] = { ...novosErros[index], [tipoErro]: valor }; // altera só o índice desejado
+
+    return {
+      ...prev,
+      [tipoErro]: novosErros, // atualiza o array no estado principal
+    };
+  });
+};
+
 
     return (
         <div className={styles.secao_checkout}>
@@ -42,17 +211,39 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <p className={styles.texto_adulto}>Adulto</p>
                     <div className={styles.container_label_input}>
                     <label>NOME</label>
-                    <input type="text" className={styles.input_nome} placeholder='Como está no documento'/>
+                    <input type="text" onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroNome', true)}
+                        else{
+                            handleMostrarErro('erroNome', false);
+                        }}} onChange={(e) => {handleChangeForm('nome',e.target.value);
+                    }} className={styles.input_nome} placeholder='Como está no documento'/>
+                    {mostrarErros['erroNome'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o nome completo como está no documento</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_label_input}>
                     <label>ÚLTIMO SOBRENOME</label>
-                    <input type="text" className={styles.input_nome} placeholder='Como está no documento'/>
+                    <input type="text" onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroSobrenome', true)}
+                        else{
+                            handleMostrarErro('erroSobrenome', false);
+                        }}}  onChange={(e) => {handleChangeForm('ultimoSobrenome',e.target.value);
+                    }} className={styles.input_nome} placeholder='Como está no documento'/>
+                    {mostrarErros['erroSobrenome'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o sobrenome completo como está no documento</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.label_container}>
                     <label>PAÍS DE RESIDÊNCIA</label>
                     <div style={{width:"200px"}}>
                         <Select value={selectedOption}
-                        onChange={handleChange} options={options}
+                        onChange={handleChangePaisDeResidencia} options={options}
                          formatOptionLabel={(option) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
           <img src={option.image} alt="" width={20} height={20} />
@@ -71,21 +262,67 @@ const handleChange = (option: SingleValue<OptionType>) => {
     </div>
     <div className={styles.container_label_input}>
     <label>NÚMERO</label>
-    <input type="number" placeholder='Número' className={styles.input_numero}/>
+    <input onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroCpf', true)}
+                        else{
+                            handleMostrarErro('erroCpf', false);
+                        }}} onChange={(e) => {handleChangeForm('cpf',e.target.value);}} type="number" placeholder='Número' className={styles.input_numero}/>
+    {mostrarErros['erroCpf'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o CPF correto</p>
+                        </div>
+                    )}
     </div>
     </div>
     <div className={styles.container_label_input}>
     <label>DATA DE NASCIMENTO</label>
     <div className={styles.container_selects}>
-    <select className={styles.select_dia_mes_ano}>
+    <div className={styles.container_select_erro}>
+    <select onBlur={(e) => {if(e.target.value === "Dia"){
+                        handleMostrarErroNascimento('erroDia', true)}
+                        else{
+                            handleMostrarErro('erroDia', false);
+                        }}} onChange={(e) => {handleNascimentoChange('dia',e.target.value)}} className={styles.select_dia_mes_ano}>
         <option>Dia</option>
     </select>
-    <select className={styles.select_dia_mes_ano}>
+    {mostrarErros['erroNascimento']['erroDia'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o dia correto</p>
+                        </div>
+                    )}
+                    </div>
+    <div className={styles.container_select_erro}>
+    <select onBlur={(e) => {if(e.target.value === "Mês"){
+                        handleMostrarErroNascimento('erroMes', true)}
+                        else{
+                            handleMostrarErro('erroMes', false);
+                        }}} onChange={(e) => {handleNascimentoChange('mes',e.target.value)}}  className={styles.select_dia_mes_ano}>
         <option>Mês</option>
     </select>
-    <select className={styles.select_dia_mes_ano}>
+    {mostrarErros['erroNascimento']['erroMes'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o mês correto</p>
+                        </div>
+                    )}
+    </div>
+    <div className={styles.container_select_erro}>
+    <select onBlur={(e) => {if(e.target.value === "Ano"){
+                        handleMostrarErroNascimento('erroAno', true)}
+                        else{
+                            handleMostrarErro('erroAno', false);
+                        }}} onChange={(e) => {handleNascimentoChange('ano',e.target.value)}}  className={styles.select_dia_mes_ano}>
         <option>Ano</option>
     </select>
+    {mostrarErros['erroNascimento']['erroAno'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o ano correto</p>
+                        </div>
+                    )}
+        </div>
     </div>
     </div>
     <div className={styles.label_container}>
@@ -93,13 +330,23 @@ const handleChange = (option: SingleValue<OptionType>) => {
     <div className={styles.container_sexo}>
         <div className={styles.container_masculino_feminino}>
         <div className={styles.container_input_genero_feminino}>
-        <input type="radio"/>
+        <input value='feminino' checked={formData.sexo === "feminino"} onBlur={() => {
+        if (!formData.sexo) handleMostrarErro('erroSexo', true);
+      }} onChange={() => {handleChangeForm('sexo','feminino')}} type="radio"/>
         <p>Feminino</p>
         </div>
         <div className={styles.container_input_genero_masculino}>
-        <input type="radio"/>
+        <input value='masculino' checked={formData.sexo === "masculino"} type="radio" onBlur={() => {
+        if (!formData.sexo) handleMostrarErro('erroSexo', true);
+      }} onChange={() => {handleChangeForm('sexo','masculino')}}/>
         <p>Masculino</p>
         </div>
+        {mostrarErros['erroSexo'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o sexo</p>
+                        </div>
+                    )}
         </div>
     </div>
     </div>
@@ -195,20 +442,20 @@ const handleChange = (option: SingleValue<OptionType>) => {
                           <img onClick={() => {setMostrarModalPrecoTransfer(false)}} src="/images/x-preto.png" className={styles.imagem_botao_fechar}/>
                         </div>
                         <div className={styles.card_modal}>
-                            <p>Insira o nome da hospedagem</p>
+                            <p className={styles.titulo_insira_hospedagem_modal}>Insira o nome da hospedagem</p>
                             <p>Assim poderemos encontrar a melhor opção para o seu transfer de ida e volta.</p>
                             <div className={styles.container_aeroporto_hospedagem}>
                             <div className={styles.container_aviao_hospedagem}>
                                 <img src="/images/aviao_modal_transfer.png" className={styles.imagem_aviao_hospedagem}/>
                                 <div className={styles.container_texto_aeroporto_modal}>
-                                <p>AEROPORTO</p>
-                                <p>Aeroporto Internacional Galeão Antonio Carlos Jobim, Rio de Janeiro</p>
+                                <p className={styles.titulo_aeroporto}>AEROPORTO</p>
+                                <p className={styles.nome_aeroporto}>Aeroporto Internacional Galeão Antonio Carlos Jobim, Rio de Janeiro</p>
                                 </div>
                                 </div>
                                 <div className={styles.container_hospedagem_modal}>
                                     <div className={styles.container_imagem_hospedagem}>
                                     <img src="/images/estrela-hospedagem.png" className={styles.imagem_estrela_hospedagem}/>
-                                    <p>HOSPEDAGEM</p>
+                                    <p className={styles.titulo_aeroporto}>HOSPEDAGEM</p>
                                     </div>
                                     <input placeholder="Nome da hospedagem" type="text" className={styles.input_hospedagem}/>
 
@@ -340,15 +587,35 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     </div>
                     <div className={styles.container_label_input}>
                     <label>E-MAIL</label>
-                    <input type="text" className={styles.input_email} placeholder='Insira seu e-mail'/>
+                    <input type="text" onBlur={(e) => {if(e.target.value === ""){
+                        handleMostrarErro('erroEmail', true)}
+                        else{
+                            handleMostrarErro('erroEmail', false);
+                        }}} className={styles.input_email} onChange={(e) => {handleChangeForm('email',e.target.value)}} placeholder='Insira seu e-mail'/>
+                    {mostrarErros['erroEmail'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o e-mail correto</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_label_input}>
                     <label>CONFIRME O SEU E-MAIL</label>
-                    <input type="text" className={styles.input_email} placeholder='Insira seu e-mail'/>
+                    <input  onBlur={(e) => {if(e.target.value === ""){
+                        handleMostrarErro('erroConfirmeEmail', true)}
+                        else{
+                            handleMostrarErro('erroConfirmeEmail', false);
+                        }}} type="text" className={styles.input_email} onChange={(e) => {handleChangeForm('confirmeEmail',e.target.value)}} placeholder='Insira seu e-mail'/>
+                    {mostrarErros['erroConfirmeEmail'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Confirme seu e-mail corretamente</p>
+                        </div>
+                    )}
                     </div>
-                    <div className={styles.container_input_melhores_ofertas}>
+                    <div className={styles.container_input_melhores_ofertas}  >
                         
-                        <input type="checkbox" className={styles.input_checkbox}/>
+                        <input type="checkbox" checked={formData['receberOfertas'] === true} onChange={(e) => {handleChangeForm('receberOfertas',e.target.checked)}} className={styles.input_checkbox}/>
                         <div className={styles.container_titulo_paragrafo}>
                         <p className={styles.titulo_ofertas}>Quero receber as melhores ofertas!</p>
                         <p className={styles.paragrafo_email_ofertas}>Você vai receber e-mails e ligações com as melhores promoções para a sua viagem. Mas, se não quiser, é só desmarcar esta opção. Para mais informações, consulte nossas políticas de privacidade.
@@ -363,7 +630,7 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <div>
                     <div className={styles.container_label_input}>
                     <label>TELEFONE</label>
-                    <select className={styles.select_celular}>
+                    <select onChange={(e) => {handleTipoTelefoneChange(0,e.target.value)}} className={styles.select_celular}>
                         <option>Celular</option>
                     </select>
                     </div>
@@ -371,7 +638,7 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <label>CÓDIGO DO PAÍS</label>
                     <div style={{width:"200px"}}>
                         <Select value={selectedOption}
-                        onChange={handleChange} options={options}
+                        onChange={handleChangePaisDeResidencia} options={options}
                          formatOptionLabel={(option) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
           <img src={option.image} alt="" width={20} height={20} />
@@ -383,11 +650,35 @@ const handleChange = (option: SingleValue<OptionType>) => {
     <div className={styles.container_area_numero}>
     <div className={styles.container_label_input}>
                     <label>ÁREA</label>
-                    <input type="text" className={styles.input_area_celular}/>
+                    <input onBlur={(e) => {
+        if (e.target.value === '') {
+          handleMostrarErroTelefone('erroAreaPais', 0, true);
+        } else {
+          handleMostrarErroTelefone('erroAreaPais', 0, false);
+        }
+      }} type="text" className={styles.input_area_celular}/>
+                    {mostrarErros['erroAreaPais'][0]?.erroAreaPais && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Coloque uma área correta</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_label_input}>
     <label>NÚMERO</label>
-    <input type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    <input onBlur={(e) => {
+        if (e.target.value === '') {
+          handleMostrarErroTelefone('erroNumeroPais', 0, true);
+        } else {
+          handleMostrarErroTelefone('erroNumeroPais', 0, false);
+        }
+      }} type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    {mostrarErros['erroNumeroPais'][0]?.erroNumeroPais && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Coloque um número correto</p>
+                        </div>
+                    )}
     </div>
                     </div>
                     </div>
@@ -400,15 +691,15 @@ const handleChange = (option: SingleValue<OptionType>) => {
                                     <div>
                     <div className={styles.container_label_input}>
                     <label>TELEFONE {index + 2}</label>
-                    <select className={styles.select_celular}>
+                    <select onChange={(e) => {handleTipoTelefoneChange(index, e.target.value)}} className={styles.select_celular}>
                         <option>Celular</option>
                     </select>
                     </div>
                     <div className={styles.container_label_input}>
                     <label>CÓDIGO DO PAÍS</label>
                     <div style={{width:"200px"}}>
-                        <Select value={selectedOption}
-                        onChange={handleChange} options={options}
+                        <Select value={selectedOptions[index]}
+                        onChange={(option) => {handleChangeCodigoPais(index,option)}} options={options}
                          formatOptionLabel={(option) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
           <img src={option.image} alt="" width={20} height={20} />
@@ -420,11 +711,35 @@ const handleChange = (option: SingleValue<OptionType>) => {
     <div className={styles.container_area_numero}>
     <div className={styles.container_label_input}>
                     <label>ÁREA</label>
-                    <input type="text" className={styles.input_area_celular}/>
+                    <input onChange={(e) => {handleCelularChange(index,'area',e.target.value)}} onBlur={(e) => {
+        if (e.target.value === '') {
+          handleMostrarErroTelefone('erroAreaPais', index + 1, true);
+        } else {
+          handleMostrarErroTelefone('erroAreaPais', index + 1, false);
+        }
+      }} type="text" className={styles.input_area_celular}/>
+                    {mostrarErros['erroAreaPais'][index + 1]?.erroAreaPais && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Coloque uma área correta</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_label_input}>
     <label>NÚMERO</label>
-    <input type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    <input onChange={(e) => {handleCelularChange(index,'numero',e.target.value)}} onBlur={(e) => {
+        if (e.target.value === '') {
+          handleMostrarErroTelefone('erroNumeroPais', index + 1, true);
+        } else {
+          handleMostrarErroTelefone('erroNumeroPais', index + 1, false);
+        }
+      }} type="number" placeholder='Coloque seu número' className={styles.input_numero}/>
+    {mostrarErros['erroNumeroPais'][index + 1]?.erroNumeroPais &&  (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Coloque seu número correto</p>
+                        </div>
+                    )}
     </div>
                     </div>
                     </div>
@@ -444,7 +759,7 @@ const handleChange = (option: SingleValue<OptionType>) => {
                         </div>
                     </div>
                     <div className={styles.container_input_alerta_detalhes}>
-                        <input type="checkbox" className={styles.input_checkbox}/>
+                        <input checked={formData['alerta'] === true} onChange={(e) => {handleChangeForm('alerta',e.target.checked)}} type="checkbox" className={styles.input_checkbox}/>
                         <p className={styles.paragrafo_alerta_detalhes}>Quero receber detalhes da minha compra, estado do voo e possíveis alterações da minha reserva por WhatsApp ou SMS</p>
                     </div>
                     
@@ -454,34 +769,34 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <p className={styles.texto_mais_usados}>Mais usados</p>
                     <div className={styles.card_meios_de_pagamento}>
                         <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'cartao_credito'} onChange={() => {handleChangeForm('formaPagamento', 'cartao_credito')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>Cartão de crédito</p>
                             <span className={styles.span_melhor_preco}>Até 20% OFF</span>
                         </div>
                         <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'pix'} onChange={() => {handleChangeForm('formaPagamento', 'pix')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>Pix</p>
                             <span className={styles.span_melhor_preco}>Até 4% OFF</span>
                         </div>
                         <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'koin'} onChange={() => {handleChangeForm('formaPagamento', 'koin')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>Koin(Boleto Parcelado)</p>
                             <span className={styles.span_melhor_preco}>Até R$70 de cashback</span>
                         </div>
                         <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'dois_cartoes'} onChange={() => {handleChangeForm('formaPagamento', 'dois_cartoes')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>2 cartões (débito e/ou crédito combinados)</p>
                             <span className={styles.span_melhor_preco}>Até 19% OFF</span>
                         </div>
                     {mostrarTodosMeiosPagamentos && (
                         <div>
                             <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'cartao_debito'} onChange={() => {handleChangeForm('formaPagamento', 'cartao_debito')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>Cartão de débito</p>
                             <span className={styles.span_melhor_preco}>Até 19% OFF</span>
                         </div>
                         <div className={styles.container_meio_de_pagamento}>
-                            <input type="radio" className={styles.input_radio_pagamento}/>
+                            <input checked = {formData['formaPagamento'] === 'dinheiro'} onChange={() => {handleChangeForm('formaPagamento', 'dinheiro')}} type="radio" className={styles.input_radio_pagamento}/>
                             <p className={styles.paragrafo_meio_de_pagamento}>Pagamento em dinheiro</p>
                             <span className={styles.span_melhor_preco}>Até 19% OFF</span>
                         </div>
@@ -497,26 +812,56 @@ const handleChange = (option: SingleValue<OptionType>) => {
                     <h2 className={styles.titulo_nota_fiscal}>Em nome de quem emitimos a nota fiscal?</h2>
                     <div className={styles.container_situacao_fiscal}>
                         <label className={styles.label_situacao_fiscal}>SITUAÇÃO FISCAL</label>
-                        <select className={styles.select_situacao_fiscal}>
+                        <select onChange={(e) => {handleChangeForm('tipoPessoa',e.target.value)}} className={styles.select_situacao_fiscal}>
                             <option>Pessoa Física</option>
                             <option>Pessoa Jurídica</option>
                         </select>
                         <div className={styles.container_input_contribuinte_estrangeiro}>
-                            <input type="checkbox" className={styles.input_checkbox}/>
+                            <input checked={formData['estrangeiro'] === true} onChange={(e) => {handleChangeForm('estrangeiro',e.target.checked)}} type="checkbox" className={styles.input_checkbox}/>
                             <p>Contribuinte estrangeiro</p>
                         </div>
                         <div className={styles.container_label_input}>
                     <label>NOME COMPLETO</label>
-                    <input type="text" className={styles.input_nome} placeholder='Como está no documento'/>
+                    <input onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroNomeCompleto', true)}
+                        else{
+                            handleMostrarErro('erroNomeCompleto', false);
+                        }}} onChange={(e) => {handleChangeForm('nomeCompleto',e.target.value)}} type="text" className={styles.input_nome} placeholder='Como está no documento'/>
+                    {mostrarErros['erroNomeCompleto'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Coloque o nome correto</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_cpf_cep}>
                     <div className={styles.container_label_input}>
                     <label>CPF</label>
-                    <input type="text" className={styles.input_cpf} placeholder='Como está no documento'/>
+                    <input onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroCpfNota', true)}
+                        else{
+                            handleMostrarErro('erroCpfNota', false);
+                        }}} onChange={(e) => {handleChangeForm('cpfNotaFiscal',e.target.value)}} type="text" className={styles.input_cpf} placeholder='Como está no documento'/>
+                    {mostrarErros['erroCpfNota'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o CPF correto</p>
+                        </div>
+                    )}
                     </div>
                     <div className={styles.container_label_input}>
                     <label>CEP</label>
-                    <input type="text" className={styles.input_cep} placeholder='Ex.:54789218390'/>
+                    <input onBlur={(e) => {if(e.target.value.length < 3 || e.target.value === ""){
+                        handleMostrarErro('erroCep', true)}
+                        else{
+                            handleMostrarErro('erroCep', false);
+                        }}} onChange={(e) => {handleChangeForm('cep',e.target.value)}} type="text" className={styles.input_cep} placeholder='Ex.:54789218390'/>
+                    {mostrarErros['erroCep'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Insira o CEP correto</p>
+                        </div>
+                    )}
                     </div>
                     </div>
                     </div>
@@ -537,13 +882,25 @@ const handleChange = (option: SingleValue<OptionType>) => {
                         <p>Quem viaja?</p>
                     </div>
                     <div className={styles.container_nome_sobrenome}>
-                        <p>Nome:</p>
-                        <p>Último sobrenome:</p>
+                        <p>Nome:{formData['nome']}</p>
+                        <p>Último sobrenome:{formData['ultimoSobrenome']}</p>
                     </div>
                 </div>
                 <div className={styles.container_input_li_e_aceito_condicoes}>
-                    <input type="checkbox" className={styles.input_checkbox}/>
+                    <div className={styles.container_imagem_input_texto}>
+                    <input onBlur={(e) => {if(formData['condicoes'] != true){
+                        handleMostrarErro('erroCondicoes', true)}
+                        else{
+                            handleMostrarErro('erroCondicoes', false);
+                        }}} checked={formData['condicoes'] === true} onChange={(e) => {handleChangeForm('condicoes',e.target.checked)}} type="checkbox" className={styles.input_checkbox}/>
                     <p className={styles.paragrafo_li_e_aceito}>Li e aceito as <span className={styles.span_politicas_aceito}>condições de compra</span> , <span className={styles.span_politicas_aceito}>política de privacidade</span> e <span className={styles.span_politicas_aceito}>política de alterações e cancelamentos</span>.</p>
+                </div>
+                {mostrarErros['erroCondicoes'] && (
+                        <div className={styles.container_erro}>
+                            <img src="/images/erro.png" className={styles.icone_erro}/>
+                            <p>Você precisa aceitar os as condições de compra e os termos de uso.</p>
+                        </div>
+                    )}
                 </div>
                 <div className={styles.container_botao_comprar}>
                     <button className={styles.botao_comprar_laranja}>Comprar</button>
@@ -573,7 +930,14 @@ const handleChange = (option: SingleValue<OptionType>) => {
                         <p>R$ 351</p>
                     </div>
                     <div className={styles.container_voo_preco}>
+                        <div className={styles.container_impostos_e_taxas_icone_informacoes}>
                         <p>Impostos e taxas</p>
+                        <img src="/images/informacoes.png" className={styles.icone_informacoes_taxas}/>
+                        <div className={styles.menu_hover}>
+                        <p>Taxas e informações adicionais</p>
+                        <p>Bagagem despachada não incluída</p>
+                    </div>
+                        </div>
                         <p>R$ 135</p>
                     </div>
                     </div>
@@ -619,6 +983,30 @@ const handleChange = (option: SingleValue<OptionType>) => {
                         <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
                         <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
                         <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                    <div className={styles.menu_hover_bagagem}>
+                        <div className={styles.container_imagem_bagagem_menu_hover_bagagem}>
+                            <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_inclui_menu_hover_bagagem}>Inclui uma mochila ou bolsa</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Deve caber embaixo do assento dianteiro.</p>
+                            </div>
+                        </div>
+                                                <div className={styles.container_imagem_bagagem_menu_hover_bagagem}>
+                            <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_inclui_menu_hover_bagagem}>Inclui bagagem de mão</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Deve caber no compartimento superior do avião</p>
+                            </div>
+                        </div>
+                                                <div className={styles.container_imagem_bagagem_menu_hover_bagagem_despacho}>
+                            <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_nao_inclui_menu_hover_bagagem}>Não inclui bagagem para despachar</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Você poderá adicionar malas por um valor adicional quando chegar ao aeroporto.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     </div>
                     </div>
                     <div className={styles.container_detalhes_volta}>
@@ -650,6 +1038,29 @@ const handleChange = (option: SingleValue<OptionType>) => {
                         <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
                         <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
                         <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                     <div className={styles.menu_hover_bagagem}>
+                        <div className={styles.container_imagem_bagagem_menu_hover_bagagem}>
+                            <img src="/images/bagagem.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_inclui_menu_hover_bagagem}>Inclui uma mochila ou bolsa</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Deve caber embaixo do assento dianteiro.</p>
+                            </div>
+                        </div>
+                                                <div className={styles.container_imagem_bagagem_menu_hover_bagagem}>
+                            <img src="/images/bagagem-mao.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_inclui_menu_hover_bagagem}>Inclui bagagem de mão</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Deve caber no compartimento superior do avião</p>
+                            </div>
+                        </div>
+                                                <div className={styles.container_imagem_bagagem_menu_hover_bagagem_despacho}>
+                            <img src="/images/bagagem-despacho.png" className={styles.icone_bagagem}/>
+                            <div className={styles.container_texto_menu_hover_bagagem}>
+                            <p className={styles.texto_nao_inclui_menu_hover_bagagem}>Não inclui bagagem para despachar</p>
+                            <p className={styles.descricao_texto_inclui_menu_hover_bagagem}>Você poderá adicionar malas por um valor adicional quando chegar ao aeroporto.</p>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     </div>
                     <div className={styles.container_politicas_e_cancelamentos}>

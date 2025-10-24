@@ -46,6 +46,15 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/informacao" title="informação ícones">Informação ícones criados por Digby Garrett - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/estrela" title="estrela ícones">Estrela ícones criados por Filip Škoda - Flaticon</a>
         <a href="https://www.flaticon.com/br/icones-gratis/aviao" title="avião ícones">Avião ícones criados por Made by Made - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/do-utilizador" title="do utilizador ícones">Do utilizador ícones criados por Becris - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/o-email" title="o email ícones">O email ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/voucher-de-presente" title="voucher de presente ícones">Voucher de presente ícones criados por Uniconlabs - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/mochila" title="mochila ícones">Mochila ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/bate-papo-da-bolha" title="bate-papo da bolha ícones">Bate-papo da bolha ícones criados por Irfansusanto20 - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/do-utilizador" title="do utilizador ícones">Do utilizador ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/sino" title="sino ícones">Sino ícones criados por Gajah Mada - Flaticon</a>
+       <a href="https://www.flaticon.com/br/icones-gratis/inteligencia-artificial" title="inteligência artificial ícones">Inteligência artificial ícones criados por Freepik - Flaticon</a> 
+        <a href="https://www.flaticon.com/br/icones-gratis/visitante" title="visitante ícones">Visitante ícones criados por Mihimihi - Flaticon</a>
         </div>
     )
 }

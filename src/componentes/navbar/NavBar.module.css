@@ -67,12 +67,19 @@
 
 .container_usuario_menu{
     display:flex;
+    position:relative;
+    flex-direction: column;
+}
+
+.container_imagens_menu{
+    display:flex;
     align-items: center;
     border-radius: 24px;
     padding:10px;
     background-color: white;
-    margin:10px;
+    margin:5px;
     gap:10px;
+    cursor:pointer;
 }
 
 .imagem_usuario{
@@ -111,4 +118,286 @@
 
 .container_imagem_icone_menu:hover{
     color:#270570;
+}
+
+.card_menu{
+    top:70px;
+    right:-10px;
+    position:absolute;
+    background: #ffffff;
+    border:1px solid #d6d4d4;
+    width:248px;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+    z-index: 1;
+    border-radius: 6px;
+}
+
+.icone_usuario_menu{
+    width:60px;
+    height:60px;
+    
+}
+
+.container_imagem_ola{
+    display:flex;
+    align-items: center;
+    gap:15px;
+    border-bottom:1px solid #d6d4d4;
+    padding-bottom:10px;
+}
+
+.imagem_passaporte_menu{
+    width:16px;
+    height:16px;
+}
+
+.container_imagem_passaporte_texto{
+    display:flex;
+    gap:5px;
+    align-items: center;
+    font-size:12px;
+    color:#323439;
+}
+
+.container_cupons_notificacao{
+    display:flex;
+    font-size:12px;
+    color:#323439;
+    padding-top:10px;
+    justify-content: space-between;
+}
+
+.card_beneficios_passaporte{
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+.card_beneficios_passaporte:hover{
+    background-color:#ebe5f5;
+}
+
+.paragrafo_noticacoes{
+    background-color: #8a1004;
+    padding-left:6px;
+    padding-right:6px;
+    padding-top:2px;
+    padding-bottom:1px;
+    color:white;
+    border-radius: 24px;
+}
+
+.paragrafo_iniciar_sessao{
+    color:#4300d2;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.paragrafo_iniciar_sessao:hover{
+    color:#270570;
+}
+.container_iniciar_sessao{
+    border-top:1px solid #d6d4d4;
+    padding:16px 21px;
+}
+.container_iniciar_sessao:hover{
+    background-color: #f2f4f5;
+}
+.link_beneficios{
+    font-size:12px;
+}
+
+.titulo_beneficios{
+    font-weight: bold;
+}
+.titulo_ola{
+    font-weight: bold;
+    color:#323439;
+}
+
+.icone_passaporte_menu_logado{
+    width:16px;
+    height:16px;
+}
+
+.card_logado{
+    top:70px;
+    right:-10px;
+    position:absolute;
+    background: #ffffff;
+    border:1px solid #d6d4d4;
+    width:288px;
+    
+    display:flex;
+    flex-direction: column;
+    
+    z-index: 1;
+    border-radius: 6px;
+}
+
+
+.container_imagem_ola_logado {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding:20px;
+    /* Metade superior colorida, metade inferior transparente */
+    background: linear-gradient(to bottom, #FF5C63 50%, transparent 50%);
+}
+
+.container_nome_beneficios{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.container_texto_beneficios{
+    display:flex;
+    flex-direction: column;
+    gap:3px;
+    
+}
+
+.titulo_ola{
+    margin-top:15px;
+    color:white;
+    
+}
+
+.texto_beneficios{
+    font-size:12px;
+
+}
+
+.container_nome_beneficios{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    padding-left:10px;
+}
+
+.container_pontos_passaporte_cupons{
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+    border-bottom:1px solid #d6d4d4;
+}
+
+.container_imagem_pontos{
+    display:flex;
+    gap:5px;
+}
+
+.container_pontos_passaporte_cupons{
+    display:flex;
+    gap:15px;
+}
+
+.card_pontos_passaporte{
+    border:1px solid #d6d4d4;
+    padding:8px 20px;
+    font-size:12px;
+    border-radius: 6px;
+    cursor:pointer;
+}
+
+.card_pontos_passaporte:hover{
+    background-color:#ebe5f5;
+}
+
+.titulo_pontos{
+    font-weight: bold;
+}
+
+.icone_cupom_menu_logado{
+    width:16px;
+    height:16px;
+}
+
+.container_passaporte_skypass{
+    display:flex;
+    gap:10px;
+    border-bottom:1px solid #d6d4d4;
+    padding:12px;
+}
+
+.icone_passaporte_rosa{
+    width:48px;
+    height:48px;
+}
+
+.texto_pontos_disponiveis{
+    font-size:12px;
+    color:#323439;
+}
+
+.container_texto_passaporte{
+    width:150px;
+}
+
+.icone_bagagem{
+    width:20px;
+    height:22px;
+}
+
+.container_imagem_viagens{
+    display:flex;
+    padding:12px 24px;
+    gap:16px;
+    color:#323439;
+    cursor:pointer;
+}
+
+.container_imagem_viagens:hover{
+    background-color: #ebe5f5;
+}
+
+.container_viagens_opinioes_perfil{
+    border-bottom:1px solid #d6d4d4;
+}
+
+.paragrafo_sair_conta{
+    color:#4300d2;
+    font-weight: bold;
+}
+
+.container_imagem_links_branco{
+    display:flex;
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color: #ffffff;
+    justify-content: center;
+}
+
+.container_televendas_branco{
+     border-bottom-left-radius: 15px;
+    display:flex;
+    background-color: #ffffff;
+    height:60px;
+
+}
+
+.container_televendas_branco ul{
+    display:flex;
+    list-style: none;
+    height:60px;
+    padding-right:10px;
+
+}
+
+.container_nav_bar_border{
+    display:flex;
+    justify-content: space-evenly;
+    border-bottom:1px solid #d6d4d4;
+}
+
+.down_nav_bar_off{
+    display:none;
 }

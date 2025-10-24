@@ -1,0 +1,231 @@
+.secao_cadastre_email{
+    background-color: #eeeeee;
+    display:flex;
+    justify-content: center;
+    height:92.3vh;
+}
+
+.card_cadastre_email{
+    background-color: #ffffff;
+    height:270px;
+    display:flex;
+    margin-top:20px;
+    width:308px;
+    padding:40px 30px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    flex-direction: column;
+    
+}
+
+.card_cadastre_email_step_2{
+    background-color: #ffffff;
+    height:430px;
+    display:flex;
+    margin-top:20px;
+    width:308px;
+    padding:40px 30px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    flex-direction: column;
+    
+}
+
+.card_cadastre_email_step_3{
+    background-color: #ffffff;
+    height:230px;
+    display:flex;
+    margin-top:20px;
+    width:308px;
+    padding:40px 30px;
+    border:1px solid #d6d4d4;
+    border-radius: 6px;
+    flex-direction: column;
+}
+
+.container_inicie_sessao{
+    display:flex;
+    gap:10px;
+    font-size:14px;
+}
+
+.icone_seta_direita{
+    font-size:16px;
+    height:16px;
+}
+
+.texto_inicie_sessao{
+    color:#4300d2;
+}
+
+.texto_criar_uma_conta{
+    color:#323439;
+}
+
+.titulo_crie_conta{
+    font-size:20px;
+    color:#323439;
+    padding-top:10px;
+}
+
+.container_label_input_email{
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    padding-top:20px;
+    gap:10px;
+}
+
+.input_email{
+    height:48px;
+    padding:0px 40px 0px 16px;
+    border-radius: 6px;
+    border:1px solid #4300d2;
+}
+
+.icone_email{
+    position:absolute;
+    right:15px;
+    top:65px;
+    width:16px;
+    height:16px;
+}
+
+.label_email{
+    font-size:14px;
+    color:#323439;
+}
+
+.container_recaptcha{
+    padding-top:20px;
+}
+
+.botao_seguinte{
+    background-color: #4300d2;
+    border:none;
+    color:white;
+    height:48px;
+    padding:0px 25px;
+    border-radius: 24px;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.botao_seguinte:hover{
+    background-color:#270570;
+}
+.container_botao_seguinte{
+    padding-top:10px;
+    display:flex;
+    justify-content: end;
+    margin-right:-20px;
+}
+
+.input_senha{
+    height:48px;
+    padding:0px 40px 0px 16px;
+    border-radius: 6px;
+    border:1px solid #4300d2;
+}
+
+.container_label_input_senha{
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    padding-top:20px;
+    gap:10px;
+}
+
+.texto_exibir_senha{
+    position:absolute;
+    color:#4300d2;
+    right:15px;
+    top:65px;
+    font-size:12px;
+    font-weight: bold;
+}
+
+.icone_verificado_senha{
+    width:12px;
+    height:12px;
+}
+
+.texto_senha{
+    font-size:12px;
+}
+
+.container_imagem_verificado_senha{
+    display:flex;
+    gap:5px;
+    padding-top:10px;
+}
+
+.container_validacoes_senha{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.texto_concorda{
+    font-size:14px;
+    color:#323439;
+}
+
+.container_concorda_politicas{
+    padding-top:20px;
+}
+
+.botao_criar_conta{
+    background-color: #4300d2;
+    border:none;
+    color:white;
+    height:48px;
+    padding:0px 25px;
+    border-radius: 24px;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.container_botao_criar_conta{
+    display:flex;
+    justify-content: end;
+    margin-right:-10px;
+    padding-top:15px;
+}
+
+.botao_acessar_email{
+    background-color: #ffffff;
+    border:1px solid #4300d2;
+    color:#4300d2;
+    height:48px;
+    padding:0px 25px;
+    border-radius: 24px;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.botao_acessar_email:hover{
+    background-color: #4300d2;
+    color:white;
+}
+
+.texto_email{
+    font-size:14px;
+    color:#323439;
+}
+
+.container_botao_acessar_email{
+    display:flex;
+    justify-content: end;
+    margin-right:-15px;
+    padding-top:10px;
+}
+
+.icone_email_enviado{
+    width:60px;
+    height:60px;
+}
+
+.container_imagem_email{
+    display:flex;
+    justify-content: center;
+}

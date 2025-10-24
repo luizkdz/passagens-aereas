@@ -1,0 +1,100 @@
+.secao_minhas_opinioes{
+    display:flex;
+    align-items: center;
+
+   justify-content: center;
+}
+
+.container_minhas_opinioes{
+    padding-top:40px;
+    
+    display:flex;
+    flex-direction: column;
+    
+    width:1280px;
+}
+
+.titulo_minhas_opinioes{
+    font-size:32px;
+    font-weight: 100;
+}
+
+.container_pendentes_realizadas{
+    display:flex;
+    gap:15px;
+    font-size:20px;
+    padding-top:20px;
+}
+
+.texto_pendentes_realizadas{
+    height:52px;
+    display:flex;
+    align-items: center;
+    font-weight: bold;
+    color:#4300d2;
+    border-bottom:2px solid #4300d2;
+    cursor:pointer;
+    padding:10px;
+}
+
+.texto_pendentes_realizadas:hover{
+    background-color:#ebe5f5;
+    
+}
+
+.texto_pendentes_realizadas_desmarcada{
+    padding:10px;
+     height:52px;
+    display:flex;
+    align-items: center;
+    cursor:pointer;
+}
+
+.texto_pendentes_realizadas_desmarcada:hover{
+    background-color: #ebe5f5;
+}
+
+.container_opinioes_realizadas{
+    height:806px;
+    background-color: #eeeeee;
+    
+}
+
+.container_imagem_textos{
+    display:flex;
+    gap:20px;
+}
+
+.imagem_viajante{
+    width:200px;
+    height:200px;
+}
+
+.titulo_esperando{
+    font-size:32px;
+    font-weight: 100;
+}
+
+.paragrafo_descricao{
+    font-size:16px;
+    color:#565a60;
+}
+
+.container_titulo_descricao{
+    width:388px;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.botao_ver_ofertas{
+    height:48px;
+    background-color: #4300d2;
+    color:white;
+    border-radius: 24px;
+    border:none;
+    padding:0 16px;
+    font-size:16px;
+    font-weight: bold;
+    width:125px;
+}
