@@ -1,7 +1,7 @@
 .secao_minhas_opinioes{
     display:flex;
     align-items: center;
-
+    flex-direction: column;
    justify-content: center;
 }
 
@@ -57,12 +57,15 @@
 .container_opinioes_realizadas{
     height:806px;
     background-color: #eeeeee;
+    width:1280px;
     
 }
 
 .container_imagem_textos{
     display:flex;
     gap:20px;
+    padding:20px 24px;
+    margin-left:168px;
 }
 
 .imagem_viajante{
@@ -72,7 +75,7 @@
 
 .titulo_esperando{
     font-size:32px;
-    font-weight: 100;
+    
 }
 
 .paragrafo_descricao{
@@ -97,4 +100,18 @@
     font-size:16px;
     font-weight: bold;
     width:125px;
+    cursor:pointer;
+}
+
+.botao_ver_ofertas:hover{
+    background-color:#270570;
+}
+
+
+.secao_opinioes_realizadas{
+    background-color: #eeeeee;
+    width:100%;
+    display:flex;
+    
+    justify-content: center;
 }

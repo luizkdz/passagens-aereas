@@ -1,0 +1,66 @@
+.card_planeje_viagem{
+    width:362px;
+    background-color: #ffffff;
+    height:508px;
+    border-radius: 6px;
+    margin-top:-110px;
+    box-shadow: 0 2px 8px #4444441a;
+    
+}
+
+.icone_bagagem{
+    width:105px;
+    height:70px;
+}
+
+.container_imagem_planeje_botao{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;
+    gap:10px;
+}
+
+.descricao_planeje{
+    font-size:13px;
+    color:#323439;
+}
+
+.titulo_planeje{
+    color:#323439;
+}
+
+.botao_encontre_seu_voo{
+    height:48px;
+    padding:0 16px;
+    border:1px solid #d6d4d4;
+    color:#4300d2;
+    border-radius: 24px;
+    background-color: #ffffff;
+    width:175px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.botao_encontre_seu_voo:hover{
+    background-color:#ebe5f5;
+}
+
+.container_links{
+    border-top:1px solid #d6d4d4;
+}
+
+.container_imagem_link{
+    display:flex;
+    gap:10px;
+    padding:11px 20px;
+    font-size:13px;
+    color:#565A60;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.icone_imagem_link{
+    width:14px;
+    height:14px;
+}

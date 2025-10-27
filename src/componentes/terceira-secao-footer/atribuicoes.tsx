@@ -55,6 +55,12 @@ export default function Atribuicoes(){
         <a href="https://www.flaticon.com/br/icones-gratis/sino" title="sino ícones">Sino ícones criados por Gajah Mada - Flaticon</a>
        <a href="https://www.flaticon.com/br/icones-gratis/inteligencia-artificial" title="inteligência artificial ícones">Inteligência artificial ícones criados por Freepik - Flaticon</a> 
         <a href="https://www.flaticon.com/br/icones-gratis/visitante" title="visitante ícones">Visitante ícones criados por Mihimihi - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/digitando" title="digitando ícones">Digitando ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/telefone" title="telefone ícones">Telefone ícones criados por Vector Stall - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/cartao-de-credito" title="cartão de crédito ícones">Cartão de crédito ícones criados por monkik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/fatura" title="fatura ícones">Fatura ícones criados por Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/br/icones-gratis/bagagem" title="bagagem ícones">Bagagem ícones criados por Chattapat.k - Flaticon</a>
+        
         </div>
     )
 }

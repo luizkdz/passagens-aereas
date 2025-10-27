@@ -170,7 +170,7 @@ const splitLinkTitulo = (titulo: string) => {
                         </div>
                         <div className={styles.container_inteligencia_artificial_alertas_notificacoes}>
                             <div className={styles.container_imagem_viagens}>
-                                <img src="/images/mochila.png" className={styles.icone_bagagem}/>
+                                <img src="/images/inteligencia-artificial.png" className={styles.icone_bagagem}/>
                                 <p>Inteligência Artificial</p>
                             </div>
                             <div className={styles.container_imagem_viagens}>

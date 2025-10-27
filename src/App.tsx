@@ -10,6 +10,8 @@ import PaginaCadastre from './pages/PaginaCadastre.tsx';
 import PaginaCadastreEmail from './pages/PaginaCadastreEmail.tsx';
 import PaginaMinhasViagens from './pages/PaginaMinhasViagens.tsx';
 import PaginaMinhasOpinioes from './pages/PaginaMinhasOpinioes.tsx';
+import PaginaMeuPerfil from './pages/PaginaMeuPerfil.tsx';
+import PaginaInformacoesPessoais from './pages/PaginaInformacoesPessoais.tsx';
 function App() {
 
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/login/signup/email" element={<PaginaCadastreEmail/>}></Route>
         <Route path="/me/bookings" element={<PaginaMinhasViagens/>}></Route>
         <Route path="/me/reviews/myOpinions" element={<PaginaMinhasOpinioes/>}></Route>
+        <Route path="/me/account" element={<PaginaMeuPerfil/>}></Route>
+        <Route path="/me/account/personal-info" element={<PaginaInformacoesPessoais/>}></Route>
       </Routes>
       </BrowserRouter>
     </>

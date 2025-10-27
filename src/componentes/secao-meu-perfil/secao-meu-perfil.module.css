@@ -1,0 +1,345 @@
+.titulo_meu_perfil{
+    font-size:32px;
+}
+
+.container_titulo_meu_perfil{
+    width:1280px;
+    height:116px;
+    display:flex;
+    align-items: center;
+    color:#323439;
+}
+
+.secao_meu_perfil{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.secao_informacoes_perfil{
+    
+    background-color: #eeeeee;
+    display:flex;
+    gap:42px;
+    width:100%;
+    justify-content: center;
+    height:1076px;
+    padding:10px;
+}
+
+.container_imagem_nome_email{
+    display:flex;
+    align-items: center;
+    color:white;
+    font-weight: bold;
+    gap:15px;
+}
+
+.icone_imagem{
+    width:84px;
+    height:84px;
+    border-radius: 50%;
+    background-color:white;
+    
+}
+
+.container_icone_email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;      /* tamanho total do círculo */
+  height: 30px;
+  border-radius: 50%;
+  border:1px solid #4300d2;
+  background-color: white;
+}
+
+.icone_imagem_email {
+  width: 15px;      /* tamanho real da imagem */
+  height: 15px;
+}
+
+.card_perfil_dados{
+    display:flex;
+    justify-content: space-between;
+    width:813px;
+    background-color:#270570;
+    padding:20px;
+    align-items: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.botao_editar{
+    height:36px;
+    color:white;
+    border:1px solid white;
+    border-radius: 24px;
+    padding:0 16px;
+    background-color:#270570;
+    margin-right:15px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.botao_editar:hover{
+    background-color: #ffffff;
+    color:#270570;
+}
+
+.container_informacoes{
+    display:grid;
+    background-color: #ffffff;
+    grid-template-columns: repeat(2, 1fr);
+    padding:0 20px;
+}
+
+.container_imagem_dados_pessoais{
+    display:flex;
+    gap:15px;
+    padding:10px;
+}
+
+.icone_imagem_usuario{
+    width:32px;
+    height:32px;
+}
+
+.texto_titulo_dados{
+    font-size:11px;
+    color:#72777f;
+}
+
+.texto_nome{
+    font-size:13px;
+    color:#323439;
+}
+
+.texto_email{
+    font-size:13px;
+    color:#323439;
+}
+
+.texto_telefone{
+    font-size:14px;
+    color:#4300d2;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.texto_telefone:hover{
+    color:#270570;
+}
+
+.texto_titulo_dados_telefone{
+    font-size:11px;
+    color:#72777f;
+}
+
+.texto_titulo_dados_email{
+    font-size:11px;
+    color:#72777f;
+}
+
+.icone_cartao{
+    width:66px;
+    height:53px;
+}
+
+.container_imagem_adicionar_cartao{
+    border:2px dotted #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;
+    font-size:13px;
+    color:#565A60;
+    gap:10px;
+    width:320px;
+}
+
+.container_cartoes_faturamento{
+    display:flex;
+    width:813px;
+    justify-content: space-between;
+    padding:20px;
+    background-color: #ffffff;
+    margin-top:20px;
+}
+
+.titulo_cartoes{
+    font-size:20px;
+}
+
+.titulo_faturamento{
+    font-size:20px;
+}
+
+.botao_adicionar_cartao_faturamento{
+    height:36px;
+    color:white;
+    background-color: #4300d2;
+    border-radius: 24px;
+    padding: 0 16px;
+    border:none;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.span_agilize{
+    font-weight: bold;
+}
+
+.card_cartoes{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.container_card_passageiros_notificacoes{
+    margin-top:20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.card_passageiros{
+    padding:20px;
+    width:364px;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+    background-color: #ffffff;
+}
+
+.container_imagem_adicionar_passageiros{
+    border:2px dotted #d6d4d4;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;
+    font-size:13px;
+    color:#565A60;
+    gap:10px;
+    width:320px;
+}
+
+.titulo_passageiros{
+    font-size:20px;
+}
+
+.titulo_notificacoes{
+    font-size:20px;
+    color:#323439;
+}
+
+.container_whatsapp_switch{
+    display:flex;
+    justify-content: space-between;
+}
+
+.texto_verificado_whatsapp{
+    font-size:13px;
+    color:#565A60;
+}
+
+.titulo_verificado_whatsapp{
+    color:#565A60;
+}
+
+.container_secoes_ativas_privacidade{
+    margin-top:20px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.card_secoes_ativas{
+   background-color: #ffffff;
+   padding:20px;
+   width:364px;
+}
+
+.descricao_secoes_ativas{
+    color:#565A60;
+}
+
+.titulo_secoes_ativas{
+    color:#323439;
+    font-size:20px;
+}
+
+.icone_telefone{
+    width: 15px;      /* tamanho real da imagem */
+  height: 15px;
+}
+
+.container_imagem_sessao_ativa{
+    display:flex;
+    gap:25px;
+    padding:20px;
+}
+
+.dispositivo_sessao_ativa{
+    color:#323439;
+}
+
+.texto_ultimo_acesso{
+    font-size:13px;
+    color:#72777f;
+}
+
+.paragrafo_ver_todas{
+    color:#4300d2;
+    font-size:11px;
+    font-weight: bold;
+}
+
+.icone_seta_direita{
+    width:16px;
+    height:16px;
+}
+
+.container_descricao_alerta_imagem_seta_direita{
+    display:flex;
+    justify-content: space-between;
+}
+
+.card_privacidade_seguranca{
+    width:364px;
+    padding:20px;
+    background-color: #ffffff;
+}
+
+.titulo_privacidade_seguranca{
+    color:#323439;
+    font-size:20px;
+    padding-bottom:10px;
+}
+
+.texto_alertas_eliminar_conta{
+    font-size:18px;
+    color:#323439;
+}
+
+.descricao_alertas_eliminar_conta{
+    font-size:13px;
+    color:#72777f;
+    width:306px;
+}
+
+.container_texto_alertas{
+    display:flex;
+    flex-direction: column;
+    padding-top:15px;
+    border-bottom:1px solid #d6d4d4;
+    padding-bottom:15px;
+}
+
+.container_texto_eliminar_conta{
+    display:flex;
+    flex-direction: column;
+    padding-top:15px;
+    
+    padding-bottom:15px;
+}
+
