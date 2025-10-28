@@ -12,6 +12,8 @@ import PaginaMinhasViagens from './pages/PaginaMinhasViagens.tsx';
 import PaginaMinhasOpinioes from './pages/PaginaMinhasOpinioes.tsx';
 import PaginaMeuPerfil from './pages/PaginaMeuPerfil.tsx';
 import PaginaInformacoesPessoais from './pages/PaginaInformacoesPessoais.tsx';
+import PaginaFormasDePagamentos from './pages/PaginaFormasDePagamentos.tsx';
+import PaginaPassageiros from './pages/PaginaPassageiros.tsx';
 function App() {
 
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/me/reviews/myOpinions" element={<PaginaMinhasOpinioes/>}></Route>
         <Route path="/me/account" element={<PaginaMeuPerfil/>}></Route>
         <Route path="/me/account/personal-info" element={<PaginaInformacoesPessoais/>}></Route>
+        <Route path="/me/account/payment-methods" element={<PaginaFormasDePagamentos/>}></Route>
+        <Route path="/me/account/travel-companions" element={<PaginaPassageiros/>}></Route>
       </Routes>
       </BrowserRouter>
     </>

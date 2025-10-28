@@ -1,0 +1,206 @@
+.titulo_meu_perfil{
+    font-size:36px;
+    color:#dde1e8;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.container_titulo_passageiros{
+    width:1280px;
+    height:116px;
+    display:flex;
+    align-items: center;
+    color:#323439;
+}
+
+.secao_passageiros{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo_passageiros{
+    font-size:36px;
+     color:#323439;
+}
+
+.card_passageiros{
+    border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:10px;
+}
+
+.titulo_passageiros_card{
+ font-size:24px;
+   
+}
+
+.descricao_passageiros{
+color:#565a60;
+}
+
+.icone_adicionar{
+    width:16px;
+    height:16px;
+}
+
+.container_imagem_adicionar_passageiro{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    color:#4300d2;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.card_adicionar_passageiro{
+     border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:5px;
+}
+
+.container_adicionar_passageiros{
+
+}
+
+.secao_adicionar_passageiros{
+    width:100%;
+    height:853px;
+    display:flex;
+    justify-content: center;
+    gap:42px;
+    background-color: #eeeeee;
+}
+
+.input_nome_sobrenome{
+    width:390px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+    height:34px;
+}
+
+.container_label_input{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.container_adicionar_informacoes_passageiro{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.label_classe{
+    font-size:13px;
+    color:#323439;
+}
+
+.select_nacionalidade{
+    width:390px;
+    padding:0 28px 0 12px;
+    height:36px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+}
+
+.container_tipo_e_numero_documento{
+    display:flex;
+    gap:10px;
+    align-items: end;
+}
+
+
+.select_tipo_documento{
+    width:92px;
+    padding:0 28px 0 12px;
+    height:36px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+}
+
+
+.container_label_input_tipo_documento{
+    display:flex;
+    gap:10px;
+}
+
+.input_numero_documento{
+    width:292px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+    height:34px;
+}
+
+.select_dia_mes_ano{
+    width:125px;
+    padding:0 28px 0 12px;
+    height:36px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+}
+
+.container_selects_data{
+    display:flex;
+    gap:7px;
+}
+
+.container_input_sexo{
+    display:flex;
+    gap:10px;
+    width:158px;
+    border:1px solid #d6d4d4;
+    font-size:16px; 
+    height:30px;
+    align-items: center;
+    justify-content: center ;
+    border-radius: 6px;
+    color:#323439;
+}
+
+.container_label_input_sexo{
+    display:flex;
+    align-items: center;
+    border-radius: 6px;
+    
+}
+
+.botao_adicionar_passageiro{
+    height:48px;
+    padding:0 16px;
+    color:white;
+    background-color: #4300d2;
+    border-radius: 24px;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight: bold;
+}
+
+.botao_cancelar_adicionar_passageiro{
+    height:48px;
+    padding:0 16px;
+    color: #4300d2;
+    background-color: white;
+    border-radius: 24px;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight: bold;
+}
+
+.botao_cancelar_adicionar_passageiro:hover{
+    background-color:#ebe5f5;
+}
+
+.container_botoes{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}

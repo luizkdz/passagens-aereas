@@ -1,0 +1,224 @@
+.titulo_meu_perfil{
+    font-size:36px;
+    color:#dde1e8;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.container_titulo_meu_perfil{
+    width:1280px;
+    height:116px;
+    display:flex;
+    align-items: center;
+    color:#323439;
+}
+
+.secao_formas_de_pagamentos{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo_formas_de_pagamento{
+    font-size:36px;
+}
+
+.icone_adicionar{
+    width:16px;
+    height:16px;
+}
+
+.container_imagem_adicionar_cartao{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    color:#4300d2;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.card_cartoes{
+    border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:10px;
+}
+
+.titulo_cartoes{
+    font-size:24px;
+    color:#323439;
+}
+
+.descricao_cartoes{
+    color:#565a60;
+}
+
+.secao_cartoes_faturamento{
+    width:100%;
+    gap:42px;
+    height:830px;
+    background-color: #eeeeee;
+    display:flex;
+    justify-content: center;
+}
+
+.container_cartoes_faturamento{
+    
+}
+
+.card_adicionar_cartao{
+     border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:5px;
+}
+
+.titulo_faturamento{
+    font-size:24px;
+    color:#323439;
+}
+
+.descricao_faturamento{
+    color:#565a60;
+}
+
+.card_faturamento{
+    border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:20px;
+}
+
+.container_imagem_adicionar_faturamento{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    color:#4300d2;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.card_insira_dados_faturamento{
+     border:1px solid #d6d4d4;
+    background-color: #ffffff;
+    padding:20px;
+    border-radius: 6px;
+    width:820px;
+    margin-top:5px;
+}
+
+.container_input_tipo_pessoa{
+    display:flex;
+    align-items: center;
+    gap:15px;
+}
+
+.label_situacao_fiscal{
+    color:#565a60;
+}
+
+.container_input_contribuinte{
+   display:flex;
+    align-items: center;
+    gap:15px;
+}
+
+.container_label_input_nome_cpf_cep{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.label_nome_cpf_cep{
+    font-size:13px;
+    color:#323439;
+    font-weight: bold;
+}
+
+.input_nome{
+    width:371px;
+    height:34px;
+    font-size:16px;
+    padding:0 16px;
+    border-radius: 6px;
+    border:1px solid #d6d4d4;
+}
+
+.container_label_tipo_pessoa{
+    padding-top:20px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding-bottom:20px;
+}
+
+.container_inputs{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+
+.titulo_contribuinte{
+    font-size:13px;
+    color:#565a60;
+}
+
+.texto_pessoa{
+    color:#323439;
+}
+
+.input_radio{
+    width:20px;
+    height:20px;
+}
+
+.input_checkbox{
+    width:20px;
+    height:20px;
+}
+
+.botao_adicionar{
+    height:48px;
+    color:white;
+    background-color: #4300d2;
+    padding:0 16px;
+    border-radius: 24px;
+    cursor:pointer;
+    border:none;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+.botao_adicionar:hover{
+    background-color: #270570;
+}
+
+.botao_cancelar{
+     height:48px;
+    color:#4300d2;
+    background-color: #ffffff;
+    padding:0 16px;
+    border-radius: 24px;
+    cursor:pointer;
+    border:none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.botao_cancelar:hover{
+    background-color:#ebe5f5;
+}
+
+.container_botoes_adicionar_cancelar{
+    display:flex;
+    gap:15px;
+}

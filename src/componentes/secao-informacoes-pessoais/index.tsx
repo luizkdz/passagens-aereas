@@ -25,7 +25,7 @@ export default function SecaoInformacoesPessoais(){
     return (
         <div className={styles.secao_meu_perfil}>
             <div className={styles.container_titulo_meu_perfil}>
-                <p className={styles.titulo_meu_perfil}>Meu Perfil</p>
+                <p className={styles.titulo_meu_perfil}>Meu Perfil</p><span className={styles.titulo_dados_pesoais_meu_perfil}> /Dados pessoais</span>
             </div>
             <div className={styles.secao_informacoes_perfil}>
                 <div className={styles.container_informacoes_perfil}>

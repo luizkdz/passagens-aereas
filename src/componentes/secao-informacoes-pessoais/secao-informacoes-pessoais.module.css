@@ -1,5 +1,8 @@
 .titulo_meu_perfil{
-    font-size:32px;
+    font-size:36px;
+    color:#dde1e8;
+    text-decoration: underline;
+    cursor:pointer;
 }
 
 .container_titulo_meu_perfil{
@@ -65,7 +68,7 @@
 .card_perfil_dados{
     display:flex;
     justify-content: space-between;
-    width:813px;
+    width:822px;
     background-color:#270570;
     padding:20px;
     align-items: center;
@@ -452,4 +455,10 @@
     padding:0 16px;
     border-radius: 6px;
     border:1px solid #d6d4d4;
+}
+
+.titulo_dados_pesoais_meu_perfil{
+    font-size:36px;
+    text-decoration: none;
+    color:#323439;
 }
