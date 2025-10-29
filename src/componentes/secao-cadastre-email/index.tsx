@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
 export default function SecaoCadastreEmail(){
 
-     const [step, setStep] = useState(3);
+     const [step, setStep] = useState(1);
 
       const handleNext = () => {
     setStep(2);
@@ -54,7 +54,7 @@ export default function SecaoCadastreEmail(){
                 </div>
                 <div className={styles.container_label_input_senha}>
                     <label className={styles.label_email}>SENHA</label>
-                    <input type="tex" placeholder="Exemplo123$" className={styles.input_senha}/>
+                    <input type="text" placeholder="Exemplo123$" className={styles.input_senha}/>
                     <p className={styles.texto_exibir_senha}>EXIBIR</p>
                 </div>
                 <div className={styles.container_validacoes_senha}>

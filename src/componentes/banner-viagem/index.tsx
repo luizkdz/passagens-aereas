@@ -42,8 +42,10 @@ const CustomInputDataIda = forwardRef<HTMLInputElement, any>(({ value, onClick, 
       placeholder={placeholder}
       ref={ref}
       readOnly
+      data-testid="input_origem_data"
       className={styles.date_picker_origem}
     />
+    
   </div>
 ));
 const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick, placeholder}, ref) => (
@@ -57,6 +59,7 @@ const CustomInputDataVolta = forwardRef<HTMLInputElement, any>(({ value, onClick
       ref={ref}
       readOnly
       className={!shop ? styles.date_picker : styles.date_picker_shop}
+      data-testid = "input_volta_data"
     />
   </div>
 ));
@@ -72,6 +75,7 @@ const CustomInputDataVoltaOff = forwardRef<HTMLInputElement, any>(({ value, onCl
       readOnly
       className={!shop ? styles.date_picker : styles.date_picker_shop_off}
       disabled
+      data-testid="input-data-volta"
     />
   </div>
 ));
@@ -431,7 +435,7 @@ const destinosMaisProcurados = [
                     {!passagensAereas ? <p className={styles.separador_botoes}>|</p> : ""}
                     {!passagensAereas ? <div className={styles.container_voo_hospedagem}>
                     <p className={styles.paragrafo_desconto}>Até 30% mais barato</p>
-                    <button type="button" onClick={() => {toggleIsClickedVooHospedagem()}} className={isClicked === 'vooHospedagem' ? styles.botao_passagens_true : styles.botao_passagens_false}><img src={isClicked === "vooHospedagem" ? "/images/aviao-preto.png": "/images/aviao.png"} className={styles.imagem_botao}/> Voo + <img src={isClicked === "vooHospedagem" ? "/images/cama-de-casal-preto.png" : "/images/cama-de-casal.png"} className={styles.imagem_botao}/>Hospedagem</button>
+                    <button data-testid='botao_voo_hospedagem' type="button" onClick={() => {toggleIsClickedVooHospedagem()}} className={isClicked === 'vooHospedagem' ? styles.botao_passagens_true : styles.botao_passagens_false}><img src={isClicked === "vooHospedagem" ? "/images/aviao-preto.png": "/images/aviao.png"} className={styles.imagem_botao}/> Voo + <img src={isClicked === "vooHospedagem" ? "/images/cama-de-casal-preto.png" : "/images/cama-de-casal.png"} className={styles.imagem_botao}/>Hospedagem</button>
                     </div> : ""}
                     </div>
                     {isClicked !== "multiDestino" ? <div className={styles.banner_passagens_aereas}>
@@ -449,10 +453,10 @@ const destinosMaisProcurados = [
   novo[0] = valor;
   
 setNomesCidadesOrigem(novo);
-}} className={!shop ? styles.input_origem : styles.input_origem_shop} placeholder='Origem'/>
+}} data-testid = "input_origem" className={!shop ? styles.input_origem : styles.input_origem_shop} placeholder='Origem'/>
 {erros[0] && !nomesCidadesOrigem[0] && <p className={styles.mensagem_erro}>{erros[0]}</p>}
                     {menuOrigem &&  (
-                        <div ref={menuOrigemRef} className={styles.menu_origem}>
+                        <div data-testid= "sugestoes_origem" ref={menuOrigemRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
                             <img src="/images/cidade.png" className={styles.icone_cidade}/>
                             
@@ -524,11 +528,11 @@ setNomesCidadesOrigem(novo);
                         const novo = [...nomesCidadesDestino]; 
   novo[0] = valor;
 
-setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.input_destino_shop} placeholder='Destino'/>
+setNomesCidadesDestino(novo)}} data-testid="input_destino" className={!shop ? styles.input_destino : styles.input_destino_shop} placeholder='Destino'/>
 {erros[1] && !nomesCidadesDestino[0] && <p className={styles.mensagem_erro}>{erros[1]}</p>}
                     <img src="/images/gps.png" className={styles.imagem_input_destino}/>
                     {menuDestino && nomesCidadesDestino[0].length < 3 && (
-                        <div className={styles.menu_destino} ref={menuDestinoRef}>
+                        <div data-testid="sugestoes_destinos_mais_buscados" className={styles.menu_destino} ref={menuDestinoRef}>
                             <div className={styles.container_destinos_mais_buscados}>
                             <img src="/images/estrela.png" className={styles.imagem_estrela}/>
                             <p>DESTINOS MAIS BUSCADOS</p>
@@ -558,7 +562,7 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
                         </div>
                     )}
                     {menuDestino && nomesCidadesDestino[0].length >= 3 &&(
-                        <div ref={menuDestinoRef} className={styles.menu_origem}>
+                        <div data-testid="sugestoes_destino" ref={menuDestinoRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
                             <img src="/images/cidade.png" className={styles.icone_cidade}/>
                             
@@ -683,7 +687,7 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
                     
                     <label className={styles.label_origem_destino}>PASSAGEIROS E CLASSE</label>
                     <img src="/images/do-utilizador.png" className={styles.imagem_input}/>
-                    <input onFocus={(e) => e.target.blur()}  value={numeroPessoas} className={!shop ? styles.input_origem_destino : styles.input_origem_destino_shop}/>
+                    <input onFocus={(e) => e.target.blur()} data-testid="input_passageiros_e_classe"  value={numeroPessoas} className={!shop ? styles.input_origem_destino : styles.input_origem_destino_shop}/>
                     <p className={styles.texto_pessoas}>{numeroPessoas > 1 ? "pessoas" : "pessoa"}, {classeEscolhida.slice(0,4) + "..."}</p>
                     {menuPassageirosClasse && (
         <div ref={menuPassageirosRef} className={styles.menu_passageiros_classe}>
@@ -693,9 +697,9 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
           <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button type="button" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" data-testid="botao_diminuir_maiores" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMaioresIdade}</p>
-          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" data-testid="botao_aumentar_maiores" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_maior_idade_input}>
@@ -704,9 +708,9 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
           <p className={styles.texto_maior_idade}>Até 17 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button type="button" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" data-testid="botao_diminuir_menores" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMenoresIdade}</p>
-          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" data-testid="botao_aumentar_menores" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_classe_select}>
@@ -723,7 +727,7 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
             
             </div>
             <div className={styles.container_botao_aplicar}>
-                <button type="button" onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasse(false)}} className={styles.botao_aplicar}>Aplicar</button>
+                <button data-testid= "botao_aplicar_passageiros_classe" type="button" onClick={(e) => {e.stopPropagation();setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade);setMenuPassageirosClasse(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div>
         </div>
       )}
@@ -733,14 +737,14 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
                     
                     <label className={styles.label_origem_destino}>QUARTOS</label>
                     
-                    <input onFocus={(e) => e.target.blur()} className={styles.input_origem_destino}/>
+                    <input data-testid="input_numero_quartos_pessoas" onFocus={(e) => e.target.blur()} className={styles.input_origem_destino}/>
                     <p className={styles.numero_quartos}>{numeroQuartosVooHospedagem}</p>
                     <p className={styles.numero_pessoas}>{numeroPessoas}</p>
                     <img src="/images/cama.png" className={styles.imagem_usuario_input_voo_hospedagem}/>
                     <img src="/images/do-utilizador.png" className={styles.imagem_cama_input_voo_hospedagem}/>
                     
                     {menuQuarto && (
-                        <div ref={menuQuartoRef} className={styles.menu_passageiros_classe}>
+                        <div ref={menuQuartoRef} data-testid= "menu_quartos_pessoas" className={styles.menu_passageiros_classe}>
             {Array.from({length:numeroQuartosVooHospedagem}).map((_,index) => { return (
                 <div>
             <div className={styles.container_quarto_botao}><p className={styles.texto_quarto}>Quarto {index + 1}</p>
@@ -752,9 +756,9 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
           <p className={styles.texto_maior_idade}>A partir de 18 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button type="button" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" data-testid="botao_diminuir_maiores_menu_quartos" disabled={numeroMaioresIdade === 1} onClick={() => {diminuirMaioresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMaioresIdade}</p>
-          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" data-testid="botao_aumentar_maiores_menu_quartos" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMaioresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           <div className={styles.container_maior_idade_input}>
@@ -763,15 +767,15 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
           <p className={styles.texto_maior_idade}>Até 17 anos</p>
           </div>
           <div className={styles.botao_numero}>
-          <button type="button" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
+          <button type="button" data-testid="botao_diminuir_menores_menu_quartos" disabled={numeroMenoresIdade === 0} onClick={() => {diminuirMenoresIdade()}} className={styles.botao_diminuir_inserir}>-</button>
           <p>{numeroMenoresIdade}</p>
-          <button type="button" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
+          <button type="button" data-testid="botao_aumentar_menores_menu_quartos" disabled={numeroMenoresIdade + numeroMaioresIdade === 8} onClick={() => {aumentarMenoresIdade()}} className={styles.botao_diminuir_inserir}>+</button>
           </div>
           </div>
           
             {index + 1 === numeroQuartosVooHospedagem ? <div  className={index + 1 < 5 ? styles.container_botao_aplicar_menu_quarto: styles.container_botao_aplicar_menu_quarto_end}>
                 {index + 1 < 5 ? <button onClick={() => {toggleAdicionarQuarto()}} className={styles.botao_adicionar_quarto}>Adicionar Quarto</button> : ""}
-                <button type="button" onClick={(e) => {setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade); setNumeroQuartos(numeroQuartos);e.stopPropagation();setMenuQuarto(false)}} className={styles.botao_aplicar}>Aplicar</button>
+                <button type="button" data-testid="botao_aplicar_quartos_pessoas" onClick={(e) => {setNumeroPessoas(numeroMaioresIdade + numeroMenoresIdade); setNumeroQuartos(numeroQuartos);e.stopPropagation();setMenuQuarto(false)}} className={styles.botao_aplicar}>Aplicar</button>
             </div> : ""}
                 </div>
             )})}
@@ -824,7 +828,7 @@ setNomesCidadesDestino(novo)}} className={!shop ? styles.input_destino : styles.
   }} value={nomesCidadesOrigem[index]} className={!shop ? styles.input_origem : styles.input_origem_shop} placeholder='Origem'/>
      {erros[index] && !nomesCidadesOrigem[index] && <p className={styles.mensagem_erro}>{erros[0]}</p>}               
                     {menuOrigemTrecho == index+1 &&  (
-                        <div ref={menuOrigemTrechoRef} className={styles.menu_origem}>
+                        <div  ref={menuOrigemTrechoRef} className={styles.menu_origem}>
                             <div className={styles.container_imagem_cidades}>
                             <img src="/images/cidade.png" className={styles.icone_cidade}/>
                             

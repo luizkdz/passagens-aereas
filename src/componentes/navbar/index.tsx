@@ -1,11 +1,9 @@
-
 import styles from './NavBar.module.css';
 import { useState } from 'react';
 
-export default function NavBar({minhaConta}) {
+export default function NavBar({minhaConta, autenticado = true}) {
 
     const [showMenu, setShowMenu] = useState(false);
-    const [autenticado, setAutenticado] = useState(true);
 
     const links = [{image:"/images/fone-de-ouvido.png",
         titulo:'Televendas 0800 883 6342'
@@ -91,8 +89,8 @@ const splitLinkTitulo = (titulo: string) => {
                     )
                     
                 })}
-                <div onClick={() => {setShowMenu(!showMenu)}} className={styles.container_usuario_menu}>
-                    <div className={styles.container_imagens_menu}>
+                <div  className={styles.container_usuario_menu}>
+                    <div onClick={() => {setShowMenu(!showMenu)}} className={styles.container_imagens_menu}>
                     <img src="/images/do-utilizador.png" className={styles.imagem_usuario}/>
                     <img src="/images/menu-aberto.png" className={styles.imagem_menu}/>
                     </div>
@@ -196,7 +194,7 @@ const splitLinkTitulo = (titulo: string) => {
         <div className={!minhaConta ? styles.down_nav_bar : styles.down_nav_bar_off}>
         {!minhaConta && menuNavegacao.map((item,index) => {return (
             <div className={styles.container_imagem_icone_menu} key={index}>
-                <img src={item.image} className={styles.imagem_item_menu_navegacao}/>
+                <img src={item.image} alt={item.titulo} className={styles.imagem_item_menu_navegacao}/>
                 <p>{item.titulo}</p>
             </div>
         )})}
